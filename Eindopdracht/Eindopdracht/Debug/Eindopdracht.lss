@@ -11,35 +11,35 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   3 .debug_aranges 00000070  00000000  00000000  00000343  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   000012eb  00000000  00000000  000003b3  2**0
+  4 .debug_info   000012dc  00000000  00000000  000003b3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 0000090a  00000000  00000000  0000169e  2**0
+  5 .debug_abbrev 0000092e  00000000  00000000  0000168f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000554  00000000  00000000  00001fa8  2**0
+  6 .debug_line   00000594  00000000  00000000  00001fbd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  000000c0  00000000  00000000  000024fc  2**2
+  7 .debug_frame  000000c0  00000000  00000000  00002554  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000291  00000000  00000000  000025bc  2**0
+  8 .debug_str    00000291  00000000  00000000  00002614  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    0000014f  00000000  00000000  0000284d  2**0
+  9 .debug_loc    0000014f  00000000  00000000  000028a5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000050  00000000  00000000  0000299c  2**0
+ 10 .debug_ranges 00000050  00000000  00000000  000029f4  2**0
                   CONTENTS, READONLY, DEBUGGING
  11 .text         00000004  000002bc  000002bc  00000310  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 12 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000029ec  2**2
+ 12 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00002a44  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .text.main    00000026  00000240  00000240  00000294  2**1
+ 13 .text.wait    0000001e  00000266  00000266  000002ba  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .text.twi_init 0000000c  000002a8  000002a8  000002fc  2**1
+ 14 .text.main    00000026  00000240  00000240  00000294  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 15 .text.twi_start 00000010  00000298  00000298  000002ec  2**1
+ 15 .text.twi_init 0000000c  000002a8  000002a8  000002fc  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.twi_stop 00000008  000002b4  000002b4  00000308  2**1
+ 16 .text.twi_start 00000010  00000298  00000298  000002ec  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.twi_tx  00000014  00000284  00000284  000002d8  2**1
+ 17 .text.twi_stop 00000008  000002b4  000002b4  00000308  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.wait    0000001e  00000266  00000266  000002ba  2**1
+ 18 .text.twi_tx  00000014  00000284  00000284  000002d8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
  19 .text.start_init 00000086  000001ba  000001ba  0000020e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
@@ -106,10 +106,44 @@ Disassembly of section .text:
 000002bc <__bad_interrupt>:
  2bc:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
 
+Disassembly of section .text.wait:
+
+00000266 <wait>:
+				clock value is set. This is used by _delay_ms inside
+				util/delay.h
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	for (int i=0; i<ms; i++)
+ 266:	20 e0       	ldi	r18, 0x00	; 0
+ 268:	30 e0       	ldi	r19, 0x00	; 0
+ 26a:	08 c0       	rjmp	.+16     	; 0x27c <wait+0x16>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 26c:	ef ec       	ldi	r30, 0xCF	; 207
+ 26e:	f7 e0       	ldi	r31, 0x07	; 7
+ 270:	31 97       	sbiw	r30, 0x01	; 1
+ 272:	f1 f7       	brne	.-4      	; 0x270 <wait+0xa>
+ 274:	00 c0       	rjmp	.+0      	; 0x276 <wait+0x10>
+ 276:	00 00       	nop
+ 278:	2f 5f       	subi	r18, 0xFF	; 255
+ 27a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 27c:	28 17       	cp	r18, r24
+ 27e:	39 07       	cpc	r19, r25
+ 280:	ac f3       	brlt	.-22     	; 0x26c <wait+0x6>
+	{
+		_delay_ms( 1 );		// library function (max 30 ms at 8MHz)
+	}
+}
+ 282:	08 95       	ret
+
 Disassembly of section .text.main:
 
 00000240 <main>:
-
 
 int main( void )
 {
@@ -205,44 +239,11 @@ Version :    	DMK, Initial code
 }
  296:	08 95       	ret
 
-Disassembly of section .text.wait:
-
-00000266 <wait>:
-				clock value is set. This is used by _delay_ms inside
-				util/delay.h
-Version :    	DMK, Initial code
-*******************************************************************/
-{
-	for (int i=0; i<ms; i++)
- 266:	20 e0       	ldi	r18, 0x00	; 0
- 268:	30 e0       	ldi	r19, 0x00	; 0
- 26a:	08 c0       	rjmp	.+16     	; 0x27c <wait+0x16>
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
- 26c:	ef ec       	ldi	r30, 0xCF	; 207
- 26e:	f7 e0       	ldi	r31, 0x07	; 7
- 270:	31 97       	sbiw	r30, 0x01	; 1
- 272:	f1 f7       	brne	.-4      	; 0x270 <wait+0xa>
- 274:	00 c0       	rjmp	.+0      	; 0x276 <wait+0x10>
- 276:	00 00       	nop
- 278:	2f 5f       	subi	r18, 0xFF	; 255
- 27a:	3f 4f       	sbci	r19, 0xFF	; 255
- 27c:	28 17       	cp	r18, r24
- 27e:	39 07       	cpc	r19, r25
- 280:	ac f3       	brlt	.-22     	; 0x26c <wait+0x6>
-	{
-		_delay_ms( 1 );		// library function (max 30 ms at 8MHz)
-	}
-}
- 282:	08 95       	ret
-
 Disassembly of section .text.start_init:
 
 000001ba <start_init>:
+
+
 
 
 
@@ -496,7 +497,6 @@ void decision(int good){
  1ac:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
 				twi_stop();			
  1b0:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
-				
 }
  1b4:	df 91       	pop	r29
  1b6:	cf 91       	pop	r28

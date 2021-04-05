@@ -320,35 +320,35 @@ END GROUP
 .debug_aranges  0x0000000000000000       0x70
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x20 main.o
+                0x0000000000000000       0x28 main.o
  .debug_aranges
-                0x0000000000000020       0x50 matrix.o
+                0x0000000000000028       0x48 matrix.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x12eb
+.debug_info     0x0000000000000000     0x12dc
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_info    0x0000000000000780      0x2fc main.o
- .debug_info    0x0000000000000a7c      0x86f matrix.o
+ .debug_info    0x0000000000000780      0x3e0 main.o
+ .debug_info    0x0000000000000b60      0x77c matrix.o
 
-.debug_abbrev   0x0000000000000000      0x90a
+.debug_abbrev   0x0000000000000000      0x92e
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_abbrev  0x0000000000000718       0x93 main.o
- .debug_abbrev  0x00000000000007ab      0x15f matrix.o
+ .debug_abbrev  0x0000000000000718      0x12c main.o
+ .debug_abbrev  0x0000000000000844       0xea matrix.o
 
-.debug_line     0x0000000000000000      0x554
+.debug_line     0x0000000000000000      0x594
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x16d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_line    0x000000000000016d       0x73 main.o
- .debug_line    0x00000000000001e0      0x374 matrix.o
+ .debug_line    0x000000000000016d      0x133 main.o
+ .debug_line    0x00000000000002a0      0x2f4 matrix.o
 
 .debug_frame    0x0000000000000000       0xc0
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x24 main.o
- .debug_frame   0x0000000000000024       0x9c matrix.o
+ .debug_frame   0x0000000000000000       0x34 main.o
+ .debug_frame   0x0000000000000034       0x8c matrix.o
 
 .debug_str      0x0000000000000000      0x291
  *(.debug_str)
@@ -358,7 +358,8 @@ END GROUP
 
 .debug_loc      0x0000000000000000      0x14f
  *(.debug_loc)
- .debug_loc     0x0000000000000000      0x14f matrix.o
+ .debug_loc     0x0000000000000000       0x6a main.o
+ .debug_loc     0x000000000000006a       0xe5 matrix.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -380,8 +381,8 @@ END GROUP
 
 .debug_ranges   0x0000000000000000       0x50
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x10 main.o
- .debug_ranges  0x0000000000000010       0x40 matrix.o
+ .debug_ranges  0x0000000000000000       0x18 main.o
+ .debug_ranges  0x0000000000000018       0x38 matrix.o
 
 .debug_macro
  *(.debug_macro)
@@ -410,7 +411,7 @@ LOAD data_init
                 0x0000000000000240                main
 
 .text.wait      0x0000000000000266       0x1e
- .text.wait     0x0000000000000266       0x1e matrix.o
+ .text.wait     0x0000000000000266       0x1e main.o
                 0x0000000000000266                wait
 
 .text.twi_tx    0x0000000000000284       0x14

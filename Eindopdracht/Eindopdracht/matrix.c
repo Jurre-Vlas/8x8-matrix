@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "matrix.h"
+#include "main.h"
 
 /******************************************************************/
 void twi_init(void)
@@ -62,22 +63,6 @@ Version :    	DMK, Initial code
 /******************************************************************/
 
 
-void wait( int ms )
-/* 
-short:			Busy wait number of millisecs
-inputs:			int ms (Number of millisecs to busy wait)
-outputs:	
-notes:			Busy wait, not very accurate. Make sure (external)
-				clock value is set. This is used by _delay_ms inside
-				util/delay.h
-Version :    	DMK, Initial code
-*******************************************************************/
-{
-	for (int i=0; i<ms; i++)
-	{
-		_delay_ms( 1 );		// library function (max 30 ms at 8MHz)
-	}
-}
 
 
 
@@ -189,5 +174,4 @@ void decision(int good){
 				twi_tx(0x0E);	// Row
 				twi_tx(0b0011110);	// data
 				twi_stop();			
-				
 }
