@@ -7,9 +7,12 @@
 
 #define F_CPU 8E6
 #include <avr/io.h>
+#include <stdint.h>
 #include <util/delay.h>
 #include "matrix.h"
 #include "main.h"
+#include "lcd.h"
+
 
 
 /******************************************************************/ 
@@ -34,6 +37,16 @@ int main( void )
 {
 	
 	start_init();
+	
+	// Init I/O
+	DDRE = 0xFF;			// PORTD(7) output, PORTD(6:0) input
+
+	// Init LCD
+	init_4bits_mode();
+
+	// Write sample string
+
+
 	
 	while (1)
 	{

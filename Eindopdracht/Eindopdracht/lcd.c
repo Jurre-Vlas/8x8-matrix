@@ -1,92 +1,152 @@
-/*
- * lcd.c
- *
- * Created: 4-4-2021 16:09:12
- *  Author: kroelie woelie
- */ 
-#define F_CPU 8E6
+/* ---------------------------------------------------------------------------
+** This software is in the public domain, furnished "as is", without technical
+** support, and with no warranty, express or implied, as to its usefulness for
+** any purpose.
+**
+** ioisr.c
+**
+** Beschrijving:	BigAVR LCD module
+** Target:			AVR mcu
+** Build:			avr-gcc -std=c99 -Wall -O3 -mmcu=atmega128 -D F_CPU=8000000UL -c lcd.c
+**					avr-gcc -g -mmcu=atmega128 -o lcd.elf lcd.o
+**					avr-objcopy -O ihex lcd.elf lcd.hex
+**					or type 'make'
+** Author: 			dkroeske@gmail.com
+** -------------------------------------------------------------------------*/
+
 
 #include <avr/io.h>
 #include <util/delay.h>
-#include <stdint.h>
+#include <avr/interrupt.h>
 #include "lcd.h"
 
-void wait( int ms )
+#define LCD_E 	3
+#define LCD_RS	2
+
+void lcd_strobe_lcd_e(void);
+void init_4bits_mode(void);
+void lcd_write_string(char *str);
+void lcd_write_data(unsigned char byte);
+void lcd_write_cmd(unsigned char byte);
+
+/******************************************************************/
+void lcd_strobe_lcd_e(void)
+/*
+short:			Strobe LCD module E pin --__
+inputs:
+outputs:
+notes:			According datasheet HD44780
+Version :    	DMK, Initial code
+*******************************************************************/
 {
-	for (int i=0; i<ms; i++)
-	{
-		_delay_ms( 1 );
-	}
+	PORTC |= (1<<LCD_E);	// E high
+	_delay_ms(1);			// nodig
+	PORTC &= ~(1<<LCD_E);  	// E low
+	_delay_ms(1);			// nodig?
 }
 
-void blinkE(){
-	//In order to confirm our command we need to blink the E pin.
-	PORTC |= (1<<3);
-	_delay_ms(1);
-	PORTC &= ~(1<<3);
-	_delay_ms(1);
-}
-
-void displaySend(char bytes, int rs){
-	// Command comes in as 8 bits
-	// 1010 0101
-	// First we send the left 4 bits (Upper nibble)
-	// Then the right 4 bits (Lower nibble)
-
-	if (rs) rs = 1; //RS defines if its a command or a character
-	
-	// First nibble.
-	PORTC = (bytes & 0xF0);
-	PORTC |= (rs<<2);
-	blinkE();
-
-	// Second nibble
-	PORTC = (bytes << 4);
-	PORTC |= (rs<<2);
-	blinkE();
-}
-
-void charSend(char character){
-	displaySend(character, 1);
-}
-
-void cmdSend(char cmd){
-	displaySend(cmd, 0);
-}
-
-void init(){
+/******************************************************************/
+void init_4bits_mode(void)
+/*
+short:			Init LCD module in 4 bits mode.
+inputs:
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	// PORTC output mode and all low (also E and RS pin)
 	DDRC = 0xFF;
 	PORTC = 0x00;
 
-	PORTC = 0x20;
-	blinkE();
+	// Step 2 (table 12)
+	PORTC = 0x20;	// function set
+	lcd_strobe_lcd_e();
 
-	cmdSend(0x28);
-	cmdSend(0x0F);
-	cmdSend(0x06);
-	return_home();
+	// Step 3 (table 12)
+	PORTC = 0x20;   // function set
+	lcd_strobe_lcd_e();
+	PORTC = 0x80;
+	lcd_strobe_lcd_e();
+
+	// Step 4 (table 12)
+	PORTC = 0x00;   // Display on/off control
+	lcd_strobe_lcd_e();
+	PORTC = 0xF0;
+	lcd_strobe_lcd_e();
+
+	// Step 4 (table 12)
+	PORTC = 0x00;   // Entry mode set
+	lcd_strobe_lcd_e();
+	PORTC = 0x60;
+	lcd_strobe_lcd_e();
+
 }
 
-void clear(){
-	cmdSend(0x01);
-}
+/******************************************************************/
+void lcd_write_string(char *str)
+/*
+short:			Writes string to LCD at cursor position
+inputs:
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	// Het kan met een while:
 
-void display_text(char *str){
-	for (; *str; str++)
-	{
-		charSend(*str);
+	// while(*str) {
+	// 	lcd_write_data(*str++);
+	// }
+
+	// of met een for:
+	for(;*str; str++){
+		lcd_write_data(*str);
 	}
 }
 
-void return_home(){
-	cmdSend(0x02);
+
+/******************************************************************/
+void lcd_write_data(unsigned char byte)
+/*
+short:			Writes 8 bits DATA to lcd
+inputs:			byte - written to LCD
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	// First nibble.
+	PORTC = byte;
+	PORTC |= (1<<LCD_RS);
+	lcd_strobe_lcd_e();
+
+	// Second nibble
+	PORTC = (byte<<4);
+	PORTC |= (1<<LCD_RS);
+	lcd_strobe_lcd_e();
 }
 
-void set_cursor(int position){
-	return_home();
-	for (int i = 0; i < position; i++)
-	{
-		cmdSend(0b00010100);
-	}
+/******************************************************************/
+void lcd_write_command(unsigned char byte)
+/*
+short:			Writes 8 bits COMMAND to lcd
+inputs:			byte - written to LCD
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	// First nibble.
+	PORTC = byte;
+	PORTC &= ~(1<<LCD_RS);
+	lcd_strobe_lcd_e();
 
+	// Second nibble
+	PORTC = (byte<<4);
+	PORTC &= ~(1<<LCD_RS);
+	lcd_strobe_lcd_e();
 }
+
+
+
