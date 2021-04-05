@@ -1,0 +1,696 @@
+
+ikCarryHunDeMoeder.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000e  00800100  00000322  00000396  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000322  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000003a4  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000003d4  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000d0  00000000  00000000  00000410  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00001236  00000000  00000000  000004e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000a39  00000000  00000000  00001716  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000083b  00000000  00000000  0000214f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000194  00000000  00000000  0000298c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000533  00000000  00000000  00002b20  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000003a7  00000000  00000000  00003053  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000a0  00000000  00000000  000033fa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	58 c0       	rjmp	.+176    	; 0xb6 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	56 c0       	rjmp	.+172    	; 0xb6 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	54 c0       	rjmp	.+168    	; 0xb6 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	52 c0       	rjmp	.+164    	; 0xb6 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	50 c0       	rjmp	.+160    	; 0xb6 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	4e c0       	rjmp	.+156    	; 0xb6 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	4c c0       	rjmp	.+152    	; 0xb6 <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	4a c0       	rjmp	.+148    	; 0xb6 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	48 c0       	rjmp	.+144    	; 0xb6 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	46 c0       	rjmp	.+140    	; 0xb6 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	44 c0       	rjmp	.+136    	; 0xb6 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	42 c0       	rjmp	.+132    	; 0xb6 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	40 c0       	rjmp	.+128    	; 0xb6 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	3e c0       	rjmp	.+124    	; 0xb6 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	3c c0       	rjmp	.+120    	; 0xb6 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	3a c0       	rjmp	.+116    	; 0xb6 <__bad_interrupt>
+  42:	00 00       	nop
+  44:	38 c0       	rjmp	.+112    	; 0xb6 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	36 c0       	rjmp	.+108    	; 0xb6 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	34 c0       	rjmp	.+104    	; 0xb6 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	32 c0       	rjmp	.+100    	; 0xb6 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	30 c0       	rjmp	.+96     	; 0xb6 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	2e c0       	rjmp	.+92     	; 0xb6 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	2c c0       	rjmp	.+88     	; 0xb6 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	2a c0       	rjmp	.+84     	; 0xb6 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	28 c0       	rjmp	.+80     	; 0xb6 <__bad_interrupt>
+  66:	00 00       	nop
+  68:	26 c0       	rjmp	.+76     	; 0xb6 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	24 c0       	rjmp	.+72     	; 0xb6 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	22 c0       	rjmp	.+68     	; 0xb6 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	20 c0       	rjmp	.+64     	; 0xb6 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	1e c0       	rjmp	.+60     	; 0xb6 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	1c c0       	rjmp	.+56     	; 0xb6 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	1a c0       	rjmp	.+52     	; 0xb6 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	18 c0       	rjmp	.+48     	; 0xb6 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	16 c0       	rjmp	.+44     	; 0xb6 <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+  98:	11 e0       	ldi	r17, 0x01	; 1
+  9a:	a0 e0       	ldi	r26, 0x00	; 0
+  9c:	b1 e0       	ldi	r27, 0x01	; 1
+  9e:	e2 e2       	ldi	r30, 0x22	; 34
+  a0:	f3 e0       	ldi	r31, 0x03	; 3
+  a2:	00 e0       	ldi	r16, 0x00	; 0
+  a4:	0b bf       	out	0x3b, r16	; 59
+  a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
+  a8:	07 90       	elpm	r0, Z+
+  aa:	0d 92       	st	X+, r0
+  ac:	ae 30       	cpi	r26, 0x0E	; 14
+  ae:	b1 07       	cpc	r27, r17
+  b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
+  b2:	7d d0       	rcall	.+250    	; 0x1ae <main>
+  b4:	34 c1       	rjmp	.+616    	; 0x31e <_exit>
+
+000000b6 <__bad_interrupt>:
+  b6:	a4 cf       	rjmp	.-184    	; 0x0 <__vectors>
+
+000000b8 <wait>:
+	cmdSend(0x06);
+	return_home();
+}
+
+void clear(){
+	cmdSend(0x01);
+  b8:	20 e0       	ldi	r18, 0x00	; 0
+  ba:	30 e0       	ldi	r19, 0x00	; 0
+  bc:	08 c0       	rjmp	.+16     	; 0xce <wait+0x16>
+  be:	ef ec       	ldi	r30, 0xCF	; 207
+  c0:	f7 e0       	ldi	r31, 0x07	; 7
+  c2:	31 97       	sbiw	r30, 0x01	; 1
+  c4:	f1 f7       	brne	.-4      	; 0xc2 <wait+0xa>
+  c6:	00 c0       	rjmp	.+0      	; 0xc8 <wait+0x10>
+  c8:	00 00       	nop
+  ca:	2f 5f       	subi	r18, 0xFF	; 255
+  cc:	3f 4f       	sbci	r19, 0xFF	; 255
+  ce:	28 17       	cp	r18, r24
+  d0:	39 07       	cpc	r19, r25
+  d2:	ac f3       	brlt	.-22     	; 0xbe <wait+0x6>
+  d4:	08 95       	ret
+
+000000d6 <blinkE>:
+  d6:	85 b3       	in	r24, 0x15	; 21
+  d8:	88 60       	ori	r24, 0x08	; 8
+  da:	85 bb       	out	0x15, r24	; 21
+  dc:	8f ec       	ldi	r24, 0xCF	; 207
+  de:	97 e0       	ldi	r25, 0x07	; 7
+  e0:	01 97       	sbiw	r24, 0x01	; 1
+  e2:	f1 f7       	brne	.-4      	; 0xe0 <blinkE+0xa>
+  e4:	00 c0       	rjmp	.+0      	; 0xe6 <blinkE+0x10>
+  e6:	00 00       	nop
+  e8:	85 b3       	in	r24, 0x15	; 21
+  ea:	87 7f       	andi	r24, 0xF7	; 247
+  ec:	85 bb       	out	0x15, r24	; 21
+  ee:	8f ec       	ldi	r24, 0xCF	; 207
+  f0:	97 e0       	ldi	r25, 0x07	; 7
+  f2:	01 97       	sbiw	r24, 0x01	; 1
+  f4:	f1 f7       	brne	.-4      	; 0xf2 <blinkE+0x1c>
+  f6:	00 c0       	rjmp	.+0      	; 0xf8 <blinkE+0x22>
+  f8:	00 00       	nop
+  fa:	08 95       	ret
+
+000000fc <displaySend>:
+  fc:	1f 93       	push	r17
+  fe:	cf 93       	push	r28
+ 100:	df 93       	push	r29
+ 102:	18 2f       	mov	r17, r24
+ 104:	61 15       	cp	r22, r1
+ 106:	71 05       	cpc	r23, r1
+ 108:	11 f0       	breq	.+4      	; 0x10e <displaySend+0x12>
+ 10a:	61 e0       	ldi	r22, 0x01	; 1
+ 10c:	70 e0       	ldi	r23, 0x00	; 0
+ 10e:	81 2f       	mov	r24, r17
+ 110:	80 7f       	andi	r24, 0xF0	; 240
+ 112:	85 bb       	out	0x15, r24	; 21
+ 114:	85 b3       	in	r24, 0x15	; 21
+ 116:	eb 01       	movw	r28, r22
+ 118:	cc 0f       	add	r28, r28
+ 11a:	dd 1f       	adc	r29, r29
+ 11c:	cc 0f       	add	r28, r28
+ 11e:	dd 1f       	adc	r29, r29
+ 120:	8c 2b       	or	r24, r28
+ 122:	85 bb       	out	0x15, r24	; 21
+ 124:	d8 df       	rcall	.-80     	; 0xd6 <blinkE>
+ 126:	12 95       	swap	r17
+ 128:	10 7f       	andi	r17, 0xF0	; 240
+ 12a:	15 bb       	out	0x15, r17	; 21
+ 12c:	65 b3       	in	r22, 0x15	; 21
+ 12e:	6c 2b       	or	r22, r28
+ 130:	65 bb       	out	0x15, r22	; 21
+ 132:	d1 df       	rcall	.-94     	; 0xd6 <blinkE>
+ 134:	df 91       	pop	r29
+ 136:	cf 91       	pop	r28
+ 138:	1f 91       	pop	r17
+ 13a:	08 95       	ret
+
+0000013c <charSend>:
+ 13c:	61 e0       	ldi	r22, 0x01	; 1
+ 13e:	70 e0       	ldi	r23, 0x00	; 0
+ 140:	dd cf       	rjmp	.-70     	; 0xfc <displaySend>
+ 142:	08 95       	ret
+
+00000144 <cmdSend>:
+ 144:	60 e0       	ldi	r22, 0x00	; 0
+ 146:	70 e0       	ldi	r23, 0x00	; 0
+ 148:	d9 cf       	rjmp	.-78     	; 0xfc <displaySend>
+ 14a:	08 95       	ret
+
+0000014c <display_text>:
+}
+
+void display_text(char *str){
+ 14c:	cf 93       	push	r28
+ 14e:	df 93       	push	r29
+ 150:	ec 01       	movw	r28, r24
+	for (; *str; str++)
+ 152:	02 c0       	rjmp	.+4      	; 0x158 <display_text+0xc>
+	{
+		charSend(*str);
+ 154:	f3 df       	rcall	.-26     	; 0x13c <charSend>
+void clear(){
+	cmdSend(0x01);
+}
+
+void display_text(char *str){
+	for (; *str; str++)
+ 156:	21 96       	adiw	r28, 0x01	; 1
+ 158:	88 81       	ld	r24, Y
+ 15a:	81 11       	cpse	r24, r1
+ 15c:	fb cf       	rjmp	.-10     	; 0x154 <display_text+0x8>
+	{
+		charSend(*str);
+	}
+}
+ 15e:	df 91       	pop	r29
+ 160:	cf 91       	pop	r28
+ 162:	08 95       	ret
+
+00000164 <return_home>:
+
+void return_home(){
+	cmdSend(0x02);
+ 164:	82 e0       	ldi	r24, 0x02	; 2
+ 166:	ee cf       	rjmp	.-36     	; 0x144 <cmdSend>
+ 168:	08 95       	ret
+
+0000016a <init>:
+void cmdSend(char cmd){
+	displaySend(cmd, 0);
+}
+
+void init(){
+	DDRC = 0xFF;
+ 16a:	8f ef       	ldi	r24, 0xFF	; 255
+ 16c:	84 bb       	out	0x14, r24	; 20
+	PORTC = 0x00;
+ 16e:	15 ba       	out	0x15, r1	; 21
+
+	PORTC = 0x20;
+ 170:	80 e2       	ldi	r24, 0x20	; 32
+ 172:	85 bb       	out	0x15, r24	; 21
+	blinkE();
+ 174:	b0 df       	rcall	.-160    	; 0xd6 <blinkE>
+
+	cmdSend(0x28);
+ 176:	88 e2       	ldi	r24, 0x28	; 40
+ 178:	e5 df       	rcall	.-54     	; 0x144 <cmdSend>
+	cmdSend(0x0F);
+ 17a:	8f e0       	ldi	r24, 0x0F	; 15
+ 17c:	e3 df       	rcall	.-58     	; 0x144 <cmdSend>
+	cmdSend(0x06);
+ 17e:	86 e0       	ldi	r24, 0x06	; 6
+ 180:	e1 df       	rcall	.-62     	; 0x144 <cmdSend>
+ 182:	f0 cf       	rjmp	.-32     	; 0x164 <return_home>
+	return_home();
+ 184:	08 95       	ret
+
+00000186 <set_cursor>:
+ 186:	0f 93       	push	r16
+ 188:	1f 93       	push	r17
+
+void return_home(){
+	cmdSend(0x02);
+}
+
+void set_cursor(int position){
+ 18a:	cf 93       	push	r28
+ 18c:	df 93       	push	r29
+ 18e:	8c 01       	movw	r16, r24
+	return_home();
+ 190:	e9 df       	rcall	.-46     	; 0x164 <return_home>
+	for (int i = 0; i < position; i++)
+ 192:	c0 e0       	ldi	r28, 0x00	; 0
+ 194:	d0 e0       	ldi	r29, 0x00	; 0
+ 196:	03 c0       	rjmp	.+6      	; 0x19e <set_cursor+0x18>
+	{
+		cmdSend(0b00010100);
+ 198:	84 e1       	ldi	r24, 0x14	; 20
+ 19a:	d4 df       	rcall	.-88     	; 0x144 <cmdSend>
+	cmdSend(0x02);
+}
+
+void set_cursor(int position){
+	return_home();
+	for (int i = 0; i < position; i++)
+ 19c:	21 96       	adiw	r28, 0x01	; 1
+ 19e:	c0 17       	cp	r28, r16
+ 1a0:	d1 07       	cpc	r29, r17
+ 1a2:	d4 f3       	brlt	.-12     	; 0x198 <set_cursor+0x12>
+	{
+		cmdSend(0b00010100);
+	}
+
+ 1a4:	df 91       	pop	r29
+ 1a6:	cf 91       	pop	r28
+ 1a8:	1f 91       	pop	r17
+ 1aa:	0f 91       	pop	r16
+ 1ac:	08 95       	ret
+
+000001ae <main>:
+
+
+int main( void )
+{
+	
+	start_init();
+ 1ae:	31 d0       	rcall	.+98     	; 0x212 <start_init>
+	
+	DDRA = 0xFF;
+ 1b0:	8f ef       	ldi	r24, 0xFF	; 255
+ 1b2:	8a bb       	out	0x1a, r24	; 26
+	PORTA = 0x01;
+ 1b4:	81 e0       	ldi	r24, 0x01	; 1
+	init();
+ 1b6:	8b bb       	out	0x1b, r24	; 27
+ 1b8:	d8 df       	rcall	.-80     	; 0x16a <init>
+	
+	display_text("Hello");
+ 1ba:	80 e0       	ldi	r24, 0x00	; 0
+ 1bc:	91 e0       	ldi	r25, 0x01	; 1
+ 1be:	c6 df       	rcall	.-116    	; 0x14c <display_text>
+	
+	set_cursor(10);
+ 1c0:	8a e0       	ldi	r24, 0x0A	; 10
+ 1c2:	90 e0       	ldi	r25, 0x00	; 0
+ 1c4:	e0 df       	rcall	.-64     	; 0x186 <set_cursor>
+	display_text("World!");
+ 1c6:	86 e0       	ldi	r24, 0x06	; 6
+ 1c8:	91 e0       	ldi	r25, 0x01	; 1
+ 1ca:	c0 df       	rcall	.-128    	; 0x14c <display_text>
+
+
+	
+	while (1)
+	{
+		decision(1);
+ 1cc:	81 e0       	ldi	r24, 0x01	; 1
+ 1ce:	90 e0       	ldi	r25, 0x00	; 0
+ 1d0:	4d d0       	rcall	.+154    	; 0x26c <decision>
+		wait(1000);
+ 1d2:	88 ee       	ldi	r24, 0xE8	; 232
+ 1d4:	93 e0       	ldi	r25, 0x03	; 3
+ 1d6:	70 df       	rcall	.-288    	; 0xb8 <wait>
+ 1d8:	f9 cf       	rjmp	.-14     	; 0x1cc <main+0x1e>
+
+000001da <twi_init>:
+outputs:
+notes:			TWI clock is set to 100 kHz
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	TWSR = 0;
+ 1da:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
+	TWBR = 32;	 // TWI clock set to 100kHz, prescaler = 0
+ 1de:	80 e2       	ldi	r24, 0x20	; 32
+ 1e0:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <__TEXT_REGION_LENGTH__+0x7e0070>
+ 1e4:	08 95       	ret
+
+000001e6 <twi_start>:
+outputs:
+notes:
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	TWCR = (0x80 | 0x20 | 0x04);
+ 1e6:	84 ea       	ldi	r24, 0xA4	; 164
+ 1e8:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+	while( 0x00 == (TWCR & 0x80) );
+ 1ec:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 1f0:	88 23       	and	r24, r24
+ 1f2:	e4 f7       	brge	.-8      	; 0x1ec <twi_start+0x6>
+}
+ 1f4:	08 95       	ret
+
+000001f6 <twi_stop>:
+outputs:
+notes:
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	TWCR = (0x80 | 0x10 | 0x04);
+ 1f6:	84 e9       	ldi	r24, 0x94	; 148
+ 1f8:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 1fc:	08 95       	ret
+
+000001fe <twi_tx>:
+outputs:
+notes:
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	TWDR = data;
+ 1fe:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <__TEXT_REGION_LENGTH__+0x7e0073>
+	TWCR = (0x80 | 0x04);
+ 202:	84 e8       	ldi	r24, 0x84	; 132
+ 204:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+	while( 0 == (TWCR & 0x80) );
+ 208:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 20c:	88 23       	and	r24, r24
+ 20e:	e4 f7       	brge	.-8      	; 0x208 <twi_tx+0xa>
+}
+ 210:	08 95       	ret
+
+00000212 <start_init>:
+
+
+
+
+
+void start_init(void){
+ 212:	cf 93       	push	r28
+ 214:	df 93       	push	r29
+	
+	twi_init();		// Init TWI interface
+ 216:	e1 df       	rcall	.-62     	; 0x1da <twi_init>
+
+	// Init HT16K22. Page 32 datasheet
+	twi_start();
+ 218:	e6 df       	rcall	.-52     	; 0x1e6 <twi_start>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 21a:	80 ee       	ldi	r24, 0xE0	; 224
+ 21c:	f0 df       	rcall	.-32     	; 0x1fe <twi_tx>
+	twi_tx(0x21);	// Internal osc on (page 10 HT16K33)
+ 21e:	81 e2       	ldi	r24, 0x21	; 33
+ 220:	ee df       	rcall	.-36     	; 0x1fe <twi_tx>
+	twi_stop();
+ 222:	e9 df       	rcall	.-46     	; 0x1f6 <twi_stop>
+
+	twi_start();
+ 224:	e0 df       	rcall	.-64     	; 0x1e6 <twi_start>
+	twi_tx(0xE0);	// Display I2C address + R/W bit
+ 226:	80 ee       	ldi	r24, 0xE0	; 224
+ 228:	ea df       	rcall	.-44     	; 0x1fe <twi_tx>
+	twi_tx(0xA0);	// HT16K33 pins all output
+ 22a:	80 ea       	ldi	r24, 0xA0	; 160
+	twi_stop();
+ 22c:	e8 df       	rcall	.-48     	; 0x1fe <twi_tx>
+
+	twi_start();
+ 22e:	e3 df       	rcall	.-58     	; 0x1f6 <twi_stop>
+	twi_tx(0xE0);	// Display I2C address + R/W bit
+ 230:	da df       	rcall	.-76     	; 0x1e6 <twi_start>
+	twi_tx(0xE3);	// Display Dimming 4/16 duty cycle
+ 232:	80 ee       	ldi	r24, 0xE0	; 224
+ 234:	e4 df       	rcall	.-56     	; 0x1fe <twi_tx>
+	twi_stop();
+ 236:	83 ee       	ldi	r24, 0xE3	; 227
+ 238:	e2 df       	rcall	.-60     	; 0x1fe <twi_tx>
+
+	twi_start();
+ 23a:	dd df       	rcall	.-70     	; 0x1f6 <twi_stop>
+ 23c:	d4 df       	rcall	.-88     	; 0x1e6 <twi_start>
+	twi_tx(0xE0);	// Display I2C address + R/W bit
+ 23e:	80 ee       	ldi	r24, 0xE0	; 224
+ 240:	de df       	rcall	.-68     	; 0x1fe <twi_tx>
+	twi_tx(0x81);	// Display OFF - Blink On
+ 242:	81 e8       	ldi	r24, 0x81	; 129
+ 244:	dc df       	rcall	.-72     	; 0x1fe <twi_tx>
+	twi_stop();
+ 246:	d7 df       	rcall	.-82     	; 0x1f6 <twi_stop>
+ 248:	ce df       	rcall	.-100    	; 0x1e6 <twi_start>
+	
+	
+	//dimming all leds
+	twi_start();
+ 24a:	80 ee       	ldi	r24, 0xE0	; 224
+ 24c:	d8 df       	rcall	.-80     	; 0x1fe <twi_tx>
+	twi_tx(0xE0);
+ 24e:	80 e0       	ldi	r24, 0x00	; 0
+ 250:	d6 df       	rcall	.-84     	; 0x1fe <twi_tx>
+ 252:	c0 e0       	ldi	r28, 0x00	; 0
+	twi_tx(0x00);
+ 254:	d0 e0       	ldi	r29, 0x00	; 0
+ 256:	03 c0       	rjmp	.+6      	; 0x25e <start_init+0x4c>
+ 258:	80 e0       	ldi	r24, 0x00	; 0
+	for(int i=0; i < 16; i++){
+ 25a:	d1 df       	rcall	.-94     	; 0x1fe <twi_tx>
+ 25c:	21 96       	adiw	r28, 0x01	; 1
+ 25e:	c0 31       	cpi	r28, 0x10	; 16
+		twi_tx(0x00);	// data
+ 260:	d1 05       	cpc	r29, r1
+ 262:	d4 f3       	brlt	.-12     	; 0x258 <start_init+0x46>
+ 264:	c8 df       	rcall	.-112    	; 0x1f6 <twi_stop>
+	
+	//dimming all leds
+	twi_start();
+	twi_tx(0xE0);
+	twi_tx(0x00);
+	for(int i=0; i < 16; i++){
+ 266:	df 91       	pop	r29
+ 268:	cf 91       	pop	r28
+ 26a:	08 95       	ret
+
+0000026c <decision>:
+ 26c:	cf 93       	push	r28
+		twi_tx(0x00);	// data
+	}
+	
+	twi_stop();
+ 26e:	df 93       	push	r29
+ 270:	ec 01       	movw	r28, r24
+	
+	
+}
+ 272:	b9 df       	rcall	.-142    	; 0x1e6 <twi_start>
+ 274:	80 ee       	ldi	r24, 0xE0	; 224
+ 276:	c3 df       	rcall	.-122    	; 0x1fe <twi_tx>
+
+void decision(int good){
+	
+	twi_start();
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+	twi_tx(0x00);	// Row
+ 278:	80 e0       	ldi	r24, 0x00	; 0
+ 27a:	c1 df       	rcall	.-126    	; 0x1fe <twi_tx>
+	twi_tx(0b0011110);	// data
+ 27c:	8e e1       	ldi	r24, 0x1E	; 30
+ 27e:	bf df       	rcall	.-130    	; 0x1fe <twi_tx>
+	twi_stop();
+ 280:	ba df       	rcall	.-140    	; 0x1f6 <twi_stop>
+	
+	twi_start();
+ 282:	b1 df       	rcall	.-158    	; 0x1e6 <twi_start>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 284:	80 ee       	ldi	r24, 0xE0	; 224
+	twi_tx(0x02);	// Row
+ 286:	bb df       	rcall	.-138    	; 0x1fe <twi_tx>
+ 288:	82 e0       	ldi	r24, 0x02	; 2
+	twi_tx(0b0100001);	// data
+ 28a:	b9 df       	rcall	.-142    	; 0x1fe <twi_tx>
+ 28c:	81 e2       	ldi	r24, 0x21	; 33
+	twi_stop();
+ 28e:	b7 df       	rcall	.-146    	; 0x1fe <twi_tx>
+	
+	twi_start();
+ 290:	b2 df       	rcall	.-156    	; 0x1f6 <twi_stop>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 292:	a9 df       	rcall	.-174    	; 0x1e6 <twi_start>
+ 294:	80 ee       	ldi	r24, 0xE0	; 224
+	twi_tx(0x04);	// Row
+ 296:	b3 df       	rcall	.-154    	; 0x1fe <twi_tx>
+ 298:	84 e0       	ldi	r24, 0x04	; 4
+	twi_tx(0b11010010);	// data
+ 29a:	b1 df       	rcall	.-158    	; 0x1fe <twi_tx>
+ 29c:	82 ed       	ldi	r24, 0xD2	; 210
+	twi_stop();
+ 29e:	af df       	rcall	.-162    	; 0x1fe <twi_tx>
+	
+	
+	twi_start();
+ 2a0:	aa df       	rcall	.-172    	; 0x1f6 <twi_stop>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 2a2:	a1 df       	rcall	.-190    	; 0x1e6 <twi_start>
+	twi_tx(0x06);	// Row
+ 2a4:	80 ee       	ldi	r24, 0xE0	; 224
+ 2a6:	ab df       	rcall	.-170    	; 0x1fe <twi_tx>
+	twi_tx(0b11000000);	// data
+ 2a8:	86 e0       	ldi	r24, 0x06	; 6
+ 2aa:	a9 df       	rcall	.-174    	; 0x1fe <twi_tx>
+	twi_stop();
+ 2ac:	80 ec       	ldi	r24, 0xC0	; 192
+	
+	
+	if (good){
+ 2ae:	a7 df       	rcall	.-178    	; 0x1fe <twi_tx>
+		twi_start();
+ 2b0:	a2 df       	rcall	.-188    	; 0x1f6 <twi_stop>
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 2b2:	cd 2b       	or	r28, r29
+ 2b4:	89 f0       	breq	.+34     	; 0x2d8 <decision+0x6c>
+		twi_tx(0x08);	// Row
+ 2b6:	97 df       	rcall	.-210    	; 0x1e6 <twi_start>
+ 2b8:	80 ee       	ldi	r24, 0xE0	; 224
+		twi_tx(0b11010010);	// data
+ 2ba:	a1 df       	rcall	.-190    	; 0x1fe <twi_tx>
+ 2bc:	88 e0       	ldi	r24, 0x08	; 8
+		twi_stop();
+ 2be:	9f df       	rcall	.-194    	; 0x1fe <twi_tx>
+		
+		twi_start();
+ 2c0:	82 ed       	ldi	r24, 0xD2	; 210
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 2c2:	9d df       	rcall	.-198    	; 0x1fe <twi_tx>
+ 2c4:	98 df       	rcall	.-208    	; 0x1f6 <twi_stop>
+		twi_tx(0x0A);	// Row
+ 2c6:	8f df       	rcall	.-226    	; 0x1e6 <twi_start>
+ 2c8:	80 ee       	ldi	r24, 0xE0	; 224
+		twi_tx(0b11001100);	// data
+ 2ca:	99 df       	rcall	.-206    	; 0x1fe <twi_tx>
+ 2cc:	8a e0       	ldi	r24, 0x0A	; 10
+		twi_stop();
+ 2ce:	97 df       	rcall	.-210    	; 0x1fe <twi_tx>
+ 2d0:	8c ec       	ldi	r24, 0xCC	; 204
+	}
+	
+	else{
+		twi_start();
+ 2d2:	95 df       	rcall	.-214    	; 0x1fe <twi_tx>
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 2d4:	90 df       	rcall	.-224    	; 0x1f6 <twi_stop>
+ 2d6:	10 c0       	rjmp	.+32     	; 0x2f8 <decision+0x8c>
+ 2d8:	86 df       	rcall	.-244    	; 0x1e6 <twi_start>
+		twi_tx(0x08);	// Row
+ 2da:	80 ee       	ldi	r24, 0xE0	; 224
+ 2dc:	90 df       	rcall	.-224    	; 0x1fe <twi_tx>
+ 2de:	88 e0       	ldi	r24, 0x08	; 8
+		twi_tx(0b11001100);	// data
+ 2e0:	8e df       	rcall	.-228    	; 0x1fe <twi_tx>
+ 2e2:	8c ec       	ldi	r24, 0xCC	; 204
+ 2e4:	8c df       	rcall	.-232    	; 0x1fe <twi_tx>
+		twi_stop();
+ 2e6:	87 df       	rcall	.-242    	; 0x1f6 <twi_stop>
+ 2e8:	7e df       	rcall	.-260    	; 0x1e6 <twi_start>
+		
+		twi_start();
+ 2ea:	80 ee       	ldi	r24, 0xE0	; 224
+ 2ec:	88 df       	rcall	.-240    	; 0x1fe <twi_tx>
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 2ee:	8a e0       	ldi	r24, 0x0A	; 10
+ 2f0:	86 df       	rcall	.-244    	; 0x1fe <twi_tx>
+ 2f2:	82 ed       	ldi	r24, 0xD2	; 210
+		twi_tx(0x0A);	// Row
+ 2f4:	84 df       	rcall	.-248    	; 0x1fe <twi_tx>
+ 2f6:	7f df       	rcall	.-258    	; 0x1f6 <twi_stop>
+ 2f8:	76 df       	rcall	.-276    	; 0x1e6 <twi_start>
+		twi_tx(0b11010010);	// data
+ 2fa:	80 ee       	ldi	r24, 0xE0	; 224
+ 2fc:	80 df       	rcall	.-256    	; 0x1fe <twi_tx>
+ 2fe:	8c e0       	ldi	r24, 0x0C	; 12
+		twi_stop();
+ 300:	7e df       	rcall	.-260    	; 0x1fe <twi_tx>
+ 302:	81 e2       	ldi	r24, 0x21	; 33
+		
+	}
+	
+	
+	twi_start();
+ 304:	7c df       	rcall	.-264    	; 0x1fe <twi_tx>
+ 306:	77 df       	rcall	.-274    	; 0x1f6 <twi_stop>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 308:	6e df       	rcall	.-292    	; 0x1e6 <twi_start>
+ 30a:	80 ee       	ldi	r24, 0xE0	; 224
+ 30c:	78 df       	rcall	.-272    	; 0x1fe <twi_tx>
+	twi_tx(0x0C);	// Row
+ 30e:	8e e0       	ldi	r24, 0x0E	; 14
+ 310:	76 df       	rcall	.-276    	; 0x1fe <twi_tx>
+ 312:	8e e1       	ldi	r24, 0x1E	; 30
+	twi_tx(0b0100001);	// data
+ 314:	74 df       	rcall	.-280    	; 0x1fe <twi_tx>
+ 316:	6f df       	rcall	.-290    	; 0x1f6 <twi_stop>
+ 318:	df 91       	pop	r29
+	twi_stop();
+ 31a:	cf 91       	pop	r28
+ 31c:	08 95       	ret
+
+0000031e <_exit>:
+	
+	twi_start();
+ 31e:	f8 94       	cli
+
+00000320 <__stop_program>:
+ 320:	ff cf       	rjmp	.-2      	; 0x320 <__stop_program>
