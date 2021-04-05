@@ -10,6 +10,7 @@ Discarded input sections
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
+ .text.good     0x0000000000000000       0x6a main.o
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr51/memx-const\libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr51/memx-const\libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr51/memx-const\libgcc.a(_exit.o)
@@ -312,32 +313,32 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000       0x50
+.debug_aranges  0x0000000000000000       0x58
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x50 main.o
+                0x0000000000000000       0x58 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000      0xd63
+.debug_info     0x0000000000000000      0xf80
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_info    0x0000000000000780      0x5e3 main.o
+ .debug_info    0x0000000000000780      0x800 main.o
 
 .debug_abbrev   0x0000000000000000      0x87c
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
  .debug_abbrev  0x0000000000000718      0x164 main.o
 
-.debug_line     0x0000000000000000      0x3f3
+.debug_line     0x0000000000000000      0x508
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x16d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_line    0x000000000000016d      0x286 main.o
+ .debug_line    0x000000000000016d      0x39b main.o
 
-.debug_frame    0x0000000000000000       0x90
+.debug_frame    0x0000000000000000       0xa0
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x90 main.o
+ .debug_frame   0x0000000000000000       0xa0 main.o
 
 .debug_str      0x0000000000000000      0x27d
  *(.debug_str)
@@ -366,9 +367,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x40
+.debug_ranges   0x0000000000000000       0x48
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x40 main.o
+ .debug_ranges  0x0000000000000000       0x48 main.o
 
 .debug_macro
  *(.debug_macro)
@@ -387,68 +388,68 @@ LOAD data_init
                 0x00000000000000a4       0x86 main.o
                 0x00000000000000a4                start_init
 
-.text.main      0x000000000000012a       0x30
- .text.main     0x000000000000012a       0x30 main.o
+.text.main      0x000000000000012a       0x76
+ .text.main     0x000000000000012a       0x76 main.o
                 0x000000000000012a                main
 
-.text.wait      0x000000000000015a       0x1e
- .text.wait     0x000000000000015a       0x1e main.o
-                0x000000000000015a                wait
+.text.wait      0x00000000000001a0       0x1e
+ .text.wait     0x00000000000001a0       0x1e main.o
+                0x00000000000001a0                wait
 
-.text.twi_tx    0x0000000000000178       0x14
- .text.twi_tx   0x0000000000000178       0x14 main.o
-                0x0000000000000178                twi_tx
+.text.twi_tx    0x00000000000001be       0x14
+ .text.twi_tx   0x00000000000001be       0x14 main.o
+                0x00000000000001be                twi_tx
 
 .text.twi_start
-                0x000000000000018c       0x10
+                0x00000000000001d2       0x10
  .text.twi_start
-                0x000000000000018c       0x10 main.o
-                0x000000000000018c                twi_start
+                0x00000000000001d2       0x10 main.o
+                0x00000000000001d2                twi_start
 
-.text.twi_init  0x000000000000019c        0xc
+.text.twi_init  0x00000000000001e2        0xc
  .text.twi_init
-                0x000000000000019c        0xc main.o
-                0x000000000000019c                twi_init
+                0x00000000000001e2        0xc main.o
+                0x00000000000001e2                twi_init
 
-.text.twi_stop  0x00000000000001a8        0x8
+.text.twi_stop  0x00000000000001ee        0x8
  .text.twi_stop
-                0x00000000000001a8        0x8 main.o
-                0x00000000000001a8                twi_stop
+                0x00000000000001ee        0x8 main.o
+                0x00000000000001ee                twi_stop
 
-.text           0x00000000000001b0        0x4
- .text          0x00000000000001b0        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
-                0x00000000000001b0                __vector_22
-                0x00000000000001b0                __vector_28
-                0x00000000000001b0                __vector_1
-                0x00000000000001b0                __vector_32
-                0x00000000000001b0                __vector_34
-                0x00000000000001b0                __vector_24
-                0x00000000000001b0                __vector_12
-                0x00000000000001b0                __bad_interrupt
-                0x00000000000001b0                __vector_6
-                0x00000000000001b0                __vector_31
-                0x00000000000001b0                __vector_3
-                0x00000000000001b0                __vector_23
-                0x00000000000001b0                __vector_30
-                0x00000000000001b0                __vector_25
-                0x00000000000001b0                __vector_11
-                0x00000000000001b0                __vector_13
-                0x00000000000001b0                __vector_17
-                0x00000000000001b0                __vector_19
-                0x00000000000001b0                __vector_7
-                0x00000000000001b0                __vector_27
-                0x00000000000001b0                __vector_5
-                0x00000000000001b0                __vector_33
-                0x00000000000001b0                __vector_4
-                0x00000000000001b0                __vector_9
-                0x00000000000001b0                __vector_2
-                0x00000000000001b0                __vector_21
-                0x00000000000001b0                __vector_15
-                0x00000000000001b0                __vector_29
-                0x00000000000001b0                __vector_8
-                0x00000000000001b0                __vector_26
-                0x00000000000001b0                __vector_14
-                0x00000000000001b0                __vector_10
-                0x00000000000001b0                __vector_16
-                0x00000000000001b0                __vector_18
-                0x00000000000001b0                __vector_20
+.text           0x00000000000001f6        0x4
+ .text          0x00000000000001f6        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
+                0x00000000000001f6                __vector_22
+                0x00000000000001f6                __vector_28
+                0x00000000000001f6                __vector_1
+                0x00000000000001f6                __vector_32
+                0x00000000000001f6                __vector_34
+                0x00000000000001f6                __vector_24
+                0x00000000000001f6                __vector_12
+                0x00000000000001f6                __bad_interrupt
+                0x00000000000001f6                __vector_6
+                0x00000000000001f6                __vector_31
+                0x00000000000001f6                __vector_3
+                0x00000000000001f6                __vector_23
+                0x00000000000001f6                __vector_30
+                0x00000000000001f6                __vector_25
+                0x00000000000001f6                __vector_11
+                0x00000000000001f6                __vector_13
+                0x00000000000001f6                __vector_17
+                0x00000000000001f6                __vector_19
+                0x00000000000001f6                __vector_7
+                0x00000000000001f6                __vector_27
+                0x00000000000001f6                __vector_5
+                0x00000000000001f6                __vector_33
+                0x00000000000001f6                __vector_4
+                0x00000000000001f6                __vector_9
+                0x00000000000001f6                __vector_2
+                0x00000000000001f6                __vector_21
+                0x00000000000001f6                __vector_15
+                0x00000000000001f6                __vector_29
+                0x00000000000001f6                __vector_8
+                0x00000000000001f6                __vector_26
+                0x00000000000001f6                __vector_14
+                0x00000000000001f6                __vector_10
+                0x00000000000001f6                __vector_16
+                0x00000000000001f6                __vector_18
+                0x00000000000001f6                __vector_20
