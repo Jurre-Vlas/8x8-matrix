@@ -131,33 +131,61 @@ void start_init(void){
 
 void good(void){
 	
-	
-	twi_start();
-	twi_tx(0xE0);	// Display I2C addres + R/W bit
-	twi_tx(0x00);	// Address
-	twi_tx(0x07);	// data
-	twi_stop();
-	
-	
-	twi_start();
-	twi_tx(0xE0);	// Display I2C addres + R/W bit
-	twi_tx(0x02);	// Address
-	twi_tx(0xff);	// data
-	twi_stop();
-	
-	twi_start();
-	twi_tx(0xE0);	// Display I2C addres + R/W bit
-	twi_tx(0x04);	// Address
-	twi_tx(0xff);	// data
-	twi_stop();
-	
-	twi_start();
-	twi_tx(0xE0);	// Display I2C addres + R/W bit
-	twi_tx(0x0C);	// Address
-	twi_tx(0xff);	// data
-	twi_stop();
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x00);	// Row
+				twi_tx(0b0011110);	// data
+				twi_stop();
+				
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x02);	// Row
+				twi_tx(0b0100001);	// data
+				twi_stop();
+				
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x04);	// Row
+				twi_tx(0b11010010);	// data
+				twi_stop();
+					
+					
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x06);	// Row
+				twi_tx(0b11000000);	// data
+				twi_stop();
+				
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x08);	// Row
+				twi_tx(0b11010010);	// data
+				twi_stop();
+				
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x0A);	// Row
+				twi_tx(0b11001100);	// data
+				twi_stop();
+				
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x0C);	// Row
+				twi_tx(0b0100001);	// data
+				twi_stop();
+				
+				twi_start();
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+				twi_tx(0x0E);	// Row
+				twi_tx(0b0011110);	// data
+				twi_stop();
+				
+				
+				
+				
+				
 
-	
+				
 }
 
 
@@ -170,40 +198,8 @@ int main( void )
 	
 	while (1)
 	{
-
-
-				twi_start();
-				twi_tx(0xE0);	// Display I2C addres + R/W bit
-				twi_tx(0x00);	// Address
-				twi_tx(0xff);	// data				
-				twi_stop();
-				
-				
-				twi_start();
-				twi_tx(0xE0);	// Display I2C addres + R/W bit
-				twi_tx(0x02);	// Address
-				twi_tx(0xff);	// data
-				twi_stop();
-				
-				twi_start();
-				twi_tx(0xE0);	// Display I2C addres + R/W bit
-				twi_tx(0x04);	// Address
-				twi_tx(0xff);	// data
-				twi_stop();
-				
-				twi_start();
-				twi_tx(0xE0);	// Display I2C addres + R/W bit
-				twi_tx(0x0C);	// Address
-				twi_tx(0xff);	// data
-				twi_stop();
-				
-				
-				
-				
-				
-				
-
-				wait(2000);
+			good();
+			
 	}
 
 	return 1;
