@@ -88,15 +88,9 @@ Version :    	DMK, Initial code
 	}
 }
 
-int main( void )
-/* 
-short:			main() loop, entry point of executable
-inputs:			
-outputs:	
-notes:			Looping forever, trashing the HT16K33
-Version :    	DMK, Initial code
-*******************************************************************/
-{
+
+
+void start_init(void){
 	
 	twi_init();		// Init TWI interface
 
@@ -120,23 +114,30 @@ Version :    	DMK, Initial code
 	twi_tx(0xE0);	// Display I2C address + R/W bit
 	twi_tx(0x81);	// Display OFF - Blink On
 	twi_stop();
-
-
-for (int i=0; i<17; i++)
-{
-		twi_start();
-		twi_tx(0xE0);	// Display I2C addres + R/W bit
-		twi_tx(0x00);	// Address
-		twi_tx(0x00);	// data
-		twi_stop();
+	
+	
+	//dimming all leds
+	twi_start();
+	twi_tx(0xE0);	
+	twi_tx(0x00);	
+	for(int i=0; i < 16; i++){	
+	twi_tx(0x00);	// data
+	}
+	
+	twi_stop();
+	
+	
 }
+
+
+
+int main( void )
+{
+	
+	start_init();
+	
 	while (1)
 	{
-				twi_start();
-				twi_tx(0xE0);	// Display I2C addres + R/W bit
-				twi_tx(0x00);	// Address
-				twi_tx(0x00);	// data
-				twi_stop();
 
 				wait(500);
 
@@ -146,8 +147,11 @@ for (int i=0; i<17; i++)
 				twi_tx(0x01);	// data
 				twi_stop();
 
-				wait(500);
+				wait(2000);
 	}
 
 	return 1;
 }
+
+
+
