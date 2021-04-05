@@ -8,3 +8,5 @@ main.c
 
 matrix\matrix.c
 
+quiz\quiz.c
+

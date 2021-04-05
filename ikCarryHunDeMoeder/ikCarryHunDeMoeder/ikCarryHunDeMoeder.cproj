@@ -140,10 +140,17 @@
     <Compile Include="matrix\matrix.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="quiz\quiz.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="quiz\quiz.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lcd" />
     <Folder Include="matrix" />
+    <Folder Include="quiz" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
