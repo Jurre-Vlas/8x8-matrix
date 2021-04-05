@@ -10,6 +10,9 @@ Discarded input sections
  .text          0x0000000000000000        0x0 main.o
  .data          0x0000000000000000        0x0 main.o
  .bss           0x0000000000000000        0x0 main.o
+ .text          0x0000000000000000        0x0 matrix.o
+ .data          0x0000000000000000        0x0 matrix.o
+ .bss           0x0000000000000000        0x0 matrix.o
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr51/memx-const\libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr51/memx-const\libgcc.a(_exit.o)
  .bss           0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr51/memx-const\libgcc.a(_exit.o)
@@ -44,6 +47,7 @@ Linker script and memory map
 Address of section .data set to 0x800100
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
 LOAD main.o
+LOAD matrix.o
 START GROUP
 LOAD c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr51/memx-const\libm.a
 END GROUP
@@ -296,6 +300,7 @@ END GROUP
  *(.comment)
  .comment       0x0000000000000000       0x2f main.o
                                          0x30 (size before relaxing)
+ .comment       0x000000000000002f       0x30 matrix.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -312,41 +317,48 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000       0x58
+.debug_aranges  0x0000000000000000       0x70
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x58 main.o
+                0x0000000000000000       0x20 main.o
+ .debug_aranges
+                0x0000000000000020       0x50 matrix.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x1077
+.debug_info     0x0000000000000000     0x12eb
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x780 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_info    0x0000000000000780      0x8f7 main.o
+ .debug_info    0x0000000000000780      0x2fc main.o
+ .debug_info    0x0000000000000a7c      0x86f matrix.o
 
-.debug_abbrev   0x0000000000000000      0x87c
+.debug_abbrev   0x0000000000000000      0x90a
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x718 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_abbrev  0x0000000000000718      0x164 main.o
+ .debug_abbrev  0x0000000000000718       0x93 main.o
+ .debug_abbrev  0x00000000000007ab      0x15f matrix.o
 
-.debug_line     0x0000000000000000      0x51e
+.debug_line     0x0000000000000000      0x554
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x16d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_line    0x000000000000016d      0x3b1 main.o
+ .debug_line    0x000000000000016d       0x73 main.o
+ .debug_line    0x00000000000001e0      0x374 matrix.o
 
-.debug_frame    0x0000000000000000       0xac
+.debug_frame    0x0000000000000000       0xc0
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0xac main.o
+ .debug_frame   0x0000000000000000       0x24 main.o
+ .debug_frame   0x0000000000000024       0x9c matrix.o
 
-.debug_str      0x0000000000000000      0x27d
+.debug_str      0x0000000000000000      0x291
  *(.debug_str)
  .debug_str     0x0000000000000000      0x27d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr51/memx-const/crtatmega128.o
- .debug_str     0x000000000000027d        0x0 main.o
+ .debug_str     0x000000000000027d       0x14 main.o
+ .debug_str     0x0000000000000291        0x0 matrix.o
 
 .debug_loc      0x0000000000000000      0x14f
  *(.debug_loc)
- .debug_loc     0x0000000000000000      0x14f main.o
+ .debug_loc     0x0000000000000000      0x14f matrix.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -366,9 +378,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000       0x48
+.debug_ranges   0x0000000000000000       0x50
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x48 main.o
+ .debug_ranges  0x0000000000000000       0x10 main.o
+ .debug_ranges  0x0000000000000010       0x40 matrix.o
 
 .debug_macro
  *(.debug_macro)
@@ -383,13 +396,13 @@ LOAD data_init
 
 .text.decision  0x00000000000000a4      0x116
  .text.decision
-                0x00000000000000a4      0x116 main.o
+                0x00000000000000a4      0x116 matrix.o
                 0x00000000000000a4                decision
 
 .text.start_init
                 0x00000000000001ba       0x86
  .text.start_init
-                0x00000000000001ba       0x86 main.o
+                0x00000000000001ba       0x86 matrix.o
                 0x00000000000001ba                start_init
 
 .text.main      0x0000000000000240       0x26
@@ -397,27 +410,27 @@ LOAD data_init
                 0x0000000000000240                main
 
 .text.wait      0x0000000000000266       0x1e
- .text.wait     0x0000000000000266       0x1e main.o
+ .text.wait     0x0000000000000266       0x1e matrix.o
                 0x0000000000000266                wait
 
 .text.twi_tx    0x0000000000000284       0x14
- .text.twi_tx   0x0000000000000284       0x14 main.o
+ .text.twi_tx   0x0000000000000284       0x14 matrix.o
                 0x0000000000000284                twi_tx
 
 .text.twi_start
                 0x0000000000000298       0x10
  .text.twi_start
-                0x0000000000000298       0x10 main.o
+                0x0000000000000298       0x10 matrix.o
                 0x0000000000000298                twi_start
 
 .text.twi_init  0x00000000000002a8        0xc
  .text.twi_init
-                0x00000000000002a8        0xc main.o
+                0x00000000000002a8        0xc matrix.o
                 0x00000000000002a8                twi_init
 
 .text.twi_stop  0x00000000000002b4        0x8
  .text.twi_stop
-                0x00000000000002b4        0x8 main.o
+                0x00000000000002b4        0x8 matrix.o
                 0x00000000000002b4                twi_stop
 
 .text           0x00000000000002bc        0x4

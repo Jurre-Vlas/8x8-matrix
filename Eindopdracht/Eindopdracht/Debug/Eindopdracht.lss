@@ -9,41 +9,41 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .comment      0000002f  00000000  00000000  00000314  2**0
                   CONTENTS, READONLY
-  3 .debug_aranges 00000058  00000000  00000000  00000343  2**0
+  3 .debug_aranges 00000070  00000000  00000000  00000343  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00001077  00000000  00000000  0000039b  2**0
+  4 .debug_info   000012eb  00000000  00000000  000003b3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 0000087c  00000000  00000000  00001412  2**0
+  5 .debug_abbrev 0000090a  00000000  00000000  0000169e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   0000051e  00000000  00000000  00001c8e  2**0
+  6 .debug_line   00000554  00000000  00000000  00001fa8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  000000ac  00000000  00000000  000021ac  2**2
+  7 .debug_frame  000000c0  00000000  00000000  000024fc  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    0000027d  00000000  00000000  00002258  2**0
+  8 .debug_str    00000291  00000000  00000000  000025bc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    0000014f  00000000  00000000  000024d5  2**0
+  9 .debug_loc    0000014f  00000000  00000000  0000284d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000048  00000000  00000000  00002624  2**0
+ 10 .debug_ranges 00000050  00000000  00000000  0000299c  2**0
                   CONTENTS, READONLY, DEBUGGING
  11 .text         00000004  000002bc  000002bc  00000310  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 12 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000266c  2**2
+ 12 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000029ec  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .text.twi_init 0000000c  000002a8  000002a8  000002fc  2**1
+ 13 .text.main    00000026  00000240  00000240  00000294  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .text.twi_start 00000010  00000298  00000298  000002ec  2**1
+ 14 .text.twi_init 0000000c  000002a8  000002a8  000002fc  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 15 .text.twi_stop 00000008  000002b4  000002b4  00000308  2**1
+ 15 .text.twi_start 00000010  00000298  00000298  000002ec  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.twi_tx  00000014  00000284  00000284  000002d8  2**1
+ 16 .text.twi_stop 00000008  000002b4  000002b4  00000308  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.wait    0000001e  00000266  00000266  000002ba  2**1
+ 17 .text.twi_tx  00000014  00000284  00000284  000002d8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.start_init 00000086  000001ba  000001ba  0000020e  2**1
+ 18 .text.wait    0000001e  00000266  00000266  000002ba  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 19 .text.decision 00000116  000000a4  000000a4  000000f8  2**1
+ 19 .text.start_init 00000086  000001ba  000001ba  0000020e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 20 .text.main    00000026  00000240  00000240  00000294  2**1
+ 20 .text.decision 00000116  000000a4  000000a4  000000f8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
@@ -104,12 +104,45 @@ Disassembly of section .text:
 Disassembly of section .text:
 
 000002bc <__bad_interrupt>:
- 2bc:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+ 2bc:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+
+Disassembly of section .text.main:
+
+00000240 <main>:
+
+
+int main( void )
+{
+	
+	start_init();
+ 240:	0e 94 dd 00 	call	0x1ba	; 0x1ba <start_init>
+	
+	while (1)
+	{
+			decision(1);
+ 244:	81 e0       	ldi	r24, 0x01	; 1
+ 246:	90 e0       	ldi	r25, 0x00	; 0
+ 248:	0e 94 52 00 	call	0xa4	; 0xa4 <__data_load_end>
+			wait(1000);
+ 24c:	88 ee       	ldi	r24, 0xE8	; 232
+ 24e:	93 e0       	ldi	r25, 0x03	; 3
+ 250:	0e 94 33 01 	call	0x266	; 0x266 <wait>
+			
+			decision(0);
+ 254:	80 e0       	ldi	r24, 0x00	; 0
+ 256:	90 e0       	ldi	r25, 0x00	; 0
+ 258:	0e 94 52 00 	call	0xa4	; 0xa4 <__data_load_end>
+			
+			wait(1000);
+ 25c:	88 ee       	ldi	r24, 0xE8	; 232
+ 25e:	93 e0       	ldi	r25, 0x03	; 3
+ 260:	0e 94 33 01 	call	0x266	; 0x266 <wait>
+ 264:	ef cf       	rjmp	.-34     	; 0x244 <main+0x4>
 
 Disassembly of section .text.twi_init:
 
 000002a8 <twi_init>:
-outputs:	
+outputs:
 notes:			TWI clock is set to 100 kHz
 Version :    	DMK, Initial code
 *******************************************************************/
@@ -124,8 +157,8 @@ Version :    	DMK, Initial code
 Disassembly of section .text.twi_start:
 
 00000298 <twi_start>:
-outputs:	
-notes:			
+outputs:
+notes:
 Version :    	DMK, Initial code
 *******************************************************************/
 {
@@ -142,8 +175,8 @@ Version :    	DMK, Initial code
 Disassembly of section .text.twi_stop:
 
 000002b4 <twi_stop>:
-outputs:	
-notes:			
+outputs:
+notes:
 Version :    	DMK, Initial code
 *******************************************************************/
 {
@@ -155,8 +188,8 @@ Version :    	DMK, Initial code
 Disassembly of section .text.twi_tx:
 
 00000284 <twi_tx>:
-outputs:	
-notes:			
+outputs:
+notes:
 Version :    	DMK, Initial code
 *******************************************************************/
 {
@@ -468,36 +501,3 @@ void decision(int good){
  1b4:	df 91       	pop	r29
  1b6:	cf 91       	pop	r28
  1b8:	08 95       	ret
-
-Disassembly of section .text.main:
-
-00000240 <main>:
-
-
-int main( void )
-{
-	
-	start_init();
- 240:	0e 94 dd 00 	call	0x1ba	; 0x1ba <start_init>
-	
-	while (1)
-	{
-			decision(1);
- 244:	81 e0       	ldi	r24, 0x01	; 1
- 246:	90 e0       	ldi	r25, 0x00	; 0
- 248:	0e 94 52 00 	call	0xa4	; 0xa4 <_etext>
-			wait(500);
- 24c:	84 ef       	ldi	r24, 0xF4	; 244
- 24e:	91 e0       	ldi	r25, 0x01	; 1
- 250:	0e 94 33 01 	call	0x266	; 0x266 <wait>
-			
-			decision(0);
- 254:	80 e0       	ldi	r24, 0x00	; 0
- 256:	90 e0       	ldi	r25, 0x00	; 0
- 258:	0e 94 52 00 	call	0xa4	; 0xa4 <_etext>
-			
-			wait(500);
- 25c:	84 ef       	ldi	r24, 0xF4	; 244
- 25e:	91 e0       	ldi	r25, 0x01	; 1
- 260:	0e 94 33 01 	call	0x266	; 0x266 <wait>
- 264:	ef cf       	rjmp	.-34     	; 0x244 <main+0x4>
