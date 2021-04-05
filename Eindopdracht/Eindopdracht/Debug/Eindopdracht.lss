@@ -3,85 +3,87 @@ Eindopdracht.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000296  2**0
+  0 .data         00000000  00800100  00800100  00000314  2**0
                   ALLOC, LOAD, DATA
   1 .text         000000a4  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      0000002f  00000000  00000000  00000296  2**0
+  2 .comment      0000002f  00000000  00000000  00000314  2**0
                   CONTENTS, READONLY
-  3 .debug_aranges 00000058  00000000  00000000  000002c5  2**0
+  3 .debug_aranges 00000058  00000000  00000000  00000343  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00000f72  00000000  00000000  0000031d  2**0
+  4 .debug_info   00001077  00000000  00000000  0000039b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 0000087c  00000000  00000000  0000128f  2**0
+  5 .debug_abbrev 0000087c  00000000  00000000  00001412  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   000004b8  00000000  00000000  00001b0b  2**0
+  6 .debug_line   0000051e  00000000  00000000  00001c8e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  000000a0  00000000  00000000  00001fc4  2**2
+  7 .debug_frame  000000ac  00000000  00000000  000021ac  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    0000027d  00000000  00000000  00002064  2**0
+  8 .debug_str    0000027d  00000000  00000000  00002258  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    000000ea  00000000  00000000  000022e1  2**0
+  9 .debug_loc    0000014f  00000000  00000000  000024d5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000048  00000000  00000000  000023cb  2**0
+ 10 .debug_ranges 00000048  00000000  00000000  00002624  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .text         00000004  0000023e  0000023e  00000292  2**1
+ 11 .text         00000004  000002bc  000002bc  00000310  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 12 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00002414  2**2
+ 12 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000266c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .text.twi_init 0000000c  00000220  00000220  00000274  2**1
+ 13 .text.twi_init 0000000c  000002a8  000002a8  000002fc  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 14 .text.twi_start 00000010  00000210  00000210  00000264  2**1
+ 14 .text.twi_start 00000010  00000298  00000298  000002ec  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 15 .text.twi_stop 00000008  00000236  00000236  0000028a  2**1
+ 15 .text.twi_stop 00000008  000002b4  000002b4  00000308  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 16 .text.twi_tx  00000014  000001fc  000001fc  00000250  2**1
+ 16 .text.twi_tx  00000014  00000284  00000284  000002d8  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 17 .text.start_init 00000086  00000176  00000176  000001ca  2**1
+ 17 .text.wait    0000001e  00000266  00000266  000002ba  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 18 .text.good    000000d2  000000a4  000000a4  000000f8  2**1
+ 18 .text.start_init 00000086  000001ba  000001ba  0000020e  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 19 .text.main    0000000a  0000022c  0000022c  00000280  2**1
+ 19 .text.decision 00000116  000000a4  000000a4  000000f8  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 20 .text.main    00000026  00000240  00000240  00000294  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 46 00 	jmp	0x8c	; 0x8c <__ctors_end>
-   4:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-   8:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-   c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  10:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  14:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  18:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  1c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  20:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  24:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  28:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  2c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  30:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  34:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  38:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  3c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  40:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  44:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  48:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  4c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  50:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  54:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  58:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  5c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  60:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  64:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  68:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  6c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  70:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  74:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  78:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  7c:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  80:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  84:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
-  88:	0c 94 1f 01 	jmp	0x23e	; 0x23e <__bad_interrupt>
+   4:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+   8:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+   c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  10:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  14:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  18:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  1c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  20:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  24:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  28:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  2c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  30:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  34:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  38:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  3c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  40:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  44:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  48:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  4c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  50:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  54:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  58:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  5c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  60:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  64:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  68:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  6c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  70:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  74:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  78:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  7c:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  80:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  84:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
+  88:	0c 94 5e 01 	jmp	0x2bc	; 0x2bc <__bad_interrupt>
 
 0000008c <__ctors_end>:
   8c:	11 24       	eor	r1, r1
@@ -90,7 +92,7 @@ Disassembly of section .text:
   92:	d0 e1       	ldi	r29, 0x10	; 16
   94:	de bf       	out	0x3e, r29	; 62
   96:	cd bf       	out	0x3d, r28	; 61
-  98:	0e 94 16 01 	call	0x22c	; 0x22c <main>
+  98:	0e 94 20 01 	call	0x240	; 0x240 <main>
   9c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <_exit>
 
 000000a0 <_exit>:
@@ -101,262 +103,401 @@ Disassembly of section .text:
 
 Disassembly of section .text:
 
-0000023e <__bad_interrupt>:
- 23e:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+000002bc <__bad_interrupt>:
+ 2bc:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 Disassembly of section .text.twi_init:
 
-00000220 <twi_init>:
+000002a8 <twi_init>:
 outputs:	
 notes:			TWI clock is set to 100 kHz
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWSR = 0;
- 220:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
+ 2a8:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
 	TWBR = 32;	 // TWI clock set to 100kHz, prescaler = 0
- 224:	80 e2       	ldi	r24, 0x20	; 32
- 226:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <__TEXT_REGION_LENGTH__+0x7e0070>
- 22a:	08 95       	ret
+ 2ac:	80 e2       	ldi	r24, 0x20	; 32
+ 2ae:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <__TEXT_REGION_LENGTH__+0x7e0070>
+ 2b2:	08 95       	ret
 
 Disassembly of section .text.twi_start:
 
-00000210 <twi_start>:
+00000298 <twi_start>:
 outputs:	
 notes:			
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWCR = (0x80 | 0x20 | 0x04);
- 210:	84 ea       	ldi	r24, 0xA4	; 164
- 212:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 298:	84 ea       	ldi	r24, 0xA4	; 164
+ 29a:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
 	while( 0x00 == (TWCR & 0x80) );
- 216:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
- 21a:	88 23       	and	r24, r24
- 21c:	e4 f7       	brge	.-8      	; 0x216 <twi_start+0x6>
+ 29e:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 2a2:	88 23       	and	r24, r24
+ 2a4:	e4 f7       	brge	.-8      	; 0x29e <twi_start+0x6>
 }
- 21e:	08 95       	ret
+ 2a6:	08 95       	ret
 
 Disassembly of section .text.twi_stop:
 
-00000236 <twi_stop>:
+000002b4 <twi_stop>:
 outputs:	
 notes:			
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWCR = (0x80 | 0x10 | 0x04);
- 236:	84 e9       	ldi	r24, 0x94	; 148
- 238:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
- 23c:	08 95       	ret
+ 2b4:	84 e9       	ldi	r24, 0x94	; 148
+ 2b6:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 2ba:	08 95       	ret
 
 Disassembly of section .text.twi_tx:
 
-000001fc <twi_tx>:
+00000284 <twi_tx>:
 outputs:	
 notes:			
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWDR = data;
- 1fc:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <__TEXT_REGION_LENGTH__+0x7e0073>
+ 284:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <__TEXT_REGION_LENGTH__+0x7e0073>
 	TWCR = (0x80 | 0x04);
- 200:	84 e8       	ldi	r24, 0x84	; 132
- 202:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 288:	84 e8       	ldi	r24, 0x84	; 132
+ 28a:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
 	while( 0 == (TWCR & 0x80) );
- 206:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
- 20a:	88 23       	and	r24, r24
- 20c:	e4 f7       	brge	.-8      	; 0x206 <twi_tx+0xa>
+ 28e:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 292:	88 23       	and	r24, r24
+ 294:	e4 f7       	brge	.-8      	; 0x28e <twi_tx+0xa>
 }
- 20e:	08 95       	ret
+ 296:	08 95       	ret
 
-Disassembly of section .text.start_init:
+Disassembly of section .text.wait:
 
-00000176 <start_init>:
-	}
-}
-
-
-
-void start_init(void){
- 176:	cf 93       	push	r28
- 178:	df 93       	push	r29
-	
-	twi_init();		// Init TWI interface
- 17a:	0e 94 10 01 	call	0x220	; 0x220 <twi_init>
-
-	// Init HT16K22. Page 32 datasheet
-	twi_start();
- 17e:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 182:	80 ee       	ldi	r24, 0xE0	; 224
- 184:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_tx(0x21);	// Internal osc on (page 10 HT16K33)
- 188:	81 e2       	ldi	r24, 0x21	; 33
- 18a:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_stop();
- 18e:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-
-	twi_start();
- 192:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-	twi_tx(0xE0);	// Display I2C address + R/W bit
- 196:	80 ee       	ldi	r24, 0xE0	; 224
- 198:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_tx(0xA0);	// HT16K33 pins all output
- 19c:	80 ea       	ldi	r24, 0xA0	; 160
- 19e:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_stop();
- 1a2:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-
-	twi_start();
- 1a6:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-	twi_tx(0xE0);	// Display I2C address + R/W bit
- 1aa:	80 ee       	ldi	r24, 0xE0	; 224
- 1ac:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_tx(0xE3);	// Display Dimming 4/16 duty cycle
- 1b0:	83 ee       	ldi	r24, 0xE3	; 227
- 1b2:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_stop();
- 1b6:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-
-	twi_start();
- 1ba:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-	twi_tx(0xE0);	// Display I2C address + R/W bit
- 1be:	80 ee       	ldi	r24, 0xE0	; 224
- 1c0:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_tx(0x81);	// Display OFF - Blink On
- 1c4:	81 e8       	ldi	r24, 0x81	; 129
- 1c6:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_stop();
- 1ca:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-	
-	
-	//dimming all leds
-	twi_start();
- 1ce:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-	twi_tx(0xE0);	
- 1d2:	80 ee       	ldi	r24, 0xE0	; 224
- 1d4:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	twi_tx(0x00);	
- 1d8:	80 e0       	ldi	r24, 0x00	; 0
- 1da:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	for(int i=0; i < 16; i++){	
- 1de:	c0 e0       	ldi	r28, 0x00	; 0
- 1e0:	d0 e0       	ldi	r29, 0x00	; 0
- 1e2:	04 c0       	rjmp	.+8      	; 0x1ec <start_init+0x76>
-	twi_tx(0x00);	// data
- 1e4:	80 e0       	ldi	r24, 0x00	; 0
- 1e6:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-	
-	//dimming all leds
-	twi_start();
-	twi_tx(0xE0);	
-	twi_tx(0x00);	
-	for(int i=0; i < 16; i++){	
- 1ea:	21 96       	adiw	r28, 0x01	; 1
- 1ec:	c0 31       	cpi	r28, 0x10	; 16
- 1ee:	d1 05       	cpc	r29, r1
- 1f0:	cc f3       	brlt	.-14     	; 0x1e4 <start_init+0x6e>
-	twi_tx(0x00);	// data
-	}
-	
-	twi_stop();
- 1f2:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-	
-	
-}
- 1f6:	df 91       	pop	r29
- 1f8:	cf 91       	pop	r28
- 1fa:	08 95       	ret
-
-Disassembly of section .text.good:
-
-000000a4 <good>:
+00000266 <wait>:
+				clock value is set. This is used by _delay_ms inside
+				util/delay.h
+Version :    	DMK, Initial code
+*******************************************************************/
 {
 	for (int i=0; i<ms; i++)
+ 266:	20 e0       	ldi	r18, 0x00	; 0
+ 268:	30 e0       	ldi	r19, 0x00	; 0
+ 26a:	08 c0       	rjmp	.+16     	; 0x27c <wait+0x16>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 26c:	ef ec       	ldi	r30, 0xCF	; 207
+ 26e:	f7 e0       	ldi	r31, 0x07	; 7
+ 270:	31 97       	sbiw	r30, 0x01	; 1
+ 272:	f1 f7       	brne	.-4      	; 0x270 <wait+0xa>
+ 274:	00 c0       	rjmp	.+0      	; 0x276 <wait+0x10>
+ 276:	00 00       	nop
+ 278:	2f 5f       	subi	r18, 0xFF	; 255
+ 27a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 27c:	28 17       	cp	r18, r24
+ 27e:	39 07       	cpc	r19, r25
+ 280:	ac f3       	brlt	.-22     	; 0x26c <wait+0x6>
 	{
 		_delay_ms( 1 );		// library function (max 30 ms at 8MHz)
 	}
 }
-  a4:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-  a8:	80 ee       	ldi	r24, 0xE0	; 224
-  aa:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  ae:	80 e0       	ldi	r24, 0x00	; 0
-  b0:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  b4:	8e e1       	ldi	r24, 0x1E	; 30
-  b6:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  ba:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-  be:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-  c2:	80 ee       	ldi	r24, 0xE0	; 224
-  c4:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  c8:	82 e0       	ldi	r24, 0x02	; 2
-  ca:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  ce:	81 e2       	ldi	r24, 0x21	; 33
-  d0:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  d4:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-  d8:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-  dc:	80 ee       	ldi	r24, 0xE0	; 224
-  de:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  e2:	84 e0       	ldi	r24, 0x04	; 4
-  e4:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  e8:	82 ed       	ldi	r24, 0xD2	; 210
-  ea:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  ee:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
-  f2:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
-  f6:	80 ee       	ldi	r24, 0xE0	; 224
-  f8:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
-  fc:	86 e0       	ldi	r24, 0x06	; 6
-  fe:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 102:	80 ec       	ldi	r24, 0xC0	; 192
- 104:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 108:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
- 10c:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
- 110:	80 ee       	ldi	r24, 0xE0	; 224
- 112:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 116:	88 e0       	ldi	r24, 0x08	; 8
- 118:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 11c:	82 ed       	ldi	r24, 0xD2	; 210
- 11e:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 122:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
- 126:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
- 12a:	80 ee       	ldi	r24, 0xE0	; 224
- 12c:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 130:	8a e0       	ldi	r24, 0x0A	; 10
- 132:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 136:	8c ec       	ldi	r24, 0xCC	; 204
- 138:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 13c:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
- 140:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
- 144:	80 ee       	ldi	r24, 0xE0	; 224
- 146:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 14a:	8c e0       	ldi	r24, 0x0C	; 12
- 14c:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 150:	81 e2       	ldi	r24, 0x21	; 33
- 152:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 156:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
- 15a:	0e 94 08 01 	call	0x210	; 0x210 <twi_start>
- 15e:	80 ee       	ldi	r24, 0xE0	; 224
- 160:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 164:	8e e0       	ldi	r24, 0x0E	; 14
- 166:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 16a:	8e e1       	ldi	r24, 0x1E	; 30
- 16c:	0e 94 fe 00 	call	0x1fc	; 0x1fc <twi_tx>
- 170:	0e 94 1b 01 	call	0x236	; 0x236 <twi_stop>
- 174:	08 95       	ret
+ 282:	08 95       	ret
+
+Disassembly of section .text.start_init:
+
+000001ba <start_init>:
+
+
+
+void start_init(void){
+ 1ba:	cf 93       	push	r28
+ 1bc:	df 93       	push	r29
+	
+	twi_init();		// Init TWI interface
+ 1be:	0e 94 54 01 	call	0x2a8	; 0x2a8 <twi_init>
+
+	// Init HT16K22. Page 32 datasheet
+	twi_start();
+ 1c2:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 1c6:	80 ee       	ldi	r24, 0xE0	; 224
+ 1c8:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_tx(0x21);	// Internal osc on (page 10 HT16K33)
+ 1cc:	81 e2       	ldi	r24, 0x21	; 33
+ 1ce:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_stop();
+ 1d2:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+
+	twi_start();
+ 1d6:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+	twi_tx(0xE0);	// Display I2C address + R/W bit
+ 1da:	80 ee       	ldi	r24, 0xE0	; 224
+ 1dc:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_tx(0xA0);	// HT16K33 pins all output
+ 1e0:	80 ea       	ldi	r24, 0xA0	; 160
+ 1e2:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_stop();
+ 1e6:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+
+	twi_start();
+ 1ea:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+	twi_tx(0xE0);	// Display I2C address + R/W bit
+ 1ee:	80 ee       	ldi	r24, 0xE0	; 224
+ 1f0:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_tx(0xE3);	// Display Dimming 4/16 duty cycle
+ 1f4:	83 ee       	ldi	r24, 0xE3	; 227
+ 1f6:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_stop();
+ 1fa:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+
+	twi_start();
+ 1fe:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+	twi_tx(0xE0);	// Display I2C address + R/W bit
+ 202:	80 ee       	ldi	r24, 0xE0	; 224
+ 204:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_tx(0x81);	// Display OFF - Blink On
+ 208:	81 e8       	ldi	r24, 0x81	; 129
+ 20a:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_stop();
+ 20e:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+	
+	
+	//dimming all leds
+	twi_start();
+ 212:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+	twi_tx(0xE0);	
+ 216:	80 ee       	ldi	r24, 0xE0	; 224
+ 218:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	twi_tx(0x00);	
+ 21c:	80 e0       	ldi	r24, 0x00	; 0
+ 21e:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	for(int i=0; i < 16; i++){	
+ 222:	c0 e0       	ldi	r28, 0x00	; 0
+ 224:	d0 e0       	ldi	r29, 0x00	; 0
+ 226:	04 c0       	rjmp	.+8      	; 0x230 <start_init+0x76>
+	twi_tx(0x00);	// data
+ 228:	80 e0       	ldi	r24, 0x00	; 0
+ 22a:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+	
+	//dimming all leds
+	twi_start();
+	twi_tx(0xE0);	
+	twi_tx(0x00);	
+	for(int i=0; i < 16; i++){	
+ 22e:	21 96       	adiw	r28, 0x01	; 1
+ 230:	c0 31       	cpi	r28, 0x10	; 16
+ 232:	d1 05       	cpc	r29, r1
+ 234:	cc f3       	brlt	.-14     	; 0x228 <start_init+0x6e>
+	twi_tx(0x00);	// data
+	}
+	
+	twi_stop();
+ 236:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+	
+	
+}
+ 23a:	df 91       	pop	r29
+ 23c:	cf 91       	pop	r28
+ 23e:	08 95       	ret
+
+Disassembly of section .text.decision:
+
+000000a4 <decision>:
+
+void decision(int good){
+  a4:	cf 93       	push	r28
+  a6:	df 93       	push	r29
+  a8:	ec 01       	movw	r28, r24
+	
+				twi_start();
+  aa:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+  ae:	80 ee       	ldi	r24, 0xE0	; 224
+  b0:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0x00);	// Row
+  b4:	80 e0       	ldi	r24, 0x00	; 0
+  b6:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0b0011110);	// data
+  ba:	8e e1       	ldi	r24, 0x1E	; 30
+  bc:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_stop();
+  c0:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+				
+				twi_start();
+  c4:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+  c8:	80 ee       	ldi	r24, 0xE0	; 224
+  ca:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0x02);	// Row
+  ce:	82 e0       	ldi	r24, 0x02	; 2
+  d0:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0b0100001);	// data
+  d4:	81 e2       	ldi	r24, 0x21	; 33
+  d6:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_stop();
+  da:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+				
+				twi_start();
+  de:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+  e2:	80 ee       	ldi	r24, 0xE0	; 224
+  e4:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0x04);	// Row
+  e8:	84 e0       	ldi	r24, 0x04	; 4
+  ea:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0b11010010);	// data
+  ee:	82 ed       	ldi	r24, 0xD2	; 210
+  f0:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_stop();
+  f4:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+					
+					
+				twi_start();
+  f8:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+  fc:	80 ee       	ldi	r24, 0xE0	; 224
+  fe:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0x06);	// Row
+ 102:	86 e0       	ldi	r24, 0x06	; 6
+ 104:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0b11000000);	// data
+ 108:	80 ec       	ldi	r24, 0xC0	; 192
+ 10a:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_stop();
+ 10e:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+				
+				
+				if (good){
+ 112:	cd 2b       	or	r28, r29
+ 114:	d9 f0       	breq	.+54     	; 0x14c <decision+0xa8>
+					twi_start();
+ 116:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+					twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 11a:	80 ee       	ldi	r24, 0xE0	; 224
+ 11c:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0x08);	// Row
+ 120:	88 e0       	ldi	r24, 0x08	; 8
+ 122:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0b11010010);	// data
+ 126:	82 ed       	ldi	r24, 0xD2	; 210
+ 128:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_stop();
+ 12c:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+					
+					twi_start();
+ 130:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+					twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 134:	80 ee       	ldi	r24, 0xE0	; 224
+ 136:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0x0A);	// Row
+ 13a:	8a e0       	ldi	r24, 0x0A	; 10
+ 13c:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0b11001100);	// data
+ 140:	8c ec       	ldi	r24, 0xCC	; 204
+ 142:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_stop();
+ 146:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+ 14a:	1a c0       	rjmp	.+52     	; 0x180 <decision+0xdc>
+				}
+				
+				 else{			
+					twi_start();
+ 14c:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+					twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 150:	80 ee       	ldi	r24, 0xE0	; 224
+ 152:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0x08);	// Row
+ 156:	88 e0       	ldi	r24, 0x08	; 8
+ 158:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0b11001100);	// data
+ 15c:	8c ec       	ldi	r24, 0xCC	; 204
+ 15e:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_stop();
+ 162:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+				
+					twi_start();
+ 166:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+					twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 16a:	80 ee       	ldi	r24, 0xE0	; 224
+ 16c:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0x0A);	// Row
+ 170:	8a e0       	ldi	r24, 0x0A	; 10
+ 172:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_tx(0b11010010);	// data
+ 176:	82 ed       	ldi	r24, 0xD2	; 210
+ 178:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+					twi_stop();
+ 17c:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+				
+				}
+				
+				
+				twi_start();
+ 180:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 184:	80 ee       	ldi	r24, 0xE0	; 224
+ 186:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0x0C);	// Row
+ 18a:	8c e0       	ldi	r24, 0x0C	; 12
+ 18c:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0b0100001);	// data
+ 190:	81 e2       	ldi	r24, 0x21	; 33
+ 192:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_stop();
+ 196:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+				
+				twi_start();
+ 19a:	0e 94 4c 01 	call	0x298	; 0x298 <twi_start>
+				twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 19e:	80 ee       	ldi	r24, 0xE0	; 224
+ 1a0:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0x0E);	// Row
+ 1a4:	8e e0       	ldi	r24, 0x0E	; 14
+ 1a6:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_tx(0b0011110);	// data
+ 1aa:	8e e1       	ldi	r24, 0x1E	; 30
+ 1ac:	0e 94 42 01 	call	0x284	; 0x284 <twi_tx>
+				twi_stop();			
+ 1b0:	0e 94 5a 01 	call	0x2b4	; 0x2b4 <twi_stop>
+				
+}
+ 1b4:	df 91       	pop	r29
+ 1b6:	cf 91       	pop	r28
+ 1b8:	08 95       	ret
 
 Disassembly of section .text.main:
 
-0000022c <main>:
+00000240 <main>:
 
 
 int main( void )
 {
 	
 	start_init();
- 22c:	0e 94 bb 00 	call	0x176	; 0x176 <start_init>
+ 240:	0e 94 dd 00 	call	0x1ba	; 0x1ba <start_init>
 	
 	while (1)
 	{
-			good();
- 230:	0e 94 52 00 	call	0xa4	; 0xa4 <__data_load_end>
- 234:	fd cf       	rjmp	.-6      	; 0x230 <main+0x4>
+			decision(1);
+ 244:	81 e0       	ldi	r24, 0x01	; 1
+ 246:	90 e0       	ldi	r25, 0x00	; 0
+ 248:	0e 94 52 00 	call	0xa4	; 0xa4 <_etext>
+			wait(500);
+ 24c:	84 ef       	ldi	r24, 0xF4	; 244
+ 24e:	91 e0       	ldi	r25, 0x01	; 1
+ 250:	0e 94 33 01 	call	0x266	; 0x266 <wait>
+			
+			decision(0);
+ 254:	80 e0       	ldi	r24, 0x00	; 0
+ 256:	90 e0       	ldi	r25, 0x00	; 0
+ 258:	0e 94 52 00 	call	0xa4	; 0xa4 <_etext>
+			
+			wait(500);
+ 25c:	84 ef       	ldi	r24, 0xF4	; 244
+ 25e:	91 e0       	ldi	r25, 0x01	; 1
+ 260:	0e 94 33 01 	call	0x266	; 0x266 <wait>
+ 264:	ef cf       	rjmp	.-34     	; 0x244 <main+0x4>
