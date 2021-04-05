@@ -38,13 +38,14 @@ int main( void )
 	
 	start_init();
 	
-	// Init I/O
-	DDRE = 0xFF;			// PORTD(7) output, PORTD(6:0) input
-
-	// Init LCD
-	init_4bits_mode();
-
-	// Write sample string
+	DDRA = 0xFF;
+	PORTA = 0x01;
+	init();
+	
+	display_text("Hello");
+	
+	set_cursor(10);
+	display_text("World!");
 
 
 	

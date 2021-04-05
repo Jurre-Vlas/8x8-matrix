@@ -1,11 +1,13 @@
-#ifndef LCDH
-#define LCDH
-void lcd_write_command(unsigned char byte);
-void lcd_write_data(unsigned char byte);
-void lcd_write_string(char *str);
-void init_4bits_mode(void);
-void lcd_strobe_lcd_e(void);
-
-
-
-#endif
+  
+  #ifndef LCDH
+  #define LCDH
+  void init();
+  void display_text(char *str);
+  void cmdSend(char cmd);
+  void charSend(char character);
+  void displaySend(char bytes, int rs);
+  void blinkE();
+  void return_home();
+  void set_cursor(int position);
+  void clear();
+  #endif
