@@ -7,18 +7,16 @@
 #include "tools/lcd.h"
 #include "tools/matrix.h"
 
-#include <avr/interrupt.h>
-
 
 int counter = 0;
 int questionAsked = 0;
 
-int pressedB1 = 0;
-int pressedB2 = 0;
 
 
 
 void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
+	
+	//vraag wordt op de display gezet.
 	
 	display_text(vraag1);
 	set_cursor(40);
@@ -32,7 +30,7 @@ void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
 		questionAsked++;
 	}
 	
-	while (questionAsked)
+	while (questionAsked)				//hier zal hij inblijven tot er antwoord gegeven word, hierna zal hij naar countToDesision() gaan.
 	{
 		if (PINB & 0x02 && !nummer )
 		{
@@ -72,17 +70,13 @@ int main( void )
 {
 	
 	start_init();
-	
-	DDRA = 0xFF;
-	PORTA = 0x01;
 	init();
 	
-	DDRB = 0x08;
 
 	clear();
 	
 
-	display_text("welkom, druk op");
+	display_text("welkom! druk op");
 	set_cursor(40);
 	display_text("B1 om te starten");
 	
@@ -106,7 +100,7 @@ int main( void )
 			questions("wat is gezond?", "patat", "Peer", 1);
 		}
 		
-			while (counter == 3)
+			while (counter == 3)							//zet de einddtekst
 		{
 			clear();
 			display_text("klaar is kees");
@@ -114,7 +108,7 @@ int main( void )
 			display_text("restart op B1");
 			counter++;
 		}
-			while(counter == 4){
+			while(counter == 4){							// als de counter op 4 staat en B1 ingedrukt wordt zal hij naar vraag 0 gaan.
 				if(PINB & 0x02){
 					counter = 0;
 				}

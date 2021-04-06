@@ -5,69 +5,39 @@
 #include "lcd.h"
 
 
-/******************************************************************/
-void twi_init(void)
-/*
-short:			Init AVR TWI interface and set bitrate
-inputs:
-outputs:
-notes:			TWI clock is set to 100 kHz
-Version :    	DMK, Initial code
-*******************************************************************/
+void twi_init(void) // initialiseer code
 {
 	TWSR = 0;
 	TWBR = 32;	 // TWI clock set to 100kHz, prescaler = 0
 }
 
-/******************************************************************/
-void twi_start(void)
-/*
-short:			Generate TWI start condition
-inputs:
-outputs:
-notes:
-Version :    	DMK, Initial code
-*******************************************************************/
+void twi_start(void) // ontwikkeld de start conditie
 {
 	TWCR = (0x80 | 0x20 | 0x04);
 	while( 0x00 == (TWCR & 0x80) );
 }
 
 /******************************************************************/
-void twi_stop(void)
-/*
-short:			Generate TWI stop condition
-inputs:
-outputs:
-notes:
-Version :    	DMK, Initial code
-*******************************************************************/
+void twi_stop(void) // ontwikkeld de stop conditie 
+
 {
 	TWCR = (0x80 | 0x10 | 0x04);
 }
 
-/******************************************************************/
-void twi_tx(unsigned char data)
-/*
-short:			transmit 8 bits data
-inputs:
-outputs:
-notes:
-Version :    	DMK, Initial code
-*******************************************************************/
+
+void twi_tx(unsigned char data) // verzenden van 8 bits data
+
+
+
 {
 	TWDR = data;
 	TWCR = (0x80 | 0x04);
 	while( 0 == (TWCR & 0x80) );
 }
 
-/******************************************************************/
 
 
-
-
-
-void start_init(void){
+void start_init(void){ // het initialiseren van de display
 	
 	twi_init();		// Init TWI interface
 
@@ -93,7 +63,7 @@ void start_init(void){
 	twi_stop();
 	
 	
-	//dimming all leds
+	//het dimmen van alle lampen
 	twi_start();
 	twi_tx(0xE0);
 	twi_tx(0x00);
@@ -106,7 +76,7 @@ void start_init(void){
 	
 }
 
-void decision(int good){
+void decision(int good){  // smiley goed of fout
 	
 	twi_start();
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
@@ -177,7 +147,7 @@ void decision(int good){
 	twi_stop();
 }
 
-void three(){
+void three(){		// drie op display
 	twi_start();
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
 	twi_tx(0x00);	// Row
@@ -231,7 +201,7 @@ void three(){
 	twi_stop();
 }
 
-void two(){
+void two(){		// twee op display
 		twi_start();
 		twi_tx(0xE0);	// Display I2C addres + R/W bit
 		twi_tx(0x00);	// Row
@@ -285,7 +255,7 @@ void two(){
 		twi_stop();
 }
 
-void one(){
+void one(){ 		// een op display
 	twi_start();
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
 	twi_tx(0x00);	// Row
@@ -340,7 +310,7 @@ void one(){
 }
 
 
-void countToDecision(int good){
+void countToDecision(int good){  // het aftellen van 3 naar 1 -> smiley
 	three();
 	
 	wait(1000);

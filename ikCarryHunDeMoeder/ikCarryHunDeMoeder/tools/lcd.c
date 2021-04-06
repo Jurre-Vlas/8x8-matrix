@@ -13,8 +13,7 @@ void wait( int ms )
 	}
 }
 
-void blinkE(){
-	//In order to confirm our command we need to blink the E pin.
+void blinkE(){  // voor het blinken van pinE
 	PORTC |= (1<<3);
 	_delay_ms(1);
 	PORTC &= ~(1<<3);
