@@ -4,8 +4,8 @@
 #include <stdint.h>
 #include <util/delay.h>
 
-#include "lcd/lcd.h"
-#include "matrix/matrix.h"
+#include "tools/lcd.h"
+#include "tools/matrix.h"
 
 
 int counter = 0;
@@ -107,6 +107,8 @@ int main( void )
 
 	while (1)
 	{
+		countToDecision();
+		
 		if (PINB & 0x02 && counter == 0){						// b2 indrukken dan komt hij hier in
 			clear();
 			questions("Hoe heet ik?", "Jurre", "Jan", 0);

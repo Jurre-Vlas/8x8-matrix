@@ -33,17 +33,14 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../lcd \
-../matrix \
-../quiz
+../tools
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../lcd/lcd.c \
 ../main.c \
-../matrix/matrix.c \
-../quiz/quiz.c
+../tools/lcd.c \
+../tools/matrix.c
 
 
 PREPROCESSING_SRCS += 
@@ -53,28 +50,24 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-lcd/lcd.o \
 main.o \
-matrix/matrix.o \
-quiz/quiz.o
+tools/lcd.o \
+tools/matrix.o
 
 OBJS_AS_ARGS +=  \
-lcd/lcd.o \
 main.o \
-matrix/matrix.o \
-quiz/quiz.o
+tools/lcd.o \
+tools/matrix.o
 
 C_DEPS +=  \
-lcd/lcd.d \
 main.d \
-matrix/matrix.d \
-quiz/quiz.d
+tools/lcd.d \
+tools/matrix.d
 
 C_DEPS_AS_ARGS +=  \
-lcd/lcd.d \
 main.d \
-matrix/matrix.d \
-quiz/quiz.d
+tools/lcd.d \
+tools/matrix.d
 
 OUTPUT_FILE_PATH +=ikCarryHunDeMoeder.elf
 
@@ -90,13 +83,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-lcd/lcd.o: ../lcd/lcd.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -104,14 +90,14 @@ lcd/lcd.o: ../lcd/lcd.c
 	@echo Finished building: $<
 	
 
-matrix/matrix.o: ../matrix/matrix.c
+tools/lcd.o: ../tools/lcd.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-quiz/quiz.o: ../quiz/quiz.c
+tools/matrix.o: ../tools/matrix.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega128 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega128" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

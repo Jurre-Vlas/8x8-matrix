@@ -55,9 +55,9 @@ void init(){
 	PORTC = 0x20;
 	blinkE();
 
-	cmdSend(0x28);
-	cmdSend(0x0F);
-	cmdSend(0x06);
+	cmdSend(0x28); 
+	cmdSend(0x0F); 
+	cmdSend(0x06); 
 	return_home();
 }
 

@@ -122,35 +122,27 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="lcd\lcd.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="lcd\lcd.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="matrix\matrix.c">
+    <Compile Include="tools\lcd.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="matrix\matrix.h">
+    <Compile Include="tools\lcd.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="quiz\quiz.c">
+    <Compile Include="tools\matrix.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="quiz\quiz.h">
+    <Compile Include="tools\matrix.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="lcd" />
-    <Folder Include="matrix" />
-    <Folder Include="quiz" />
+    <Folder Include="tools" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

@@ -2,11 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-lcd\lcd.c
-
 main.c
 
-matrix\matrix.c
+tools\lcd.c
 
-quiz\quiz.c
+tools\matrix.c
 
