@@ -7,16 +7,14 @@
 #include "tools/lcd.h"
 #include "tools/matrix.h"
 
+#include <avr/interrupt.h>
+
 
 int counter = 0;
 int questionAsked = 0;
 
 int pressedB1 = 0;
 int pressedB2 = 0;
-
-
-
-
 
 
 
@@ -70,7 +68,6 @@ void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
 }
 
 
-
 int main( void )
 {
 	
@@ -80,6 +77,8 @@ int main( void )
 	PORTA = 0x01;
 	init();
 	
+	DDRB = 0x08;
+
 	clear();
 	
 
@@ -93,18 +92,17 @@ int main( void )
 	while (1)
 	{
 		
-		
-		if (PINB & 0x02 && counter == 0){						// b2 indrukken dan komt hij hier in
+		if (PINB & 0x02 && counter == 0){						//vraag 1
 			clear();
 			questions("Hoe heet ik?", "Jurre", "Jan", 0);
 			wait(1000);
 		} 
 		
-		while (counter == 1){						// b2 indrukken dan komt hij hier in
+		while (counter == 1){									//vraag 2
 			questions("wat doe ik?", "TI", "BIM", 0);
 		}
 		
-		while ( counter == 2){						// b2 indrukken dan komt hij hier in
+		while ( counter == 2){									//vraag 3
 			questions("wat is gezond?", "patat", "Peer", 1);
 		}
 		

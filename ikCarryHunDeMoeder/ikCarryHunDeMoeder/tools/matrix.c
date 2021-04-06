@@ -343,15 +343,15 @@ void one(){
 void countToDecision(int good){
 	three();
 	
-	wait(500);
+	wait(1000);
 	
 	two();
 	
-	wait(500);
+	wait(1000);
 	
 	one();
 	 
-	wait(500);
+	wait(1000);
 	
 	decision(good);
 }
