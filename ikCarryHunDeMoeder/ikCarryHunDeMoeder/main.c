@@ -16,33 +16,6 @@ int pressedB2 = 0;
 
 
 
-void goodBad(int goodOrBad){
-	clear();
-	set_cursor(5);
-	display_text("3");
-	wait(1000);
-	set_cursor(5);
-	display_text("2");
-	wait(1000);
-	set_cursor(5);
-	display_text("1");
-	
-	wait(500);
-	
-	set_cursor(0);
-	
-	
-	if(goodOrBad){
-		decision(1);
-		questionAsked--;
-		counter++;
-	} else if(!goodOrBad){
-		decision(0);
-		questionAsked--;
-		counter++;
-	}
-	
-}
 
 
 
@@ -65,20 +38,32 @@ void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
 	{
 		if (PINB & 0x02 && !nummer )
 		{
-			goodBad(0);
+			clear();
+			countToDecision(0);
+			questionAsked--;
+			counter++;
 			
 			
 		} else if (PINB & 0x02 && nummer)
 		{
-				goodBad(1);
+				clear();
+				countToDecision(1);
+				questionAsked--;
+				counter++;
 			
 		}	else if (PINB & 0x04 && !nummer)
 		{
-				goodBad(1);
+				clear();
+				countToDecision(1);
+				questionAsked--;
+				counter++;
 			
 		}	else if (PINB & 0x04 && nummer)
 		{
-				goodBad(0);
+				clear();
+				countToDecision(0);
+				questionAsked--;
+				counter++;
 		} 
 	}
 	
@@ -107,7 +92,7 @@ int main( void )
 
 	while (1)
 	{
-		countToDecision();
+		
 		
 		if (PINB & 0x02 && counter == 0){						// b2 indrukken dan komt hij hier in
 			clear();
@@ -117,22 +102,23 @@ int main( void )
 		
 		while (counter == 1){						// b2 indrukken dan komt hij hier in
 			questions("wat doe ik?", "TI", "BIM", 0);
-			wait(1000);
 		}
 		
 		while ( counter == 2){						// b2 indrukken dan komt hij hier in
 			questions("wat is gezond?", "patat", "Peer", 1);
-			wait(1000);
 		}
 		
 			while (counter == 3)
 		{
 			clear();
-			wait(1000);
-
 			display_text("klaar is kees");
 			counter++;
 		}
+			while(counter == 4){
+				if(PINB & 0x02){
+					counter = 0;
+				}
+			}
 		
 		
 		

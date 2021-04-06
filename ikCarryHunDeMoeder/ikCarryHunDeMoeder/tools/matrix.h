@@ -9,7 +9,7 @@ void twi_tx(unsigned char data);
 void wait( int ms );
 void start_init(void);
 void decision(int good);
-void countToDecision();
+void countToDecision(int good);
 
 
 #endif /* MATRIX_H_ */

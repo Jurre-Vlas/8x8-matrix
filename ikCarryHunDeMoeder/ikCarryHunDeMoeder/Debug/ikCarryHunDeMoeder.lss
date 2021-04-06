@@ -3,31 +3,31 @@ ikCarryHunDeMoeder.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         0000007a  00800100  0000059c  00000630  2**0
+  0 .data         00000074  00800100  000006be  00000752  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000059c  00000000  00000000  00000094  2**1
+  1 .text         000006be  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000004  0080017a  0080017a  000006aa  2**0
+  2 .bss          00000004  00800174  00800174  000007c6  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000006aa  2**0
+  3 .comment      00000030  00000000  00000000  000007c6  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000006dc  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000007f8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000f0  00000000  00000000  00000718  2**0
+  5 .debug_aranges 000000f8  00000000  00000000  00000834  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001911  00000000  00000000  00000808  2**0
+  6 .debug_info   00001cfd  00000000  00000000  0000092c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000a92  00000000  00000000  00002119  2**0
+  7 .debug_abbrev 00000ae7  00000000  00000000  00002629  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000add  00000000  00000000  00002bab  2**0
+  8 .debug_line   00000ccf  00000000  00000000  00003110  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000200  00000000  00000000  00003688  2**2
+  9 .debug_frame  00000210  00000000  00000000  00003de0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000057d  00000000  00000000  00003888  2**0
+ 10 .debug_str    0000056b  00000000  00000000  00003ff0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000537  00000000  00000000  00003e05  2**0
+ 11 .debug_loc    00000537  00000000  00000000  0000455b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000c0  00000000  00000000  0000433c  2**0
+ 12 .debug_ranges 000000c8  00000000  00000000  00004a92  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -116,20 +116,20 @@ Disassembly of section .text:
   98:	11 e0       	ldi	r17, 0x01	; 1
   9a:	a0 e0       	ldi	r26, 0x00	; 0
   9c:	b1 e0       	ldi	r27, 0x01	; 1
-  9e:	ec e9       	ldi	r30, 0x9C	; 156
-  a0:	f5 e0       	ldi	r31, 0x05	; 5
+  9e:	ee eb       	ldi	r30, 0xBE	; 190
+  a0:	f6 e0       	ldi	r31, 0x06	; 6
   a2:	00 e0       	ldi	r16, 0x00	; 0
   a4:	0b bf       	out	0x3b, r16	; 59
   a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
   a8:	07 90       	elpm	r0, Z+
   aa:	0d 92       	st	X+, r0
-  ac:	aa 37       	cpi	r26, 0x7A	; 122
+  ac:	a4 37       	cpi	r26, 0x74	; 116
   ae:	b1 07       	cpc	r27, r17
   b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
 
 000000b2 <__do_clear_bss>:
   b2:	21 e0       	ldi	r18, 0x01	; 1
-  b4:	aa e7       	ldi	r26, 0x7A	; 122
+  b4:	a4 e7       	ldi	r26, 0x74	; 116
   b6:	b1 e0       	ldi	r27, 0x01	; 1
   b8:	01 c0       	rjmp	.+2      	; 0xbc <.do_clear_bss_start>
 
@@ -137,1081 +137,1301 @@ Disassembly of section .text:
   ba:	1d 92       	st	X+, r1
 
 000000bc <.do_clear_bss_start>:
-  bc:	ae 37       	cpi	r26, 0x7E	; 126
+  bc:	a8 37       	cpi	r26, 0x78	; 120
   be:	b2 07       	cpc	r27, r18
   c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
-  c2:	a2 d0       	rcall	.+324    	; 0x208 <main>
-  c4:	69 c2       	rjmp	.+1234   	; 0x598 <_exit>
+  c2:	9c d0       	rcall	.+312    	; 0x1fc <main>
+  c4:	fa c2       	rjmp	.+1524   	; 0x6ba <_exit>
 
 000000c6 <__bad_interrupt>:
   c6:	9c cf       	rjmp	.-200    	; 0x0 <__vectors>
 
-000000c8 <goodBad>:
-int pressedB1 = 0;
-int pressedB2 = 0;
+000000c8 <questions>:
 
-
-
-void goodBad(int goodOrBad){
-  c8:	cf 93       	push	r28
-  ca:	df 93       	push	r29
-  cc:	ec 01       	movw	r28, r24
-	clear();
-  ce:	4b d1       	rcall	.+662    	; 0x366 <clear>
-	set_cursor(5);
-  d0:	85 e0       	ldi	r24, 0x05	; 5
-  d2:	90 e0       	ldi	r25, 0x00	; 0
-  d4:	68 d1       	rcall	.+720    	; 0x3a6 <set_cursor>
-	display_text("3");
-  d6:	80 e0       	ldi	r24, 0x00	; 0
-  d8:	91 e0       	ldi	r25, 0x01	; 1
-  da:	48 d1       	rcall	.+656    	; 0x36c <display_text>
-	wait(1000);
-  dc:	88 ee       	ldi	r24, 0xE8	; 232
-  de:	93 e0       	ldi	r25, 0x03	; 3
-  e0:	f8 d0       	rcall	.+496    	; 0x2d2 <wait>
-	set_cursor(5);
-  e2:	85 e0       	ldi	r24, 0x05	; 5
-  e4:	90 e0       	ldi	r25, 0x00	; 0
-  e6:	5f d1       	rcall	.+702    	; 0x3a6 <set_cursor>
-	display_text("2");
-  e8:	82 e0       	ldi	r24, 0x02	; 2
-  ea:	91 e0       	ldi	r25, 0x01	; 1
-  ec:	3f d1       	rcall	.+638    	; 0x36c <display_text>
-	wait(1000);
-  ee:	88 ee       	ldi	r24, 0xE8	; 232
-  f0:	93 e0       	ldi	r25, 0x03	; 3
-  f2:	ef d0       	rcall	.+478    	; 0x2d2 <wait>
-	set_cursor(5);
-  f4:	85 e0       	ldi	r24, 0x05	; 5
-  f6:	90 e0       	ldi	r25, 0x00	; 0
-  f8:	56 d1       	rcall	.+684    	; 0x3a6 <set_cursor>
-	display_text("1");
-  fa:	84 e0       	ldi	r24, 0x04	; 4
-  fc:	91 e0       	ldi	r25, 0x01	; 1
-  fe:	36 d1       	rcall	.+620    	; 0x36c <display_text>
-	
-	wait(500);
- 100:	84 ef       	ldi	r24, 0xF4	; 244
- 102:	91 e0       	ldi	r25, 0x01	; 1
- 104:	e6 d0       	rcall	.+460    	; 0x2d2 <wait>
-	
-	set_cursor(0);
- 106:	80 e0       	ldi	r24, 0x00	; 0
- 108:	90 e0       	ldi	r25, 0x00	; 0
- 10a:	4d d1       	rcall	.+666    	; 0x3a6 <set_cursor>
- 10c:	20 97       	sbiw	r28, 0x00	; 0
-	
-	
-	if(goodOrBad){
- 10e:	b1 f0       	breq	.+44     	; 0x13c <goodBad+0x74>
- 110:	81 e0       	ldi	r24, 0x01	; 1
-		decision(1);
- 112:	90 e0       	ldi	r25, 0x00	; 0
- 114:	a5 d1       	rcall	.+842    	; 0x460 <decision>
- 116:	80 91 7a 01 	lds	r24, 0x017A	; 0x80017a <__data_end>
-		questionAsked--;
- 11a:	90 91 7b 01 	lds	r25, 0x017B	; 0x80017b <__data_end+0x1>
- 11e:	01 97       	sbiw	r24, 0x01	; 1
- 120:	90 93 7b 01 	sts	0x017B, r25	; 0x80017b <__data_end+0x1>
- 124:	80 93 7a 01 	sts	0x017A, r24	; 0x80017a <__data_end>
- 128:	80 91 7c 01 	lds	r24, 0x017C	; 0x80017c <counter>
-		counter++;
- 12c:	90 91 7d 01 	lds	r25, 0x017D	; 0x80017d <counter+0x1>
- 130:	01 96       	adiw	r24, 0x01	; 1
- 132:	90 93 7d 01 	sts	0x017D, r25	; 0x80017d <counter+0x1>
- 136:	80 93 7c 01 	sts	0x017C, r24	; 0x80017c <counter>
- 13a:	17 c0       	rjmp	.+46     	; 0x16a <goodBad+0xa2>
- 13c:	cd 2b       	or	r28, r29
-	} else if(!goodOrBad){
- 13e:	a9 f4       	brne	.+42     	; 0x16a <goodBad+0xa2>
- 140:	80 e0       	ldi	r24, 0x00	; 0
-		decision(0);
- 142:	90 e0       	ldi	r25, 0x00	; 0
- 144:	8d d1       	rcall	.+794    	; 0x460 <decision>
- 146:	80 91 7a 01 	lds	r24, 0x017A	; 0x80017a <__data_end>
-		questionAsked--;
- 14a:	90 91 7b 01 	lds	r25, 0x017B	; 0x80017b <__data_end+0x1>
- 14e:	01 97       	sbiw	r24, 0x01	; 1
- 150:	90 93 7b 01 	sts	0x017B, r25	; 0x80017b <__data_end+0x1>
- 154:	80 93 7a 01 	sts	0x017A, r24	; 0x80017a <__data_end>
- 158:	80 91 7c 01 	lds	r24, 0x017C	; 0x80017c <counter>
-		counter++;
- 15c:	90 91 7d 01 	lds	r25, 0x017D	; 0x80017d <counter+0x1>
- 160:	01 96       	adiw	r24, 0x01	; 1
- 162:	90 93 7d 01 	sts	0x017D, r25	; 0x80017d <counter+0x1>
- 166:	80 93 7c 01 	sts	0x017C, r24	; 0x80017c <counter>
- 16a:	df 91       	pop	r29
- 16c:	cf 91       	pop	r28
-	}
-	
-}
- 16e:	08 95       	ret
-
-00000170 <questions>:
- 170:	ef 92       	push	r14
- 172:	ff 92       	push	r15
 
 
 
 
 void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
- 174:	0f 93       	push	r16
- 176:	1f 93       	push	r17
- 178:	cf 93       	push	r28
- 17a:	df 93       	push	r29
- 17c:	7b 01       	movw	r14, r22
- 17e:	8a 01       	movw	r16, r20
- 180:	e9 01       	movw	r28, r18
+  c8:	ef 92       	push	r14
+  ca:	ff 92       	push	r15
+  cc:	0f 93       	push	r16
+  ce:	1f 93       	push	r17
+  d0:	cf 93       	push	r28
+  d2:	df 93       	push	r29
+  d4:	7b 01       	movw	r14, r22
+  d6:	8a 01       	movw	r16, r20
+  d8:	e9 01       	movw	r28, r18
 	
 	display_text(vraag1);
- 182:	f4 d0       	rcall	.+488    	; 0x36c <display_text>
+  da:	45 d1       	rcall	.+650    	; 0x366 <display_text>
 	set_cursor(40);
- 184:	88 e2       	ldi	r24, 0x28	; 40
- 186:	90 e0       	ldi	r25, 0x00	; 0
- 188:	0e d1       	rcall	.+540    	; 0x3a6 <set_cursor>
+  dc:	88 e2       	ldi	r24, 0x28	; 40
+  de:	90 e0       	ldi	r25, 0x00	; 0
+  e0:	5f d1       	rcall	.+702    	; 0x3a0 <set_cursor>
 	
 	display_text(antwoord1);
- 18a:	c7 01       	movw	r24, r14
- 18c:	ef d0       	rcall	.+478    	; 0x36c <display_text>
+  e2:	c7 01       	movw	r24, r14
+  e4:	40 d1       	rcall	.+640    	; 0x366 <display_text>
 
 	set_cursor(50);
- 18e:	82 e3       	ldi	r24, 0x32	; 50
- 190:	90 e0       	ldi	r25, 0x00	; 0
- 192:	09 d1       	rcall	.+530    	; 0x3a6 <set_cursor>
+  e6:	82 e3       	ldi	r24, 0x32	; 50
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+  ea:	5a d1       	rcall	.+692    	; 0x3a0 <set_cursor>
 	display_text(antwoord2);
- 194:	c8 01       	movw	r24, r16
- 196:	ea d0       	rcall	.+468    	; 0x36c <display_text>
- 198:	80 91 7a 01 	lds	r24, 0x017A	; 0x80017a <__data_end>
+  ec:	c8 01       	movw	r24, r16
+  ee:	3b d1       	rcall	.+630    	; 0x366 <display_text>
+  f0:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <__data_end>
 	
 	if (questionAsked == 0){
- 19c:	90 91 7b 01 	lds	r25, 0x017B	; 0x80017b <__data_end+0x1>
- 1a0:	00 97       	sbiw	r24, 0x00	; 0
- 1a2:	29 f5       	brne	.+74     	; 0x1ee <questions+0x7e>
- 1a4:	01 96       	adiw	r24, 0x01	; 1
+  f4:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <__data_end+0x1>
+  f8:	00 97       	sbiw	r24, 0x00	; 0
+  fa:	09 f0       	breq	.+2      	; 0xfe <questions+0x36>
+  fc:	71 c0       	rjmp	.+226    	; 0x1e0 <questions+0x118>
+  fe:	01 96       	adiw	r24, 0x01	; 1
 		questionAsked++;
- 1a6:	90 93 7b 01 	sts	0x017B, r25	; 0x80017b <__data_end+0x1>
- 1aa:	80 93 7a 01 	sts	0x017A, r24	; 0x80017a <__data_end>
- 1ae:	1f c0       	rjmp	.+62     	; 0x1ee <questions+0x7e>
- 1b0:	b1 9b       	sbis	0x16, 1	; 22
+ 100:	90 93 75 01 	sts	0x0175, r25	; 0x800175 <__data_end+0x1>
+ 104:	80 93 74 01 	sts	0x0174, r24	; 0x800174 <__data_end>
+ 108:	6b c0       	rjmp	.+214    	; 0x1e0 <questions+0x118>
 	}
 	
 	while (questionAsked)
 	{
 		if (PINB & 0x02 && !nummer )
- 1b2:	06 c0       	rjmp	.+12     	; 0x1c0 <questions+0x50>
- 1b4:	20 97       	sbiw	r28, 0x00	; 0
- 1b6:	21 f4       	brne	.+8      	; 0x1c0 <questions+0x50>
+ 10a:	b1 9b       	sbis	0x16, 1	; 22
+ 10c:	19 c0       	rjmp	.+50     	; 0x140 <questions+0x78>
+ 10e:	20 97       	sbiw	r28, 0x00	; 0
 		{
-			goodBad(0);
- 1b8:	80 e0       	ldi	r24, 0x00	; 0
- 1ba:	90 e0       	ldi	r25, 0x00	; 0
- 1bc:	85 df       	rcall	.-246    	; 0xc8 <goodBad>
- 1be:	17 c0       	rjmp	.+46     	; 0x1ee <questions+0x7e>
- 1c0:	b1 9b       	sbis	0x16, 1	; 22
+			clear();
+ 110:	b9 f4       	brne	.+46     	; 0x140 <questions+0x78>
+ 112:	26 d1       	rcall	.+588    	; 0x360 <clear>
+			countToDecision(0);
+ 114:	80 e0       	ldi	r24, 0x00	; 0
+ 116:	90 e0       	ldi	r25, 0x00	; 0
+ 118:	bc d2       	rcall	.+1400   	; 0x692 <countToDecision>
+ 11a:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <__data_end>
+			questionAsked--;
+ 11e:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <__data_end+0x1>
+ 122:	01 97       	sbiw	r24, 0x01	; 1
+ 124:	90 93 75 01 	sts	0x0175, r25	; 0x800175 <__data_end+0x1>
+ 128:	80 93 74 01 	sts	0x0174, r24	; 0x800174 <__data_end>
+ 12c:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+			counter++;
+ 130:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 134:	01 96       	adiw	r24, 0x01	; 1
+ 136:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <counter+0x1>
+ 13a:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <counter>
+ 13e:	50 c0       	rjmp	.+160    	; 0x1e0 <questions+0x118>
 			
 			
 		} else if (PINB & 0x02 && nummer)
- 1c2:	06 c0       	rjmp	.+12     	; 0x1d0 <questions+0x60>
- 1c4:	20 97       	sbiw	r28, 0x00	; 0
- 1c6:	21 f0       	breq	.+8      	; 0x1d0 <questions+0x60>
+ 140:	b1 9b       	sbis	0x16, 1	; 22
+ 142:	19 c0       	rjmp	.+50     	; 0x176 <questions+0xae>
+ 144:	20 97       	sbiw	r28, 0x00	; 0
 		{
-				goodBad(1);
- 1c8:	81 e0       	ldi	r24, 0x01	; 1
- 1ca:	90 e0       	ldi	r25, 0x00	; 0
- 1cc:	7d df       	rcall	.-262    	; 0xc8 <goodBad>
- 1ce:	0f c0       	rjmp	.+30     	; 0x1ee <questions+0x7e>
+				clear();
+ 146:	b9 f0       	breq	.+46     	; 0x176 <questions+0xae>
+ 148:	0b d1       	rcall	.+534    	; 0x360 <clear>
+				countToDecision(1);
+ 14a:	81 e0       	ldi	r24, 0x01	; 1
+ 14c:	90 e0       	ldi	r25, 0x00	; 0
+ 14e:	a1 d2       	rcall	.+1346   	; 0x692 <countToDecision>
+ 150:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <__data_end>
+				questionAsked--;
+ 154:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <__data_end+0x1>
+ 158:	01 97       	sbiw	r24, 0x01	; 1
+ 15a:	90 93 75 01 	sts	0x0175, r25	; 0x800175 <__data_end+0x1>
+ 15e:	80 93 74 01 	sts	0x0174, r24	; 0x800174 <__data_end>
+ 162:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+				counter++;
+ 166:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 16a:	01 96       	adiw	r24, 0x01	; 1
+ 16c:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <counter+0x1>
+ 170:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <counter>
 			
 		}	else if (PINB & 0x04 && !nummer)
- 1d0:	b2 9b       	sbis	0x16, 2	; 22
- 1d2:	06 c0       	rjmp	.+12     	; 0x1e0 <questions+0x70>
- 1d4:	20 97       	sbiw	r28, 0x00	; 0
- 1d6:	21 f4       	brne	.+8      	; 0x1e0 <questions+0x70>
+ 174:	35 c0       	rjmp	.+106    	; 0x1e0 <questions+0x118>
+ 176:	b2 9b       	sbis	0x16, 2	; 22
+ 178:	19 c0       	rjmp	.+50     	; 0x1ac <questions+0xe4>
+ 17a:	20 97       	sbiw	r28, 0x00	; 0
 		{
-				goodBad(1);
- 1d8:	81 e0       	ldi	r24, 0x01	; 1
- 1da:	90 e0       	ldi	r25, 0x00	; 0
- 1dc:	75 df       	rcall	.-278    	; 0xc8 <goodBad>
- 1de:	07 c0       	rjmp	.+14     	; 0x1ee <questions+0x7e>
+				clear();
+ 17c:	b9 f4       	brne	.+46     	; 0x1ac <questions+0xe4>
+ 17e:	f0 d0       	rcall	.+480    	; 0x360 <clear>
+				countToDecision(1);
+ 180:	81 e0       	ldi	r24, 0x01	; 1
+ 182:	90 e0       	ldi	r25, 0x00	; 0
+ 184:	86 d2       	rcall	.+1292   	; 0x692 <countToDecision>
+ 186:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <__data_end>
+				questionAsked--;
+ 18a:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <__data_end+0x1>
+ 18e:	01 97       	sbiw	r24, 0x01	; 1
+ 190:	90 93 75 01 	sts	0x0175, r25	; 0x800175 <__data_end+0x1>
+ 194:	80 93 74 01 	sts	0x0174, r24	; 0x800174 <__data_end>
+ 198:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+				counter++;
+ 19c:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 1a0:	01 96       	adiw	r24, 0x01	; 1
+ 1a2:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <counter+0x1>
+ 1a6:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <counter>
 			
 		}	else if (PINB & 0x04 && nummer)
- 1e0:	b2 9b       	sbis	0x16, 2	; 22
- 1e2:	05 c0       	rjmp	.+10     	; 0x1ee <questions+0x7e>
- 1e4:	20 97       	sbiw	r28, 0x00	; 0
- 1e6:	19 f0       	breq	.+6      	; 0x1ee <questions+0x7e>
+ 1aa:	1a c0       	rjmp	.+52     	; 0x1e0 <questions+0x118>
+ 1ac:	b2 9b       	sbis	0x16, 2	; 22
+ 1ae:	18 c0       	rjmp	.+48     	; 0x1e0 <questions+0x118>
+ 1b0:	20 97       	sbiw	r28, 0x00	; 0
 		{
-				goodBad(0);
- 1e8:	80 e0       	ldi	r24, 0x00	; 0
- 1ea:	90 e0       	ldi	r25, 0x00	; 0
- 1ec:	6d df       	rcall	.-294    	; 0xc8 <goodBad>
- 1ee:	80 91 7a 01 	lds	r24, 0x017A	; 0x80017a <__data_end>
+				clear();
+ 1b2:	b1 f0       	breq	.+44     	; 0x1e0 <questions+0x118>
+ 1b4:	d5 d0       	rcall	.+426    	; 0x360 <clear>
+				countToDecision(0);
+ 1b6:	80 e0       	ldi	r24, 0x00	; 0
+ 1b8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ba:	6b d2       	rcall	.+1238   	; 0x692 <countToDecision>
+ 1bc:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <__data_end>
+				questionAsked--;
+ 1c0:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <__data_end+0x1>
+ 1c4:	01 97       	sbiw	r24, 0x01	; 1
+ 1c6:	90 93 75 01 	sts	0x0175, r25	; 0x800175 <__data_end+0x1>
+ 1ca:	80 93 74 01 	sts	0x0174, r24	; 0x800174 <__data_end>
+ 1ce:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+				counter++;
+ 1d2:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 1d6:	01 96       	adiw	r24, 0x01	; 1
+ 1d8:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <counter+0x1>
+ 1dc:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <counter>
+ 1e0:	80 91 74 01 	lds	r24, 0x0174	; 0x800174 <__data_end>
 	
 	if (questionAsked == 0){
 		questionAsked++;
 	}
 	
 	while (questionAsked)
- 1f2:	90 91 7b 01 	lds	r25, 0x017B	; 0x80017b <__data_end+0x1>
- 1f6:	89 2b       	or	r24, r25
- 1f8:	d9 f6       	brne	.-74     	; 0x1b0 <questions+0x40>
- 1fa:	df 91       	pop	r29
-		{
-				goodBad(0);
+ 1e4:	90 91 75 01 	lds	r25, 0x0175	; 0x800175 <__data_end+0x1>
+ 1e8:	89 2b       	or	r24, r25
+ 1ea:	09 f0       	breq	.+2      	; 0x1ee <questions+0x126>
+ 1ec:	8e cf       	rjmp	.-228    	; 0x10a <questions+0x42>
+ 1ee:	df 91       	pop	r29
+				questionAsked--;
+				counter++;
 		} 
 	}
 	
 }
- 1fc:	cf 91       	pop	r28
- 1fe:	1f 91       	pop	r17
- 200:	0f 91       	pop	r16
- 202:	ff 90       	pop	r15
- 204:	ef 90       	pop	r14
- 206:	08 95       	ret
+ 1f0:	cf 91       	pop	r28
+ 1f2:	1f 91       	pop	r17
+ 1f4:	0f 91       	pop	r16
+ 1f6:	ff 90       	pop	r15
+ 1f8:	ef 90       	pop	r14
+ 1fa:	08 95       	ret
 
-00000208 <main>:
- 208:	fe d0       	rcall	.+508    	; 0x406 <start_init>
+000001fc <main>:
+ 1fc:	01 d1       	rcall	.+514    	; 0x400 <start_init>
 int main( void )
 {
 	
 	start_init();
 	
 	DDRA = 0xFF;
- 20a:	8f ef       	ldi	r24, 0xFF	; 255
- 20c:	8a bb       	out	0x1a, r24	; 26
+ 1fe:	8f ef       	ldi	r24, 0xFF	; 255
+ 200:	8a bb       	out	0x1a, r24	; 26
 	PORTA = 0x01;
- 20e:	81 e0       	ldi	r24, 0x01	; 1
+ 202:	81 e0       	ldi	r24, 0x01	; 1
 	init();
- 210:	8b bb       	out	0x1b, r24	; 27
+ 204:	8b bb       	out	0x1b, r24	; 27
 	
 	clear();
- 212:	bb d0       	rcall	.+374    	; 0x38a <init>
+ 206:	be d0       	rcall	.+380    	; 0x384 <init>
 	
 
 	display_text("welkom, druk op");
- 214:	a8 d0       	rcall	.+336    	; 0x366 <clear>
- 216:	86 e0       	ldi	r24, 0x06	; 6
- 218:	91 e0       	ldi	r25, 0x01	; 1
+ 208:	ab d0       	rcall	.+342    	; 0x360 <clear>
+ 20a:	80 e0       	ldi	r24, 0x00	; 0
+ 20c:	91 e0       	ldi	r25, 0x01	; 1
 	set_cursor(40);
- 21a:	a8 d0       	rcall	.+336    	; 0x36c <display_text>
- 21c:	88 e2       	ldi	r24, 0x28	; 40
- 21e:	90 e0       	ldi	r25, 0x00	; 0
+ 20e:	ab d0       	rcall	.+342    	; 0x366 <display_text>
+ 210:	88 e2       	ldi	r24, 0x28	; 40
+ 212:	90 e0       	ldi	r25, 0x00	; 0
 	display_text("B1 om te starten");
- 220:	c2 d0       	rcall	.+388    	; 0x3a6 <set_cursor>
- 222:	86 e1       	ldi	r24, 0x16	; 22
- 224:	91 e0       	ldi	r25, 0x01	; 1
- 226:	a2 d0       	rcall	.+324    	; 0x36c <display_text>
+ 214:	c5 d0       	rcall	.+394    	; 0x3a0 <set_cursor>
+ 216:	80 e1       	ldi	r24, 0x10	; 16
+ 218:	91 e0       	ldi	r25, 0x01	; 1
+ 21a:	a5 d0       	rcall	.+330    	; 0x366 <display_text>
 	
 	PORTB = 0x00; 
- 228:	18 ba       	out	0x18, r1	; 24
-
+ 21c:	18 ba       	out	0x18, r1	; 24
 
 	while (1)
 	{
-		countToDecision();
- 22a:	b4 d1       	rcall	.+872    	; 0x594 <countToDecision>
- 22c:	b1 9b       	sbis	0x16, 1	; 22
+		
 		
 		if (PINB & 0x02 && counter == 0){						// b2 indrukken dan komt hij hier in
- 22e:	20 c0       	rjmp	.+64     	; 0x270 <main+0x68>
- 230:	80 91 7c 01 	lds	r24, 0x017C	; 0x80017c <counter>
- 234:	90 91 7d 01 	lds	r25, 0x017D	; 0x80017d <counter+0x1>
- 238:	89 2b       	or	r24, r25
- 23a:	d1 f4       	brne	.+52     	; 0x270 <main+0x68>
+ 21e:	b1 9b       	sbis	0x16, 1	; 22
+ 220:	1d c0       	rjmp	.+58     	; 0x25c <main+0x60>
+ 222:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+ 226:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 22a:	89 2b       	or	r24, r25
 			clear();
- 23c:	94 d0       	rcall	.+296    	; 0x366 <clear>
- 23e:	20 e0       	ldi	r18, 0x00	; 0
+ 22c:	b9 f4       	brne	.+46     	; 0x25c <main+0x60>
+ 22e:	98 d0       	rcall	.+304    	; 0x360 <clear>
 			questions("Hoe heet ik?", "Jurre", "Jan", 0);
- 240:	30 e0       	ldi	r19, 0x00	; 0
- 242:	47 e2       	ldi	r20, 0x27	; 39
- 244:	51 e0       	ldi	r21, 0x01	; 1
- 246:	6b e2       	ldi	r22, 0x2B	; 43
- 248:	71 e0       	ldi	r23, 0x01	; 1
- 24a:	81 e3       	ldi	r24, 0x31	; 49
- 24c:	91 e0       	ldi	r25, 0x01	; 1
- 24e:	90 df       	rcall	.-224    	; 0x170 <questions>
+ 230:	20 e0       	ldi	r18, 0x00	; 0
+ 232:	30 e0       	ldi	r19, 0x00	; 0
+ 234:	41 e2       	ldi	r20, 0x21	; 33
+ 236:	51 e0       	ldi	r21, 0x01	; 1
+ 238:	65 e2       	ldi	r22, 0x25	; 37
+ 23a:	71 e0       	ldi	r23, 0x01	; 1
+ 23c:	8b e2       	ldi	r24, 0x2B	; 43
+ 23e:	91 e0       	ldi	r25, 0x01	; 1
 			wait(1000);
- 250:	88 ee       	ldi	r24, 0xE8	; 232
- 252:	93 e0       	ldi	r25, 0x03	; 3
- 254:	3e d0       	rcall	.+124    	; 0x2d2 <wait>
- 256:	0c c0       	rjmp	.+24     	; 0x270 <main+0x68>
+ 240:	43 df       	rcall	.-378    	; 0xc8 <questions>
+ 242:	88 ee       	ldi	r24, 0xE8	; 232
+ 244:	93 e0       	ldi	r25, 0x03	; 3
+ 246:	42 d0       	rcall	.+132    	; 0x2cc <wait>
 		} 
 		
 		while (counter == 1){						// b2 indrukken dan komt hij hier in
 			questions("wat doe ik?", "TI", "BIM", 0);
- 258:	20 e0       	ldi	r18, 0x00	; 0
- 25a:	30 e0       	ldi	r19, 0x00	; 0
- 25c:	4e e3       	ldi	r20, 0x3E	; 62
- 25e:	51 e0       	ldi	r21, 0x01	; 1
- 260:	62 e4       	ldi	r22, 0x42	; 66
- 262:	71 e0       	ldi	r23, 0x01	; 1
- 264:	85 e4       	ldi	r24, 0x45	; 69
- 266:	91 e0       	ldi	r25, 0x01	; 1
- 268:	83 df       	rcall	.-250    	; 0x170 <questions>
-			wait(1000);
- 26a:	88 ee       	ldi	r24, 0xE8	; 232
- 26c:	93 e0       	ldi	r25, 0x03	; 3
- 26e:	31 d0       	rcall	.+98     	; 0x2d2 <wait>
- 270:	80 91 7c 01 	lds	r24, 0x017C	; 0x80017c <counter>
+ 248:	09 c0       	rjmp	.+18     	; 0x25c <main+0x60>
+ 24a:	20 e0       	ldi	r18, 0x00	; 0
+ 24c:	30 e0       	ldi	r19, 0x00	; 0
+ 24e:	48 e3       	ldi	r20, 0x38	; 56
+ 250:	51 e0       	ldi	r21, 0x01	; 1
+ 252:	6c e3       	ldi	r22, 0x3C	; 60
+ 254:	71 e0       	ldi	r23, 0x01	; 1
+ 256:	8f e3       	ldi	r24, 0x3F	; 63
+ 258:	91 e0       	ldi	r25, 0x01	; 1
+ 25a:	36 df       	rcall	.-404    	; 0xc8 <questions>
 			clear();
 			questions("Hoe heet ik?", "Jurre", "Jan", 0);
 			wait(1000);
 		} 
 		
 		while (counter == 1){						// b2 indrukken dan komt hij hier in
- 274:	90 91 7d 01 	lds	r25, 0x017D	; 0x80017d <counter+0x1>
- 278:	01 97       	sbiw	r24, 0x01	; 1
- 27a:	71 f3       	breq	.-36     	; 0x258 <main+0x50>
- 27c:	0c c0       	rjmp	.+24     	; 0x296 <main+0x8e>
+ 25c:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+ 260:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 264:	01 97       	sbiw	r24, 0x01	; 1
+ 266:	89 f3       	breq	.-30     	; 0x24a <main+0x4e>
 			questions("wat doe ik?", "TI", "BIM", 0);
-			wait(1000);
 		}
 		
 		while ( counter == 2){						// b2 indrukken dan komt hij hier in
 			questions("wat is gezond?", "patat", "Peer", 1);
- 27e:	21 e0       	ldi	r18, 0x01	; 1
- 280:	30 e0       	ldi	r19, 0x00	; 0
- 282:	41 e5       	ldi	r20, 0x51	; 81
- 284:	51 e0       	ldi	r21, 0x01	; 1
- 286:	66 e5       	ldi	r22, 0x56	; 86
- 288:	71 e0       	ldi	r23, 0x01	; 1
- 28a:	8c e5       	ldi	r24, 0x5C	; 92
- 28c:	91 e0       	ldi	r25, 0x01	; 1
- 28e:	70 df       	rcall	.-288    	; 0x170 <questions>
-			wait(1000);
- 290:	88 ee       	ldi	r24, 0xE8	; 232
- 292:	93 e0       	ldi	r25, 0x03	; 3
- 294:	1e d0       	rcall	.+60     	; 0x2d2 <wait>
+ 268:	09 c0       	rjmp	.+18     	; 0x27c <main+0x80>
+ 26a:	21 e0       	ldi	r18, 0x01	; 1
+ 26c:	30 e0       	ldi	r19, 0x00	; 0
+ 26e:	4b e4       	ldi	r20, 0x4B	; 75
+ 270:	51 e0       	ldi	r21, 0x01	; 1
+ 272:	60 e5       	ldi	r22, 0x50	; 80
+ 274:	71 e0       	ldi	r23, 0x01	; 1
+ 276:	86 e5       	ldi	r24, 0x56	; 86
+ 278:	91 e0       	ldi	r25, 0x01	; 1
+		
 		while (counter == 1){						// b2 indrukken dan komt hij hier in
 			questions("wat doe ik?", "TI", "BIM", 0);
-			wait(1000);
 		}
 		
 		while ( counter == 2){						// b2 indrukken dan komt hij hier in
- 296:	80 91 7c 01 	lds	r24, 0x017C	; 0x80017c <counter>
- 29a:	90 91 7d 01 	lds	r25, 0x017D	; 0x80017d <counter+0x1>
- 29e:	02 97       	sbiw	r24, 0x02	; 2
- 2a0:	71 f3       	breq	.-36     	; 0x27e <main+0x76>
- 2a2:	10 c0       	rjmp	.+32     	; 0x2c4 <main+0xbc>
-			wait(1000);
+ 27a:	26 df       	rcall	.-436    	; 0xc8 <questions>
+ 27c:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+ 280:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 284:	02 97       	sbiw	r24, 0x02	; 2
+ 286:	89 f3       	breq	.-30     	; 0x26a <main+0x6e>
+			questions("wat is gezond?", "patat", "Peer", 1);
 		}
 		
 			while (counter == 3)
 		{
 			clear();
- 2a4:	60 d0       	rcall	.+192    	; 0x366 <clear>
- 2a6:	88 ee       	ldi	r24, 0xE8	; 232
-			wait(1000);
- 2a8:	93 e0       	ldi	r25, 0x03	; 3
- 2aa:	13 d0       	rcall	.+38     	; 0x2d2 <wait>
- 2ac:	8b e6       	ldi	r24, 0x6B	; 107
- 2ae:	91 e0       	ldi	r25, 0x01	; 1
-
+ 288:	0d c0       	rjmp	.+26     	; 0x2a4 <main+0xa8>
+ 28a:	6a d0       	rcall	.+212    	; 0x360 <clear>
 			display_text("klaar is kees");
- 2b0:	5d d0       	rcall	.+186    	; 0x36c <display_text>
- 2b2:	80 91 7c 01 	lds	r24, 0x017C	; 0x80017c <counter>
- 2b6:	90 91 7d 01 	lds	r25, 0x017D	; 0x80017d <counter+0x1>
+ 28c:	85 e6       	ldi	r24, 0x65	; 101
+ 28e:	91 e0       	ldi	r25, 0x01	; 1
+ 290:	6a d0       	rcall	.+212    	; 0x366 <display_text>
+ 292:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
 			counter++;
- 2ba:	01 96       	adiw	r24, 0x01	; 1
- 2bc:	90 93 7d 01 	sts	0x017D, r25	; 0x80017d <counter+0x1>
- 2c0:	80 93 7c 01 	sts	0x017C, r24	; 0x80017c <counter>
- 2c4:	80 91 7c 01 	lds	r24, 0x017C	; 0x80017c <counter>
- 2c8:	90 91 7d 01 	lds	r25, 0x017D	; 0x80017d <counter+0x1>
+ 296:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 29a:	01 96       	adiw	r24, 0x01	; 1
+ 29c:	90 93 77 01 	sts	0x0177, r25	; 0x800177 <counter+0x1>
+ 2a0:	80 93 76 01 	sts	0x0176, r24	; 0x800176 <counter>
+ 2a4:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+		
 		while ( counter == 2){						// b2 indrukken dan komt hij hier in
 			questions("wat is gezond?", "patat", "Peer", 1);
-			wait(1000);
 		}
 		
 			while (counter == 3)
- 2cc:	03 97       	sbiw	r24, 0x03	; 3
- 2ce:	51 f3       	breq	.-44     	; 0x2a4 <main+0x9c>
- 2d0:	ac cf       	rjmp	.-168    	; 0x22a <main+0x22>
+ 2a8:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 2ac:	03 97       	sbiw	r24, 0x03	; 3
+ 2ae:	69 f3       	breq	.-38     	; 0x28a <main+0x8e>
+ 2b0:	06 c0       	rjmp	.+12     	; 0x2be <main+0xc2>
+ 2b2:	b1 9b       	sbis	0x16, 1	; 22
+			clear();
+			display_text("klaar is kees");
+			counter++;
+		}
+			while(counter == 4){
+				if(PINB & 0x02){
+ 2b4:	04 c0       	rjmp	.+8      	; 0x2be <main+0xc2>
+ 2b6:	10 92 77 01 	sts	0x0177, r1	; 0x800177 <counter+0x1>
+					counter = 0;
+ 2ba:	10 92 76 01 	sts	0x0176, r1	; 0x800176 <counter>
+ 2be:	80 91 76 01 	lds	r24, 0x0176	; 0x800176 <counter>
+		{
+			clear();
+			display_text("klaar is kees");
+			counter++;
+		}
+			while(counter == 4){
+ 2c2:	90 91 77 01 	lds	r25, 0x0177	; 0x800177 <counter+0x1>
+ 2c6:	04 97       	sbiw	r24, 0x04	; 4
+ 2c8:	a1 f3       	breq	.-24     	; 0x2b2 <main+0xb6>
+ 2ca:	a9 cf       	rjmp	.-174    	; 0x21e <main+0x22>
 
-000002d2 <wait>:
+000002cc <wait>:
 #include <stdint.h>
 #include "lcd.h"
 
 void wait( int ms )
 {
 	for (int i=0; i<ms; i++)
- 2d2:	20 e0       	ldi	r18, 0x00	; 0
- 2d4:	30 e0       	ldi	r19, 0x00	; 0
- 2d6:	08 c0       	rjmp	.+16     	; 0x2e8 <wait+0x16>
+ 2cc:	20 e0       	ldi	r18, 0x00	; 0
+ 2ce:	30 e0       	ldi	r19, 0x00	; 0
+ 2d0:	08 c0       	rjmp	.+16     	; 0x2e2 <wait+0x16>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 2d8:	ef ec       	ldi	r30, 0xCF	; 207
- 2da:	f7 e0       	ldi	r31, 0x07	; 7
- 2dc:	31 97       	sbiw	r30, 0x01	; 1
- 2de:	f1 f7       	brne	.-4      	; 0x2dc <wait+0xa>
- 2e0:	00 c0       	rjmp	.+0      	; 0x2e2 <wait+0x10>
- 2e2:	00 00       	nop
- 2e4:	2f 5f       	subi	r18, 0xFF	; 255
- 2e6:	3f 4f       	sbci	r19, 0xFF	; 255
- 2e8:	28 17       	cp	r18, r24
- 2ea:	39 07       	cpc	r19, r25
- 2ec:	ac f3       	brlt	.-22     	; 0x2d8 <wait+0x6>
+ 2d2:	ef ec       	ldi	r30, 0xCF	; 207
+ 2d4:	f7 e0       	ldi	r31, 0x07	; 7
+ 2d6:	31 97       	sbiw	r30, 0x01	; 1
+ 2d8:	f1 f7       	brne	.-4      	; 0x2d6 <wait+0xa>
+ 2da:	00 c0       	rjmp	.+0      	; 0x2dc <wait+0x10>
+ 2dc:	00 00       	nop
+ 2de:	2f 5f       	subi	r18, 0xFF	; 255
+ 2e0:	3f 4f       	sbci	r19, 0xFF	; 255
+ 2e2:	28 17       	cp	r18, r24
+ 2e4:	39 07       	cpc	r19, r25
+ 2e6:	ac f3       	brlt	.-22     	; 0x2d2 <wait+0x6>
 	{
 		_delay_ms( 1 );		// library function (max 30 ms at 8MHz)
 	}
 }
- 2ee:	08 95       	ret
+ 2e8:	08 95       	ret
 
-000002f0 <blinkE>:
+000002ea <blinkE>:
 
 void blinkE(){
 	//In order to confirm our command we need to blink the E pin.
 	PORTC |= (1<<3);
- 2f0:	85 b3       	in	r24, 0x15	; 21
- 2f2:	88 60       	ori	r24, 0x08	; 8
- 2f4:	85 bb       	out	0x15, r24	; 21
- 2f6:	8f ec       	ldi	r24, 0xCF	; 207
- 2f8:	97 e0       	ldi	r25, 0x07	; 7
- 2fa:	01 97       	sbiw	r24, 0x01	; 1
- 2fc:	f1 f7       	brne	.-4      	; 0x2fa <blinkE+0xa>
- 2fe:	00 c0       	rjmp	.+0      	; 0x300 <blinkE+0x10>
- 300:	00 00       	nop
+ 2ea:	85 b3       	in	r24, 0x15	; 21
+ 2ec:	88 60       	ori	r24, 0x08	; 8
+ 2ee:	85 bb       	out	0x15, r24	; 21
+ 2f0:	8f ec       	ldi	r24, 0xCF	; 207
+ 2f2:	97 e0       	ldi	r25, 0x07	; 7
+ 2f4:	01 97       	sbiw	r24, 0x01	; 1
+ 2f6:	f1 f7       	brne	.-4      	; 0x2f4 <blinkE+0xa>
+ 2f8:	00 c0       	rjmp	.+0      	; 0x2fa <blinkE+0x10>
+ 2fa:	00 00       	nop
 	_delay_ms(1);
 	PORTC &= ~(1<<3);
- 302:	85 b3       	in	r24, 0x15	; 21
- 304:	87 7f       	andi	r24, 0xF7	; 247
- 306:	85 bb       	out	0x15, r24	; 21
- 308:	8f ec       	ldi	r24, 0xCF	; 207
- 30a:	97 e0       	ldi	r25, 0x07	; 7
- 30c:	01 97       	sbiw	r24, 0x01	; 1
- 30e:	f1 f7       	brne	.-4      	; 0x30c <blinkE+0x1c>
- 310:	00 c0       	rjmp	.+0      	; 0x312 <blinkE+0x22>
- 312:	00 00       	nop
- 314:	08 95       	ret
+ 2fc:	85 b3       	in	r24, 0x15	; 21
+ 2fe:	87 7f       	andi	r24, 0xF7	; 247
+ 300:	85 bb       	out	0x15, r24	; 21
+ 302:	8f ec       	ldi	r24, 0xCF	; 207
+ 304:	97 e0       	ldi	r25, 0x07	; 7
+ 306:	01 97       	sbiw	r24, 0x01	; 1
+ 308:	f1 f7       	brne	.-4      	; 0x306 <blinkE+0x1c>
+ 30a:	00 c0       	rjmp	.+0      	; 0x30c <blinkE+0x22>
+ 30c:	00 00       	nop
+ 30e:	08 95       	ret
 
-00000316 <displaySend>:
+00000310 <displaySend>:
 	_delay_ms(1);
 }
 
 void displaySend(char bytes, int rs){
- 316:	1f 93       	push	r17
- 318:	cf 93       	push	r28
- 31a:	df 93       	push	r29
- 31c:	18 2f       	mov	r17, r24
+ 310:	1f 93       	push	r17
+ 312:	cf 93       	push	r28
+ 314:	df 93       	push	r29
+ 316:	18 2f       	mov	r17, r24
 	// Command comes in as 8 bits
 	// 1010 0101
 	// First we send the left 4 bits (Upper nibble)
 	// Then the right 4 bits (Lower nibble)
 
 	if (rs) rs = 1; //RS defines if its a command or a character
- 31e:	61 15       	cp	r22, r1
- 320:	71 05       	cpc	r23, r1
- 322:	11 f0       	breq	.+4      	; 0x328 <displaySend+0x12>
- 324:	61 e0       	ldi	r22, 0x01	; 1
- 326:	70 e0       	ldi	r23, 0x00	; 0
+ 318:	61 15       	cp	r22, r1
+ 31a:	71 05       	cpc	r23, r1
+ 31c:	11 f0       	breq	.+4      	; 0x322 <displaySend+0x12>
+ 31e:	61 e0       	ldi	r22, 0x01	; 1
+ 320:	70 e0       	ldi	r23, 0x00	; 0
 	
 	// First nibble.
 	PORTC = (bytes & 0xF0);
- 328:	81 2f       	mov	r24, r17
- 32a:	80 7f       	andi	r24, 0xF0	; 240
- 32c:	85 bb       	out	0x15, r24	; 21
+ 322:	81 2f       	mov	r24, r17
+ 324:	80 7f       	andi	r24, 0xF0	; 240
+ 326:	85 bb       	out	0x15, r24	; 21
 	PORTC |= (rs<<2);
- 32e:	85 b3       	in	r24, 0x15	; 21
- 330:	eb 01       	movw	r28, r22
- 332:	cc 0f       	add	r28, r28
- 334:	dd 1f       	adc	r29, r29
- 336:	cc 0f       	add	r28, r28
- 338:	dd 1f       	adc	r29, r29
- 33a:	8c 2b       	or	r24, r28
- 33c:	85 bb       	out	0x15, r24	; 21
+ 328:	85 b3       	in	r24, 0x15	; 21
+ 32a:	eb 01       	movw	r28, r22
+ 32c:	cc 0f       	add	r28, r28
+ 32e:	dd 1f       	adc	r29, r29
+ 330:	cc 0f       	add	r28, r28
+ 332:	dd 1f       	adc	r29, r29
+ 334:	8c 2b       	or	r24, r28
+ 336:	85 bb       	out	0x15, r24	; 21
 	blinkE();
- 33e:	d8 df       	rcall	.-80     	; 0x2f0 <blinkE>
+ 338:	d8 df       	rcall	.-80     	; 0x2ea <blinkE>
 
 	// Second nibble
 	PORTC = (bytes << 4);
- 340:	12 95       	swap	r17
- 342:	10 7f       	andi	r17, 0xF0	; 240
- 344:	15 bb       	out	0x15, r17	; 21
+ 33a:	12 95       	swap	r17
+ 33c:	10 7f       	andi	r17, 0xF0	; 240
+ 33e:	15 bb       	out	0x15, r17	; 21
 	PORTC |= (rs<<2);
- 346:	65 b3       	in	r22, 0x15	; 21
- 348:	6c 2b       	or	r22, r28
+ 340:	65 b3       	in	r22, 0x15	; 21
+ 342:	6c 2b       	or	r22, r28
 	blinkE();
- 34a:	65 bb       	out	0x15, r22	; 21
- 34c:	d1 df       	rcall	.-94     	; 0x2f0 <blinkE>
+ 344:	65 bb       	out	0x15, r22	; 21
+ 346:	d1 df       	rcall	.-94     	; 0x2ea <blinkE>
 }
- 34e:	df 91       	pop	r29
- 350:	cf 91       	pop	r28
- 352:	1f 91       	pop	r17
- 354:	08 95       	ret
+ 348:	df 91       	pop	r29
+ 34a:	cf 91       	pop	r28
+ 34c:	1f 91       	pop	r17
+ 34e:	08 95       	ret
 
-00000356 <charSend>:
+00000350 <charSend>:
 
 void charSend(char character){
 	displaySend(character, 1);
- 356:	61 e0       	ldi	r22, 0x01	; 1
- 358:	70 e0       	ldi	r23, 0x00	; 0
- 35a:	dd cf       	rjmp	.-70     	; 0x316 <displaySend>
- 35c:	08 95       	ret
+ 350:	61 e0       	ldi	r22, 0x01	; 1
+ 352:	70 e0       	ldi	r23, 0x00	; 0
+ 354:	dd cf       	rjmp	.-70     	; 0x310 <displaySend>
+ 356:	08 95       	ret
 
-0000035e <cmdSend>:
+00000358 <cmdSend>:
 }
 
 void cmdSend(char cmd){
 	displaySend(cmd, 0);
- 35e:	60 e0       	ldi	r22, 0x00	; 0
- 360:	70 e0       	ldi	r23, 0x00	; 0
- 362:	d9 cf       	rjmp	.-78     	; 0x316 <displaySend>
- 364:	08 95       	ret
+ 358:	60 e0       	ldi	r22, 0x00	; 0
+ 35a:	70 e0       	ldi	r23, 0x00	; 0
+ 35c:	d9 cf       	rjmp	.-78     	; 0x310 <displaySend>
+ 35e:	08 95       	ret
 
-00000366 <clear>:
+00000360 <clear>:
 	cmdSend(0x06); 
 	return_home();
 }
 
 void clear(){
 	cmdSend(0x01);
- 366:	81 e0       	ldi	r24, 0x01	; 1
- 368:	fa cf       	rjmp	.-12     	; 0x35e <cmdSend>
- 36a:	08 95       	ret
+ 360:	81 e0       	ldi	r24, 0x01	; 1
+ 362:	fa cf       	rjmp	.-12     	; 0x358 <cmdSend>
+ 364:	08 95       	ret
 
-0000036c <display_text>:
+00000366 <display_text>:
 }
 
 void display_text(char *str){
- 36c:	cf 93       	push	r28
- 36e:	df 93       	push	r29
- 370:	ec 01       	movw	r28, r24
+ 366:	cf 93       	push	r28
+ 368:	df 93       	push	r29
+ 36a:	ec 01       	movw	r28, r24
 	for (; *str; str++)
- 372:	02 c0       	rjmp	.+4      	; 0x378 <display_text+0xc>
+ 36c:	02 c0       	rjmp	.+4      	; 0x372 <display_text+0xc>
 	{
 		charSend(*str);
- 374:	f0 df       	rcall	.-32     	; 0x356 <charSend>
+ 36e:	f0 df       	rcall	.-32     	; 0x350 <charSend>
 void clear(){
 	cmdSend(0x01);
 }
 
 void display_text(char *str){
 	for (; *str; str++)
- 376:	21 96       	adiw	r28, 0x01	; 1
- 378:	88 81       	ld	r24, Y
- 37a:	81 11       	cpse	r24, r1
- 37c:	fb cf       	rjmp	.-10     	; 0x374 <display_text+0x8>
+ 370:	21 96       	adiw	r28, 0x01	; 1
+ 372:	88 81       	ld	r24, Y
+ 374:	81 11       	cpse	r24, r1
+ 376:	fb cf       	rjmp	.-10     	; 0x36e <display_text+0x8>
 	{
 		charSend(*str);
 	}
 }
- 37e:	df 91       	pop	r29
- 380:	cf 91       	pop	r28
- 382:	08 95       	ret
+ 378:	df 91       	pop	r29
+ 37a:	cf 91       	pop	r28
+ 37c:	08 95       	ret
 
-00000384 <return_home>:
+0000037e <return_home>:
 
 void return_home(){
 	cmdSend(0x02);
- 384:	82 e0       	ldi	r24, 0x02	; 2
- 386:	eb cf       	rjmp	.-42     	; 0x35e <cmdSend>
- 388:	08 95       	ret
+ 37e:	82 e0       	ldi	r24, 0x02	; 2
+ 380:	eb cf       	rjmp	.-42     	; 0x358 <cmdSend>
+ 382:	08 95       	ret
 
-0000038a <init>:
+00000384 <init>:
 void cmdSend(char cmd){
 	displaySend(cmd, 0);
 }
 
 void init(){
 	DDRC = 0xFF;
- 38a:	8f ef       	ldi	r24, 0xFF	; 255
- 38c:	84 bb       	out	0x14, r24	; 20
+ 384:	8f ef       	ldi	r24, 0xFF	; 255
+ 386:	84 bb       	out	0x14, r24	; 20
 	PORTC = 0x00;
- 38e:	15 ba       	out	0x15, r1	; 21
+ 388:	15 ba       	out	0x15, r1	; 21
 
 	PORTC = 0x20;
- 390:	80 e2       	ldi	r24, 0x20	; 32
- 392:	85 bb       	out	0x15, r24	; 21
+ 38a:	80 e2       	ldi	r24, 0x20	; 32
+ 38c:	85 bb       	out	0x15, r24	; 21
 	blinkE();
- 394:	ad df       	rcall	.-166    	; 0x2f0 <blinkE>
+ 38e:	ad df       	rcall	.-166    	; 0x2ea <blinkE>
 
 	cmdSend(0x28); 
- 396:	88 e2       	ldi	r24, 0x28	; 40
- 398:	e2 df       	rcall	.-60     	; 0x35e <cmdSend>
+ 390:	88 e2       	ldi	r24, 0x28	; 40
+ 392:	e2 df       	rcall	.-60     	; 0x358 <cmdSend>
 	cmdSend(0x0F); 
- 39a:	8f e0       	ldi	r24, 0x0F	; 15
- 39c:	e0 df       	rcall	.-64     	; 0x35e <cmdSend>
+ 394:	8f e0       	ldi	r24, 0x0F	; 15
+ 396:	e0 df       	rcall	.-64     	; 0x358 <cmdSend>
 	cmdSend(0x06); 
- 39e:	86 e0       	ldi	r24, 0x06	; 6
- 3a0:	de df       	rcall	.-68     	; 0x35e <cmdSend>
- 3a2:	f0 cf       	rjmp	.-32     	; 0x384 <return_home>
+ 398:	86 e0       	ldi	r24, 0x06	; 6
+ 39a:	de df       	rcall	.-68     	; 0x358 <cmdSend>
+ 39c:	f0 cf       	rjmp	.-32     	; 0x37e <return_home>
 	return_home();
- 3a4:	08 95       	ret
+ 39e:	08 95       	ret
 
-000003a6 <set_cursor>:
- 3a6:	0f 93       	push	r16
- 3a8:	1f 93       	push	r17
+000003a0 <set_cursor>:
+ 3a0:	0f 93       	push	r16
+ 3a2:	1f 93       	push	r17
 
 void return_home(){
 	cmdSend(0x02);
 }
 
 void set_cursor(int position){
- 3aa:	cf 93       	push	r28
- 3ac:	df 93       	push	r29
- 3ae:	8c 01       	movw	r16, r24
+ 3a4:	cf 93       	push	r28
+ 3a6:	df 93       	push	r29
+ 3a8:	8c 01       	movw	r16, r24
 	return_home();
- 3b0:	e9 df       	rcall	.-46     	; 0x384 <return_home>
+ 3aa:	e9 df       	rcall	.-46     	; 0x37e <return_home>
 	for (int i = 0; i < position; i++)
- 3b2:	c0 e0       	ldi	r28, 0x00	; 0
- 3b4:	d0 e0       	ldi	r29, 0x00	; 0
- 3b6:	03 c0       	rjmp	.+6      	; 0x3be <set_cursor+0x18>
+ 3ac:	c0 e0       	ldi	r28, 0x00	; 0
+ 3ae:	d0 e0       	ldi	r29, 0x00	; 0
+ 3b0:	03 c0       	rjmp	.+6      	; 0x3b8 <set_cursor+0x18>
 	{
 		cmdSend(0b00010100);
- 3b8:	84 e1       	ldi	r24, 0x14	; 20
- 3ba:	d1 df       	rcall	.-94     	; 0x35e <cmdSend>
+ 3b2:	84 e1       	ldi	r24, 0x14	; 20
+ 3b4:	d1 df       	rcall	.-94     	; 0x358 <cmdSend>
 	cmdSend(0x02);
 }
 
 void set_cursor(int position){
 	return_home();
 	for (int i = 0; i < position; i++)
- 3bc:	21 96       	adiw	r28, 0x01	; 1
- 3be:	c0 17       	cp	r28, r16
- 3c0:	d1 07       	cpc	r29, r17
- 3c2:	d4 f3       	brlt	.-12     	; 0x3b8 <set_cursor+0x12>
+ 3b6:	21 96       	adiw	r28, 0x01	; 1
+ 3b8:	c0 17       	cp	r28, r16
+ 3ba:	d1 07       	cpc	r29, r17
+ 3bc:	d4 f3       	brlt	.-12     	; 0x3b2 <set_cursor+0x12>
 	{
 		cmdSend(0b00010100);
 	}
 
- 3c4:	df 91       	pop	r29
- 3c6:	cf 91       	pop	r28
- 3c8:	1f 91       	pop	r17
- 3ca:	0f 91       	pop	r16
- 3cc:	08 95       	ret
+ 3be:	df 91       	pop	r29
+ 3c0:	cf 91       	pop	r28
+ 3c2:	1f 91       	pop	r17
+ 3c4:	0f 91       	pop	r16
+ 3c6:	08 95       	ret
 
-000003ce <twi_init>:
+000003c8 <twi_init>:
 outputs:
 notes:			TWI clock is set to 100 kHz
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWSR = 0;
- 3ce:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
+ 3c8:	10 92 71 00 	sts	0x0071, r1	; 0x800071 <__TEXT_REGION_LENGTH__+0x7e0071>
 	TWBR = 32;	 // TWI clock set to 100kHz, prescaler = 0
- 3d2:	80 e2       	ldi	r24, 0x20	; 32
- 3d4:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <__TEXT_REGION_LENGTH__+0x7e0070>
- 3d8:	08 95       	ret
+ 3cc:	80 e2       	ldi	r24, 0x20	; 32
+ 3ce:	80 93 70 00 	sts	0x0070, r24	; 0x800070 <__TEXT_REGION_LENGTH__+0x7e0070>
+ 3d2:	08 95       	ret
 
-000003da <twi_start>:
+000003d4 <twi_start>:
 outputs:
 notes:
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWCR = (0x80 | 0x20 | 0x04);
- 3da:	84 ea       	ldi	r24, 0xA4	; 164
- 3dc:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 3d4:	84 ea       	ldi	r24, 0xA4	; 164
+ 3d6:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
 	while( 0x00 == (TWCR & 0x80) );
- 3e0:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
- 3e4:	88 23       	and	r24, r24
- 3e6:	e4 f7       	brge	.-8      	; 0x3e0 <twi_start+0x6>
+ 3da:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 3de:	88 23       	and	r24, r24
+ 3e0:	e4 f7       	brge	.-8      	; 0x3da <twi_start+0x6>
 }
- 3e8:	08 95       	ret
+ 3e2:	08 95       	ret
 
-000003ea <twi_stop>:
+000003e4 <twi_stop>:
 outputs:
 notes:
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWCR = (0x80 | 0x10 | 0x04);
- 3ea:	84 e9       	ldi	r24, 0x94	; 148
- 3ec:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
- 3f0:	08 95       	ret
+ 3e4:	84 e9       	ldi	r24, 0x94	; 148
+ 3e6:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 3ea:	08 95       	ret
 
-000003f2 <twi_tx>:
+000003ec <twi_tx>:
 outputs:
 notes:
 Version :    	DMK, Initial code
 *******************************************************************/
 {
 	TWDR = data;
- 3f2:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <__TEXT_REGION_LENGTH__+0x7e0073>
+ 3ec:	80 93 73 00 	sts	0x0073, r24	; 0x800073 <__TEXT_REGION_LENGTH__+0x7e0073>
 	TWCR = (0x80 | 0x04);
- 3f6:	84 e8       	ldi	r24, 0x84	; 132
- 3f8:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 3f0:	84 e8       	ldi	r24, 0x84	; 132
+ 3f2:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
 	while( 0 == (TWCR & 0x80) );
- 3fc:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
- 400:	88 23       	and	r24, r24
- 402:	e4 f7       	brge	.-8      	; 0x3fc <twi_tx+0xa>
+ 3f6:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <__TEXT_REGION_LENGTH__+0x7e0074>
+ 3fa:	88 23       	and	r24, r24
+ 3fc:	e4 f7       	brge	.-8      	; 0x3f6 <twi_tx+0xa>
 }
- 404:	08 95       	ret
+ 3fe:	08 95       	ret
 
-00000406 <start_init>:
+00000400 <start_init>:
 
 
 
 
 
 void start_init(void){
- 406:	cf 93       	push	r28
- 408:	df 93       	push	r29
+ 400:	cf 93       	push	r28
+ 402:	df 93       	push	r29
 	
 	twi_init();		// Init TWI interface
- 40a:	e1 df       	rcall	.-62     	; 0x3ce <twi_init>
+ 404:	e1 df       	rcall	.-62     	; 0x3c8 <twi_init>
 
 	// Init HT16K22. Page 32 datasheet
 	twi_start();
- 40c:	e6 df       	rcall	.-52     	; 0x3da <twi_start>
+ 406:	e6 df       	rcall	.-52     	; 0x3d4 <twi_start>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 40e:	80 ee       	ldi	r24, 0xE0	; 224
- 410:	f0 df       	rcall	.-32     	; 0x3f2 <twi_tx>
+ 408:	80 ee       	ldi	r24, 0xE0	; 224
+ 40a:	f0 df       	rcall	.-32     	; 0x3ec <twi_tx>
 	twi_tx(0x21);	// Internal osc on (page 10 HT16K33)
- 412:	81 e2       	ldi	r24, 0x21	; 33
- 414:	ee df       	rcall	.-36     	; 0x3f2 <twi_tx>
+ 40c:	81 e2       	ldi	r24, 0x21	; 33
+ 40e:	ee df       	rcall	.-36     	; 0x3ec <twi_tx>
 	twi_stop();
- 416:	e9 df       	rcall	.-46     	; 0x3ea <twi_stop>
+ 410:	e9 df       	rcall	.-46     	; 0x3e4 <twi_stop>
 
 	twi_start();
- 418:	e0 df       	rcall	.-64     	; 0x3da <twi_start>
+ 412:	e0 df       	rcall	.-64     	; 0x3d4 <twi_start>
 	twi_tx(0xE0);	// Display I2C address + R/W bit
- 41a:	80 ee       	ldi	r24, 0xE0	; 224
- 41c:	ea df       	rcall	.-44     	; 0x3f2 <twi_tx>
+ 414:	80 ee       	ldi	r24, 0xE0	; 224
+ 416:	ea df       	rcall	.-44     	; 0x3ec <twi_tx>
 	twi_tx(0xA0);	// HT16K33 pins all output
- 41e:	80 ea       	ldi	r24, 0xA0	; 160
+ 418:	80 ea       	ldi	r24, 0xA0	; 160
 	twi_stop();
- 420:	e8 df       	rcall	.-48     	; 0x3f2 <twi_tx>
+ 41a:	e8 df       	rcall	.-48     	; 0x3ec <twi_tx>
 
 	twi_start();
- 422:	e3 df       	rcall	.-58     	; 0x3ea <twi_stop>
+ 41c:	e3 df       	rcall	.-58     	; 0x3e4 <twi_stop>
 	twi_tx(0xE0);	// Display I2C address + R/W bit
- 424:	da df       	rcall	.-76     	; 0x3da <twi_start>
+ 41e:	da df       	rcall	.-76     	; 0x3d4 <twi_start>
 	twi_tx(0xE3);	// Display Dimming 4/16 duty cycle
- 426:	80 ee       	ldi	r24, 0xE0	; 224
- 428:	e4 df       	rcall	.-56     	; 0x3f2 <twi_tx>
+ 420:	80 ee       	ldi	r24, 0xE0	; 224
+ 422:	e4 df       	rcall	.-56     	; 0x3ec <twi_tx>
 	twi_stop();
- 42a:	83 ee       	ldi	r24, 0xE3	; 227
- 42c:	e2 df       	rcall	.-60     	; 0x3f2 <twi_tx>
+ 424:	83 ee       	ldi	r24, 0xE3	; 227
+ 426:	e2 df       	rcall	.-60     	; 0x3ec <twi_tx>
 
 	twi_start();
- 42e:	dd df       	rcall	.-70     	; 0x3ea <twi_stop>
- 430:	d4 df       	rcall	.-88     	; 0x3da <twi_start>
+ 428:	dd df       	rcall	.-70     	; 0x3e4 <twi_stop>
+ 42a:	d4 df       	rcall	.-88     	; 0x3d4 <twi_start>
 	twi_tx(0xE0);	// Display I2C address + R/W bit
- 432:	80 ee       	ldi	r24, 0xE0	; 224
- 434:	de df       	rcall	.-68     	; 0x3f2 <twi_tx>
+ 42c:	80 ee       	ldi	r24, 0xE0	; 224
+ 42e:	de df       	rcall	.-68     	; 0x3ec <twi_tx>
 	twi_tx(0x81);	// Display OFF - Blink On
- 436:	81 e8       	ldi	r24, 0x81	; 129
- 438:	dc df       	rcall	.-72     	; 0x3f2 <twi_tx>
+ 430:	81 e8       	ldi	r24, 0x81	; 129
+ 432:	dc df       	rcall	.-72     	; 0x3ec <twi_tx>
 	twi_stop();
- 43a:	d7 df       	rcall	.-82     	; 0x3ea <twi_stop>
- 43c:	ce df       	rcall	.-100    	; 0x3da <twi_start>
+ 434:	d7 df       	rcall	.-82     	; 0x3e4 <twi_stop>
+ 436:	ce df       	rcall	.-100    	; 0x3d4 <twi_start>
 	
 	
 	//dimming all leds
 	twi_start();
- 43e:	80 ee       	ldi	r24, 0xE0	; 224
- 440:	d8 df       	rcall	.-80     	; 0x3f2 <twi_tx>
+ 438:	80 ee       	ldi	r24, 0xE0	; 224
+ 43a:	d8 df       	rcall	.-80     	; 0x3ec <twi_tx>
 	twi_tx(0xE0);
- 442:	80 e0       	ldi	r24, 0x00	; 0
- 444:	d6 df       	rcall	.-84     	; 0x3f2 <twi_tx>
- 446:	c0 e0       	ldi	r28, 0x00	; 0
+ 43c:	80 e0       	ldi	r24, 0x00	; 0
+ 43e:	d6 df       	rcall	.-84     	; 0x3ec <twi_tx>
+ 440:	c0 e0       	ldi	r28, 0x00	; 0
 	twi_tx(0x00);
- 448:	d0 e0       	ldi	r29, 0x00	; 0
- 44a:	03 c0       	rjmp	.+6      	; 0x452 <start_init+0x4c>
- 44c:	80 e0       	ldi	r24, 0x00	; 0
+ 442:	d0 e0       	ldi	r29, 0x00	; 0
+ 444:	03 c0       	rjmp	.+6      	; 0x44c <start_init+0x4c>
+ 446:	80 e0       	ldi	r24, 0x00	; 0
 	for(int i=0; i < 16; i++){
- 44e:	d1 df       	rcall	.-94     	; 0x3f2 <twi_tx>
- 450:	21 96       	adiw	r28, 0x01	; 1
- 452:	c0 31       	cpi	r28, 0x10	; 16
+ 448:	d1 df       	rcall	.-94     	; 0x3ec <twi_tx>
+ 44a:	21 96       	adiw	r28, 0x01	; 1
+ 44c:	c0 31       	cpi	r28, 0x10	; 16
 		twi_tx(0x00);	// data
- 454:	d1 05       	cpc	r29, r1
- 456:	d4 f3       	brlt	.-12     	; 0x44c <start_init+0x46>
- 458:	c8 df       	rcall	.-112    	; 0x3ea <twi_stop>
+ 44e:	d1 05       	cpc	r29, r1
+ 450:	d4 f3       	brlt	.-12     	; 0x446 <start_init+0x46>
+ 452:	c8 df       	rcall	.-112    	; 0x3e4 <twi_stop>
 	
 	//dimming all leds
 	twi_start();
 	twi_tx(0xE0);
 	twi_tx(0x00);
 	for(int i=0; i < 16; i++){
- 45a:	df 91       	pop	r29
- 45c:	cf 91       	pop	r28
- 45e:	08 95       	ret
+ 454:	df 91       	pop	r29
+ 456:	cf 91       	pop	r28
+ 458:	08 95       	ret
 
-00000460 <decision>:
- 460:	cf 93       	push	r28
+0000045a <decision>:
+ 45a:	cf 93       	push	r28
 		twi_tx(0x00);	// data
 	}
 	
 	twi_stop();
- 462:	df 93       	push	r29
- 464:	ec 01       	movw	r28, r24
+ 45c:	df 93       	push	r29
+ 45e:	ec 01       	movw	r28, r24
 	
 	
 }
- 466:	b9 df       	rcall	.-142    	; 0x3da <twi_start>
- 468:	80 ee       	ldi	r24, 0xE0	; 224
- 46a:	c3 df       	rcall	.-122    	; 0x3f2 <twi_tx>
+ 460:	b9 df       	rcall	.-142    	; 0x3d4 <twi_start>
+ 462:	80 ee       	ldi	r24, 0xE0	; 224
+ 464:	c3 df       	rcall	.-122    	; 0x3ec <twi_tx>
 
 void decision(int good){
 	
 	twi_start();
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
 	twi_tx(0x00);	// Row
- 46c:	80 e0       	ldi	r24, 0x00	; 0
- 46e:	c1 df       	rcall	.-126    	; 0x3f2 <twi_tx>
+ 466:	80 e0       	ldi	r24, 0x00	; 0
+ 468:	c1 df       	rcall	.-126    	; 0x3ec <twi_tx>
 	twi_tx(0b0011110);	// data
- 470:	8e e1       	ldi	r24, 0x1E	; 30
- 472:	bf df       	rcall	.-130    	; 0x3f2 <twi_tx>
+ 46a:	8e e1       	ldi	r24, 0x1E	; 30
+ 46c:	bf df       	rcall	.-130    	; 0x3ec <twi_tx>
 	twi_stop();
- 474:	ba df       	rcall	.-140    	; 0x3ea <twi_stop>
+ 46e:	ba df       	rcall	.-140    	; 0x3e4 <twi_stop>
 	
 	twi_start();
- 476:	b1 df       	rcall	.-158    	; 0x3da <twi_start>
+ 470:	b1 df       	rcall	.-158    	; 0x3d4 <twi_start>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 478:	80 ee       	ldi	r24, 0xE0	; 224
+ 472:	80 ee       	ldi	r24, 0xE0	; 224
 	twi_tx(0x02);	// Row
- 47a:	bb df       	rcall	.-138    	; 0x3f2 <twi_tx>
- 47c:	82 e0       	ldi	r24, 0x02	; 2
+ 474:	bb df       	rcall	.-138    	; 0x3ec <twi_tx>
+ 476:	82 e0       	ldi	r24, 0x02	; 2
 	twi_tx(0b0100001);	// data
- 47e:	b9 df       	rcall	.-142    	; 0x3f2 <twi_tx>
- 480:	81 e2       	ldi	r24, 0x21	; 33
+ 478:	b9 df       	rcall	.-142    	; 0x3ec <twi_tx>
+ 47a:	81 e2       	ldi	r24, 0x21	; 33
 	twi_stop();
- 482:	b7 df       	rcall	.-146    	; 0x3f2 <twi_tx>
+ 47c:	b7 df       	rcall	.-146    	; 0x3ec <twi_tx>
 	
 	twi_start();
- 484:	b2 df       	rcall	.-156    	; 0x3ea <twi_stop>
+ 47e:	b2 df       	rcall	.-156    	; 0x3e4 <twi_stop>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 486:	a9 df       	rcall	.-174    	; 0x3da <twi_start>
- 488:	80 ee       	ldi	r24, 0xE0	; 224
+ 480:	a9 df       	rcall	.-174    	; 0x3d4 <twi_start>
+ 482:	80 ee       	ldi	r24, 0xE0	; 224
 	twi_tx(0x04);	// Row
- 48a:	b3 df       	rcall	.-154    	; 0x3f2 <twi_tx>
- 48c:	84 e0       	ldi	r24, 0x04	; 4
+ 484:	b3 df       	rcall	.-154    	; 0x3ec <twi_tx>
+ 486:	84 e0       	ldi	r24, 0x04	; 4
 	twi_tx(0b11010010);	// data
- 48e:	b1 df       	rcall	.-158    	; 0x3f2 <twi_tx>
- 490:	82 ed       	ldi	r24, 0xD2	; 210
+ 488:	b1 df       	rcall	.-158    	; 0x3ec <twi_tx>
+ 48a:	82 ed       	ldi	r24, 0xD2	; 210
 	twi_stop();
- 492:	af df       	rcall	.-162    	; 0x3f2 <twi_tx>
+ 48c:	af df       	rcall	.-162    	; 0x3ec <twi_tx>
 	
 	
 	twi_start();
- 494:	aa df       	rcall	.-172    	; 0x3ea <twi_stop>
+ 48e:	aa df       	rcall	.-172    	; 0x3e4 <twi_stop>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 496:	a1 df       	rcall	.-190    	; 0x3da <twi_start>
+ 490:	a1 df       	rcall	.-190    	; 0x3d4 <twi_start>
 	twi_tx(0x06);	// Row
- 498:	80 ee       	ldi	r24, 0xE0	; 224
- 49a:	ab df       	rcall	.-170    	; 0x3f2 <twi_tx>
+ 492:	80 ee       	ldi	r24, 0xE0	; 224
+ 494:	ab df       	rcall	.-170    	; 0x3ec <twi_tx>
 	twi_tx(0b11000000);	// data
- 49c:	86 e0       	ldi	r24, 0x06	; 6
- 49e:	a9 df       	rcall	.-174    	; 0x3f2 <twi_tx>
+ 496:	86 e0       	ldi	r24, 0x06	; 6
+ 498:	a9 df       	rcall	.-174    	; 0x3ec <twi_tx>
 	twi_stop();
- 4a0:	80 ec       	ldi	r24, 0xC0	; 192
+ 49a:	80 ec       	ldi	r24, 0xC0	; 192
 	
 	
 	if (good){
- 4a2:	a7 df       	rcall	.-178    	; 0x3f2 <twi_tx>
+ 49c:	a7 df       	rcall	.-178    	; 0x3ec <twi_tx>
 		twi_start();
- 4a4:	a2 df       	rcall	.-188    	; 0x3ea <twi_stop>
+ 49e:	a2 df       	rcall	.-188    	; 0x3e4 <twi_stop>
 		twi_tx(0xE0);	// Display I2C addres + R/W bit
- 4a6:	cd 2b       	or	r28, r29
- 4a8:	89 f0       	breq	.+34     	; 0x4cc <decision+0x6c>
+ 4a0:	cd 2b       	or	r28, r29
+ 4a2:	89 f0       	breq	.+34     	; 0x4c6 <decision+0x6c>
 		twi_tx(0x08);	// Row
- 4aa:	97 df       	rcall	.-210    	; 0x3da <twi_start>
- 4ac:	80 ee       	ldi	r24, 0xE0	; 224
+ 4a4:	97 df       	rcall	.-210    	; 0x3d4 <twi_start>
+ 4a6:	80 ee       	ldi	r24, 0xE0	; 224
 		twi_tx(0b11010010);	// data
- 4ae:	a1 df       	rcall	.-190    	; 0x3f2 <twi_tx>
- 4b0:	88 e0       	ldi	r24, 0x08	; 8
+ 4a8:	a1 df       	rcall	.-190    	; 0x3ec <twi_tx>
+ 4aa:	88 e0       	ldi	r24, 0x08	; 8
 		twi_stop();
- 4b2:	9f df       	rcall	.-194    	; 0x3f2 <twi_tx>
+ 4ac:	9f df       	rcall	.-194    	; 0x3ec <twi_tx>
 		
 		twi_start();
- 4b4:	82 ed       	ldi	r24, 0xD2	; 210
+ 4ae:	82 ed       	ldi	r24, 0xD2	; 210
 		twi_tx(0xE0);	// Display I2C addres + R/W bit
- 4b6:	9d df       	rcall	.-198    	; 0x3f2 <twi_tx>
- 4b8:	98 df       	rcall	.-208    	; 0x3ea <twi_stop>
+ 4b0:	9d df       	rcall	.-198    	; 0x3ec <twi_tx>
+ 4b2:	98 df       	rcall	.-208    	; 0x3e4 <twi_stop>
 		twi_tx(0x0A);	// Row
- 4ba:	8f df       	rcall	.-226    	; 0x3da <twi_start>
- 4bc:	80 ee       	ldi	r24, 0xE0	; 224
+ 4b4:	8f df       	rcall	.-226    	; 0x3d4 <twi_start>
+ 4b6:	80 ee       	ldi	r24, 0xE0	; 224
 		twi_tx(0b11001100);	// data
- 4be:	99 df       	rcall	.-206    	; 0x3f2 <twi_tx>
- 4c0:	8a e0       	ldi	r24, 0x0A	; 10
+ 4b8:	99 df       	rcall	.-206    	; 0x3ec <twi_tx>
+ 4ba:	8a e0       	ldi	r24, 0x0A	; 10
 		twi_stop();
- 4c2:	97 df       	rcall	.-210    	; 0x3f2 <twi_tx>
- 4c4:	8c ec       	ldi	r24, 0xCC	; 204
+ 4bc:	97 df       	rcall	.-210    	; 0x3ec <twi_tx>
+ 4be:	8c ec       	ldi	r24, 0xCC	; 204
 	}
 	
 	else{
 		twi_start();
- 4c6:	95 df       	rcall	.-214    	; 0x3f2 <twi_tx>
+ 4c0:	95 df       	rcall	.-214    	; 0x3ec <twi_tx>
 		twi_tx(0xE0);	// Display I2C addres + R/W bit
- 4c8:	90 df       	rcall	.-224    	; 0x3ea <twi_stop>
- 4ca:	10 c0       	rjmp	.+32     	; 0x4ec <decision+0x8c>
- 4cc:	86 df       	rcall	.-244    	; 0x3da <twi_start>
+ 4c2:	90 df       	rcall	.-224    	; 0x3e4 <twi_stop>
+ 4c4:	10 c0       	rjmp	.+32     	; 0x4e6 <decision+0x8c>
+ 4c6:	86 df       	rcall	.-244    	; 0x3d4 <twi_start>
 		twi_tx(0x08);	// Row
- 4ce:	80 ee       	ldi	r24, 0xE0	; 224
- 4d0:	90 df       	rcall	.-224    	; 0x3f2 <twi_tx>
- 4d2:	88 e0       	ldi	r24, 0x08	; 8
+ 4c8:	80 ee       	ldi	r24, 0xE0	; 224
+ 4ca:	90 df       	rcall	.-224    	; 0x3ec <twi_tx>
+ 4cc:	88 e0       	ldi	r24, 0x08	; 8
 		twi_tx(0b11001100);	// data
- 4d4:	8e df       	rcall	.-228    	; 0x3f2 <twi_tx>
- 4d6:	8c ec       	ldi	r24, 0xCC	; 204
- 4d8:	8c df       	rcall	.-232    	; 0x3f2 <twi_tx>
+ 4ce:	8e df       	rcall	.-228    	; 0x3ec <twi_tx>
+ 4d0:	8c ec       	ldi	r24, 0xCC	; 204
+ 4d2:	8c df       	rcall	.-232    	; 0x3ec <twi_tx>
 		twi_stop();
- 4da:	87 df       	rcall	.-242    	; 0x3ea <twi_stop>
- 4dc:	7e df       	rcall	.-260    	; 0x3da <twi_start>
+ 4d4:	87 df       	rcall	.-242    	; 0x3e4 <twi_stop>
+ 4d6:	7e df       	rcall	.-260    	; 0x3d4 <twi_start>
 		
 		twi_start();
- 4de:	80 ee       	ldi	r24, 0xE0	; 224
- 4e0:	88 df       	rcall	.-240    	; 0x3f2 <twi_tx>
+ 4d8:	80 ee       	ldi	r24, 0xE0	; 224
+ 4da:	88 df       	rcall	.-240    	; 0x3ec <twi_tx>
 		twi_tx(0xE0);	// Display I2C addres + R/W bit
- 4e2:	8a e0       	ldi	r24, 0x0A	; 10
- 4e4:	86 df       	rcall	.-244    	; 0x3f2 <twi_tx>
- 4e6:	82 ed       	ldi	r24, 0xD2	; 210
+ 4dc:	8a e0       	ldi	r24, 0x0A	; 10
+ 4de:	86 df       	rcall	.-244    	; 0x3ec <twi_tx>
+ 4e0:	82 ed       	ldi	r24, 0xD2	; 210
 		twi_tx(0x0A);	// Row
- 4e8:	84 df       	rcall	.-248    	; 0x3f2 <twi_tx>
- 4ea:	7f df       	rcall	.-258    	; 0x3ea <twi_stop>
- 4ec:	76 df       	rcall	.-276    	; 0x3da <twi_start>
+ 4e2:	84 df       	rcall	.-248    	; 0x3ec <twi_tx>
+ 4e4:	7f df       	rcall	.-258    	; 0x3e4 <twi_stop>
+ 4e6:	76 df       	rcall	.-276    	; 0x3d4 <twi_start>
 		twi_tx(0b11010010);	// data
- 4ee:	80 ee       	ldi	r24, 0xE0	; 224
- 4f0:	80 df       	rcall	.-256    	; 0x3f2 <twi_tx>
- 4f2:	8c e0       	ldi	r24, 0x0C	; 12
+ 4e8:	80 ee       	ldi	r24, 0xE0	; 224
+ 4ea:	80 df       	rcall	.-256    	; 0x3ec <twi_tx>
+ 4ec:	8c e0       	ldi	r24, 0x0C	; 12
 		twi_stop();
- 4f4:	7e df       	rcall	.-260    	; 0x3f2 <twi_tx>
- 4f6:	81 e2       	ldi	r24, 0x21	; 33
+ 4ee:	7e df       	rcall	.-260    	; 0x3ec <twi_tx>
+ 4f0:	81 e2       	ldi	r24, 0x21	; 33
 		
 	}
 	
 	
 	twi_start();
- 4f8:	7c df       	rcall	.-264    	; 0x3f2 <twi_tx>
- 4fa:	77 df       	rcall	.-274    	; 0x3ea <twi_stop>
+ 4f2:	7c df       	rcall	.-264    	; 0x3ec <twi_tx>
+ 4f4:	77 df       	rcall	.-274    	; 0x3e4 <twi_stop>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 4fc:	6e df       	rcall	.-292    	; 0x3da <twi_start>
- 4fe:	80 ee       	ldi	r24, 0xE0	; 224
- 500:	78 df       	rcall	.-272    	; 0x3f2 <twi_tx>
+ 4f6:	6e df       	rcall	.-292    	; 0x3d4 <twi_start>
+ 4f8:	80 ee       	ldi	r24, 0xE0	; 224
+ 4fa:	78 df       	rcall	.-272    	; 0x3ec <twi_tx>
 	twi_tx(0x0C);	// Row
- 502:	8e e0       	ldi	r24, 0x0E	; 14
- 504:	76 df       	rcall	.-276    	; 0x3f2 <twi_tx>
- 506:	8e e1       	ldi	r24, 0x1E	; 30
+ 4fc:	8e e0       	ldi	r24, 0x0E	; 14
+ 4fe:	76 df       	rcall	.-276    	; 0x3ec <twi_tx>
+ 500:	8e e1       	ldi	r24, 0x1E	; 30
 	twi_tx(0b0100001);	// data
- 508:	74 df       	rcall	.-280    	; 0x3f2 <twi_tx>
- 50a:	6f df       	rcall	.-290    	; 0x3ea <twi_stop>
- 50c:	df 91       	pop	r29
+ 502:	74 df       	rcall	.-280    	; 0x3ec <twi_tx>
+ 504:	6f df       	rcall	.-290    	; 0x3e4 <twi_stop>
+ 506:	df 91       	pop	r29
 	twi_stop();
- 50e:	cf 91       	pop	r28
- 510:	08 95       	ret
+ 508:	cf 91       	pop	r28
+ 50a:	08 95       	ret
 
-00000512 <three>:
+0000050c <three>:
 	
 	twi_start();
- 512:	63 df       	rcall	.-314    	; 0x3da <twi_start>
- 514:	80 ee       	ldi	r24, 0xE0	; 224
+ 50c:	63 df       	rcall	.-314    	; 0x3d4 <twi_start>
+ 50e:	80 ee       	ldi	r24, 0xE0	; 224
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 516:	6d df       	rcall	.-294    	; 0x3f2 <twi_tx>
- 518:	80 e0       	ldi	r24, 0x00	; 0
- 51a:	6b df       	rcall	.-298    	; 0x3f2 <twi_tx>
+ 510:	6d df       	rcall	.-294    	; 0x3ec <twi_tx>
+ 512:	80 e0       	ldi	r24, 0x00	; 0
+ 514:	6b df       	rcall	.-298    	; 0x3ec <twi_tx>
 	twi_tx(0x0E);	// Row
- 51c:	8e e1       	ldi	r24, 0x1E	; 30
- 51e:	69 df       	rcall	.-302    	; 0x3f2 <twi_tx>
- 520:	64 df       	rcall	.-312    	; 0x3ea <twi_stop>
+ 516:	8e e1       	ldi	r24, 0x1E	; 30
+ 518:	69 df       	rcall	.-302    	; 0x3ec <twi_tx>
+ 51a:	64 df       	rcall	.-312    	; 0x3e4 <twi_stop>
 	twi_tx(0b0011110);	// data
- 522:	5b df       	rcall	.-330    	; 0x3da <twi_start>
- 524:	80 ee       	ldi	r24, 0xE0	; 224
- 526:	65 df       	rcall	.-310    	; 0x3f2 <twi_tx>
+ 51c:	5b df       	rcall	.-330    	; 0x3d4 <twi_start>
+ 51e:	80 ee       	ldi	r24, 0xE0	; 224
+ 520:	65 df       	rcall	.-310    	; 0x3ec <twi_tx>
 	twi_stop();
- 528:	82 e0       	ldi	r24, 0x02	; 2
- 52a:	63 df       	rcall	.-314    	; 0x3f2 <twi_tx>
+ 522:	82 e0       	ldi	r24, 0x02	; 2
+ 524:	63 df       	rcall	.-314    	; 0x3ec <twi_tx>
 }
- 52c:	80 e1       	ldi	r24, 0x10	; 16
- 52e:	61 df       	rcall	.-318    	; 0x3f2 <twi_tx>
- 530:	5c df       	rcall	.-328    	; 0x3ea <twi_stop>
+ 526:	80 e1       	ldi	r24, 0x10	; 16
+ 528:	61 df       	rcall	.-318    	; 0x3ec <twi_tx>
+ 52a:	5c df       	rcall	.-328    	; 0x3e4 <twi_stop>
 	twi_tx(0x02);	// Row
 	twi_tx(0b0010000);	// data
 	twi_stop();
 	
 	twi_start();
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 532:	53 df       	rcall	.-346    	; 0x3da <twi_start>
- 534:	80 ee       	ldi	r24, 0xE0	; 224
+ 52c:	53 df       	rcall	.-346    	; 0x3d4 <twi_start>
+ 52e:	80 ee       	ldi	r24, 0xE0	; 224
 	twi_tx(0x04);	// Row
- 536:	5d df       	rcall	.-326    	; 0x3f2 <twi_tx>
+ 530:	5d df       	rcall	.-326    	; 0x3ec <twi_tx>
 	twi_tx(0b0010000);	// data;
- 538:	84 e0       	ldi	r24, 0x04	; 4
- 53a:	5b df       	rcall	.-330    	; 0x3f2 <twi_tx>
+ 532:	84 e0       	ldi	r24, 0x04	; 4
+ 534:	5b df       	rcall	.-330    	; 0x3ec <twi_tx>
 	twi_stop();
- 53c:	80 e1       	ldi	r24, 0x10	; 16
+ 536:	80 e1       	ldi	r24, 0x10	; 16
 	
 	
 	twi_start();
- 53e:	59 df       	rcall	.-334    	; 0x3f2 <twi_tx>
+ 538:	59 df       	rcall	.-334    	; 0x3ec <twi_tx>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 540:	54 df       	rcall	.-344    	; 0x3ea <twi_stop>
- 542:	4b df       	rcall	.-362    	; 0x3da <twi_start>
+ 53a:	54 df       	rcall	.-344    	; 0x3e4 <twi_stop>
+ 53c:	4b df       	rcall	.-362    	; 0x3d4 <twi_start>
 	twi_tx(0x06);	// Row
- 544:	80 ee       	ldi	r24, 0xE0	; 224
- 546:	55 df       	rcall	.-342    	; 0x3f2 <twi_tx>
+ 53e:	80 ee       	ldi	r24, 0xE0	; 224
+ 540:	55 df       	rcall	.-342    	; 0x3ec <twi_tx>
 	twi_tx(0b0011110);	// data
- 548:	86 e0       	ldi	r24, 0x06	; 6
+ 542:	86 e0       	ldi	r24, 0x06	; 6
 	twi_stop();
- 54a:	53 df       	rcall	.-346    	; 0x3f2 <twi_tx>
+ 544:	53 df       	rcall	.-346    	; 0x3ec <twi_tx>
 	
 	twi_start();
- 54c:	8e e1       	ldi	r24, 0x1E	; 30
+ 546:	8e e1       	ldi	r24, 0x1E	; 30
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 54e:	51 df       	rcall	.-350    	; 0x3f2 <twi_tx>
+ 548:	51 df       	rcall	.-350    	; 0x3ec <twi_tx>
 	twi_tx(0x08);	// Row
- 550:	4c df       	rcall	.-360    	; 0x3ea <twi_stop>
- 552:	43 df       	rcall	.-378    	; 0x3da <twi_start>
+ 54a:	4c df       	rcall	.-360    	; 0x3e4 <twi_stop>
+ 54c:	43 df       	rcall	.-378    	; 0x3d4 <twi_start>
 	twi_tx(0b0011110);	// data
- 554:	80 ee       	ldi	r24, 0xE0	; 224
- 556:	4d df       	rcall	.-358    	; 0x3f2 <twi_tx>
+ 54e:	80 ee       	ldi	r24, 0xE0	; 224
+ 550:	4d df       	rcall	.-358    	; 0x3ec <twi_tx>
 	twi_stop();
- 558:	88 e0       	ldi	r24, 0x08	; 8
+ 552:	88 e0       	ldi	r24, 0x08	; 8
 	
 	
 	twi_start();
- 55a:	4b df       	rcall	.-362    	; 0x3f2 <twi_tx>
- 55c:	8e e1       	ldi	r24, 0x1E	; 30
+ 554:	4b df       	rcall	.-362    	; 0x3ec <twi_tx>
+ 556:	8e e1       	ldi	r24, 0x1E	; 30
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 55e:	49 df       	rcall	.-366    	; 0x3f2 <twi_tx>
- 560:	44 df       	rcall	.-376    	; 0x3ea <twi_stop>
- 562:	3b df       	rcall	.-394    	; 0x3da <twi_start>
+ 558:	49 df       	rcall	.-366    	; 0x3ec <twi_tx>
+ 55a:	44 df       	rcall	.-376    	; 0x3e4 <twi_stop>
+ 55c:	3b df       	rcall	.-394    	; 0x3d4 <twi_start>
 	twi_tx(0x0A);	// Row
- 564:	80 ee       	ldi	r24, 0xE0	; 224
- 566:	45 df       	rcall	.-374    	; 0x3f2 <twi_tx>
- 568:	8a e0       	ldi	r24, 0x0A	; 10
+ 55e:	80 ee       	ldi	r24, 0xE0	; 224
+ 560:	45 df       	rcall	.-374    	; 0x3ec <twi_tx>
+ 562:	8a e0       	ldi	r24, 0x0A	; 10
 	twi_tx(0b0010000);	// data
- 56a:	43 df       	rcall	.-378    	; 0x3f2 <twi_tx>
- 56c:	80 e1       	ldi	r24, 0x10	; 16
- 56e:	41 df       	rcall	.-382    	; 0x3f2 <twi_tx>
+ 564:	43 df       	rcall	.-378    	; 0x3ec <twi_tx>
+ 566:	80 e1       	ldi	r24, 0x10	; 16
+ 568:	41 df       	rcall	.-382    	; 0x3ec <twi_tx>
 	twi_stop();
- 570:	3c df       	rcall	.-392    	; 0x3ea <twi_stop>
- 572:	33 df       	rcall	.-410    	; 0x3da <twi_start>
+ 56a:	3c df       	rcall	.-392    	; 0x3e4 <twi_stop>
+ 56c:	33 df       	rcall	.-410    	; 0x3d4 <twi_start>
 	
 	twi_start();
- 574:	80 ee       	ldi	r24, 0xE0	; 224
- 576:	3d df       	rcall	.-390    	; 0x3f2 <twi_tx>
+ 56e:	80 ee       	ldi	r24, 0xE0	; 224
+ 570:	3d df       	rcall	.-390    	; 0x3ec <twi_tx>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 578:	8c e0       	ldi	r24, 0x0C	; 12
- 57a:	3b df       	rcall	.-394    	; 0x3f2 <twi_tx>
- 57c:	80 e1       	ldi	r24, 0x10	; 16
+ 572:	8c e0       	ldi	r24, 0x0C	; 12
+ 574:	3b df       	rcall	.-394    	; 0x3ec <twi_tx>
+ 576:	80 e1       	ldi	r24, 0x10	; 16
 	twi_tx(0x0C);	// Row
- 57e:	39 df       	rcall	.-398    	; 0x3f2 <twi_tx>
- 580:	34 df       	rcall	.-408    	; 0x3ea <twi_stop>
- 582:	2b df       	rcall	.-426    	; 0x3da <twi_start>
+ 578:	39 df       	rcall	.-398    	; 0x3ec <twi_tx>
+ 57a:	34 df       	rcall	.-408    	; 0x3e4 <twi_stop>
+ 57c:	2b df       	rcall	.-426    	; 0x3d4 <twi_start>
 	twi_tx(0b0010000);	// data;
- 584:	80 ee       	ldi	r24, 0xE0	; 224
- 586:	35 df       	rcall	.-406    	; 0x3f2 <twi_tx>
- 588:	8e e0       	ldi	r24, 0x0E	; 14
+ 57e:	80 ee       	ldi	r24, 0xE0	; 224
+ 580:	35 df       	rcall	.-406    	; 0x3ec <twi_tx>
+ 582:	8e e0       	ldi	r24, 0x0E	; 14
 	twi_stop();
- 58a:	33 df       	rcall	.-410    	; 0x3f2 <twi_tx>
- 58c:	8e e1       	ldi	r24, 0x1E	; 30
+ 584:	33 df       	rcall	.-410    	; 0x3ec <twi_tx>
+ 586:	8e e1       	ldi	r24, 0x1E	; 30
 	
 	
 	twi_start();
- 58e:	31 df       	rcall	.-414    	; 0x3f2 <twi_tx>
- 590:	2c cf       	rjmp	.-424    	; 0x3ea <twi_stop>
+ 588:	31 df       	rcall	.-414    	; 0x3ec <twi_tx>
+ 58a:	2c cf       	rjmp	.-424    	; 0x3e4 <twi_stop>
 	twi_tx(0xE0);	// Display I2C addres + R/W bit
- 592:	08 95       	ret
+ 58c:	08 95       	ret
 
-00000594 <countToDecision>:
- 594:	be cf       	rjmp	.-132    	; 0x512 <three>
- 596:	08 95       	ret
-
-00000598 <_exit>:
+0000058e <two>:
+ 58e:	22 df       	rcall	.-444    	; 0x3d4 <twi_start>
+ 590:	80 ee       	ldi	r24, 0xE0	; 224
 	twi_tx(0x0E);	// Row
- 598:	f8 94       	cli
+ 592:	2c df       	rcall	.-424    	; 0x3ec <twi_tx>
+ 594:	80 e0       	ldi	r24, 0x00	; 0
+ 596:	2a df       	rcall	.-428    	; 0x3ec <twi_tx>
+	twi_tx(0b0011110);	// data
+ 598:	8e e1       	ldi	r24, 0x1E	; 30
+ 59a:	28 df       	rcall	.-432    	; 0x3ec <twi_tx>
+ 59c:	23 df       	rcall	.-442    	; 0x3e4 <twi_stop>
+	twi_stop();
+ 59e:	1a df       	rcall	.-460    	; 0x3d4 <twi_start>
+ 5a0:	80 ee       	ldi	r24, 0xE0	; 224
+ 5a2:	24 df       	rcall	.-440    	; 0x3ec <twi_tx>
+		twi_stop();
+		
+		
+		twi_start();
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+		twi_tx(0x02);	// Row
+ 5a4:	82 e0       	ldi	r24, 0x02	; 2
+		twi_tx(0b0010000);	// data
+ 5a6:	22 df       	rcall	.-444    	; 0x3ec <twi_tx>
+ 5a8:	80 e1       	ldi	r24, 0x10	; 16
+		twi_stop();
+ 5aa:	20 df       	rcall	.-448    	; 0x3ec <twi_tx>
+		
+		twi_start();
+ 5ac:	1b df       	rcall	.-458    	; 0x3e4 <twi_stop>
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 5ae:	12 df       	rcall	.-476    	; 0x3d4 <twi_start>
+ 5b0:	80 ee       	ldi	r24, 0xE0	; 224
+		twi_tx(0x04);	// Row
+ 5b2:	1c df       	rcall	.-456    	; 0x3ec <twi_tx>
+		twi_tx(0b0010000);	// data;
+ 5b4:	84 e0       	ldi	r24, 0x04	; 4
+ 5b6:	1a df       	rcall	.-460    	; 0x3ec <twi_tx>
+		twi_stop();
+ 5b8:	80 e1       	ldi	r24, 0x10	; 16
+		
+		
+		twi_start();
+ 5ba:	18 df       	rcall	.-464    	; 0x3ec <twi_tx>
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 5bc:	13 df       	rcall	.-474    	; 0x3e4 <twi_stop>
+ 5be:	0a df       	rcall	.-492    	; 0x3d4 <twi_start>
+		twi_tx(0x06);	// Row
+ 5c0:	80 ee       	ldi	r24, 0xE0	; 224
+ 5c2:	14 df       	rcall	.-472    	; 0x3ec <twi_tx>
+		twi_tx(0b0011110);	// data
+ 5c4:	86 e0       	ldi	r24, 0x06	; 6
+		twi_stop();
+ 5c6:	12 df       	rcall	.-476    	; 0x3ec <twi_tx>
+		
+		twi_start();
+ 5c8:	8e e1       	ldi	r24, 0x1E	; 30
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 5ca:	10 df       	rcall	.-480    	; 0x3ec <twi_tx>
+		twi_tx(0x08);	// Row
+ 5cc:	0b df       	rcall	.-490    	; 0x3e4 <twi_stop>
+ 5ce:	02 df       	rcall	.-508    	; 0x3d4 <twi_start>
+		twi_tx(0b0000010);	// data
+ 5d0:	80 ee       	ldi	r24, 0xE0	; 224
+ 5d2:	0c df       	rcall	.-488    	; 0x3ec <twi_tx>
+		twi_stop();
+ 5d4:	88 e0       	ldi	r24, 0x08	; 8
+		
+		
+		twi_start();
+ 5d6:	0a df       	rcall	.-492    	; 0x3ec <twi_tx>
+ 5d8:	82 e0       	ldi	r24, 0x02	; 2
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 5da:	08 df       	rcall	.-496    	; 0x3ec <twi_tx>
+ 5dc:	03 df       	rcall	.-506    	; 0x3e4 <twi_stop>
+ 5de:	fa de       	rcall	.-524    	; 0x3d4 <twi_start>
+		twi_tx(0x0A);	// Row
+ 5e0:	80 ee       	ldi	r24, 0xE0	; 224
+ 5e2:	04 df       	rcall	.-504    	; 0x3ec <twi_tx>
+ 5e4:	8a e0       	ldi	r24, 0x0A	; 10
+		twi_tx(0b0000010);	// data
+ 5e6:	02 df       	rcall	.-508    	; 0x3ec <twi_tx>
+ 5e8:	82 e0       	ldi	r24, 0x02	; 2
+ 5ea:	00 df       	rcall	.-512    	; 0x3ec <twi_tx>
+		twi_stop();
+ 5ec:	fb de       	rcall	.-522    	; 0x3e4 <twi_stop>
+ 5ee:	f2 de       	rcall	.-540    	; 0x3d4 <twi_start>
+		
+		twi_start();
+ 5f0:	80 ee       	ldi	r24, 0xE0	; 224
+ 5f2:	fc de       	rcall	.-520    	; 0x3ec <twi_tx>
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 5f4:	8c e0       	ldi	r24, 0x0C	; 12
+ 5f6:	fa de       	rcall	.-524    	; 0x3ec <twi_tx>
+ 5f8:	82 e0       	ldi	r24, 0x02	; 2
+		twi_tx(0x0C);	// Row
+ 5fa:	f8 de       	rcall	.-528    	; 0x3ec <twi_tx>
+ 5fc:	f3 de       	rcall	.-538    	; 0x3e4 <twi_stop>
+ 5fe:	ea de       	rcall	.-556    	; 0x3d4 <twi_start>
+		twi_tx(0b0000010);	// data;
+ 600:	80 ee       	ldi	r24, 0xE0	; 224
+ 602:	f4 de       	rcall	.-536    	; 0x3ec <twi_tx>
+ 604:	8e e0       	ldi	r24, 0x0E	; 14
+		twi_stop();
+ 606:	f2 de       	rcall	.-540    	; 0x3ec <twi_tx>
+ 608:	8e e1       	ldi	r24, 0x1E	; 30
+		
+		
+		twi_start();
+ 60a:	f0 de       	rcall	.-544    	; 0x3ec <twi_tx>
+ 60c:	eb ce       	rjmp	.-554    	; 0x3e4 <twi_stop>
+		twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 60e:	08 95       	ret
 
-0000059a <__stop_program>:
- 59a:	ff cf       	rjmp	.-2      	; 0x59a <__stop_program>
+00000610 <one>:
+ 610:	e1 de       	rcall	.-574    	; 0x3d4 <twi_start>
+ 612:	80 ee       	ldi	r24, 0xE0	; 224
+		twi_tx(0x0E);	// Row
+ 614:	eb de       	rcall	.-554    	; 0x3ec <twi_tx>
+ 616:	80 e0       	ldi	r24, 0x00	; 0
+ 618:	e9 de       	rcall	.-558    	; 0x3ec <twi_tx>
+		twi_tx(0b0011110);	// data
+ 61a:	88 e0       	ldi	r24, 0x08	; 8
+ 61c:	e7 de       	rcall	.-562    	; 0x3ec <twi_tx>
+ 61e:	e2 de       	rcall	.-572    	; 0x3e4 <twi_stop>
+		twi_stop();
+ 620:	d9 de       	rcall	.-590    	; 0x3d4 <twi_start>
+ 622:	80 ee       	ldi	r24, 0xE0	; 224
+ 624:	e3 de       	rcall	.-570    	; 0x3ec <twi_tx>
+	twi_stop();
+	
+	
+	twi_start();
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+	twi_tx(0x02);	// Row
+ 626:	82 e0       	ldi	r24, 0x02	; 2
+	twi_tx(0b001100);	// data
+ 628:	e1 de       	rcall	.-574    	; 0x3ec <twi_tx>
+ 62a:	8c e0       	ldi	r24, 0x0C	; 12
+	twi_stop();
+ 62c:	df de       	rcall	.-578    	; 0x3ec <twi_tx>
+	
+	twi_start();
+ 62e:	da de       	rcall	.-588    	; 0x3e4 <twi_stop>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 630:	d1 de       	rcall	.-606    	; 0x3d4 <twi_start>
+ 632:	80 ee       	ldi	r24, 0xE0	; 224
+	twi_tx(0x04);	// Row
+ 634:	db de       	rcall	.-586    	; 0x3ec <twi_tx>
+	twi_tx(0b0001000);	// data;
+ 636:	84 e0       	ldi	r24, 0x04	; 4
+ 638:	d9 de       	rcall	.-590    	; 0x3ec <twi_tx>
+	twi_stop();
+ 63a:	88 e0       	ldi	r24, 0x08	; 8
+	
+	
+	twi_start();
+ 63c:	d7 de       	rcall	.-594    	; 0x3ec <twi_tx>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 63e:	d2 de       	rcall	.-604    	; 0x3e4 <twi_stop>
+ 640:	c9 de       	rcall	.-622    	; 0x3d4 <twi_start>
+	twi_tx(0x06);	// Row
+ 642:	80 ee       	ldi	r24, 0xE0	; 224
+ 644:	d3 de       	rcall	.-602    	; 0x3ec <twi_tx>
+	twi_tx(0b0001000);	// data
+ 646:	86 e0       	ldi	r24, 0x06	; 6
+	twi_stop();
+ 648:	d1 de       	rcall	.-606    	; 0x3ec <twi_tx>
+	
+	twi_start();
+ 64a:	88 e0       	ldi	r24, 0x08	; 8
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 64c:	cf de       	rcall	.-610    	; 0x3ec <twi_tx>
+	twi_tx(0x08);	// Row
+ 64e:	ca de       	rcall	.-620    	; 0x3e4 <twi_stop>
+ 650:	c1 de       	rcall	.-638    	; 0x3d4 <twi_start>
+	twi_tx(0b0001000);	// data
+ 652:	80 ee       	ldi	r24, 0xE0	; 224
+ 654:	cb de       	rcall	.-618    	; 0x3ec <twi_tx>
+	twi_stop();
+ 656:	88 e0       	ldi	r24, 0x08	; 8
+	
+	
+	twi_start();
+ 658:	c9 de       	rcall	.-622    	; 0x3ec <twi_tx>
+ 65a:	88 e0       	ldi	r24, 0x08	; 8
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 65c:	c7 de       	rcall	.-626    	; 0x3ec <twi_tx>
+ 65e:	c2 de       	rcall	.-636    	; 0x3e4 <twi_stop>
+ 660:	b9 de       	rcall	.-654    	; 0x3d4 <twi_start>
+	twi_tx(0x0A);	// Row
+ 662:	80 ee       	ldi	r24, 0xE0	; 224
+ 664:	c3 de       	rcall	.-634    	; 0x3ec <twi_tx>
+ 666:	8a e0       	ldi	r24, 0x0A	; 10
+	twi_tx(0b0001000);	// data
+ 668:	c1 de       	rcall	.-638    	; 0x3ec <twi_tx>
+ 66a:	88 e0       	ldi	r24, 0x08	; 8
+ 66c:	bf de       	rcall	.-642    	; 0x3ec <twi_tx>
+	twi_stop();
+ 66e:	ba de       	rcall	.-652    	; 0x3e4 <twi_stop>
+ 670:	b1 de       	rcall	.-670    	; 0x3d4 <twi_start>
+	
+	twi_start();
+ 672:	80 ee       	ldi	r24, 0xE0	; 224
+ 674:	bb de       	rcall	.-650    	; 0x3ec <twi_tx>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 676:	8c e0       	ldi	r24, 0x0C	; 12
+ 678:	b9 de       	rcall	.-654    	; 0x3ec <twi_tx>
+ 67a:	88 e0       	ldi	r24, 0x08	; 8
+	twi_tx(0x0C);	// Row
+ 67c:	b7 de       	rcall	.-658    	; 0x3ec <twi_tx>
+ 67e:	b2 de       	rcall	.-668    	; 0x3e4 <twi_stop>
+ 680:	a9 de       	rcall	.-686    	; 0x3d4 <twi_start>
+	twi_tx(0b0001000);	// data;
+ 682:	80 ee       	ldi	r24, 0xE0	; 224
+ 684:	b3 de       	rcall	.-666    	; 0x3ec <twi_tx>
+ 686:	8e e0       	ldi	r24, 0x0E	; 14
+	twi_stop();
+ 688:	b1 de       	rcall	.-670    	; 0x3ec <twi_tx>
+ 68a:	8e e1       	ldi	r24, 0x1E	; 30
+	
+	
+	twi_start();
+ 68c:	af de       	rcall	.-674    	; 0x3ec <twi_tx>
+ 68e:	aa ce       	rjmp	.-684    	; 0x3e4 <twi_stop>
+	twi_tx(0xE0);	// Display I2C addres + R/W bit
+ 690:	08 95       	ret
+
+00000692 <countToDecision>:
+ 692:	cf 93       	push	r28
+ 694:	df 93       	push	r29
+	twi_tx(0x0E);	// Row
+ 696:	ec 01       	movw	r28, r24
+ 698:	39 df       	rcall	.-398    	; 0x50c <three>
+ 69a:	84 ef       	ldi	r24, 0xF4	; 244
+	twi_tx(0b0011110);	// data
+ 69c:	91 e0       	ldi	r25, 0x01	; 1
+ 69e:	16 de       	rcall	.-980    	; 0x2cc <wait>
+ 6a0:	76 df       	rcall	.-276    	; 0x58e <two>
+	twi_stop();
+ 6a2:	84 ef       	ldi	r24, 0xF4	; 244
+ 6a4:	91 e0       	ldi	r25, 0x01	; 1
+ 6a6:	12 de       	rcall	.-988    	; 0x2cc <wait>
+	
+	wait(500);
+	
+	one();
+	 
+	wait(500);
+ 6a8:	b3 df       	rcall	.-154    	; 0x610 <one>
+ 6aa:	84 ef       	ldi	r24, 0xF4	; 244
+ 6ac:	91 e0       	ldi	r25, 0x01	; 1
+ 6ae:	0e de       	rcall	.-996    	; 0x2cc <wait>
+	
+	decision(good);
+ 6b0:	ce 01       	movw	r24, r28
+ 6b2:	d3 de       	rcall	.-602    	; 0x45a <decision>
+ 6b4:	df 91       	pop	r29
+}
+ 6b6:	cf 91       	pop	r28
+ 6b8:	08 95       	ret
+
+000006ba <_exit>:
+ 6ba:	f8 94       	cli
+
+000006bc <__stop_program>:
+ 6bc:	ff cf       	rjmp	.-2      	; 0x6bc <__stop_program>
