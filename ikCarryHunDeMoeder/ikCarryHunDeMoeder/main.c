@@ -9,10 +9,42 @@
 
 
 int counter = 0;
-int questionAsked = 1;
+int questionAsked = 0;
 
 int pressedB1 = 0;
 int pressedB2 = 0;
+
+
+
+void goodBad(int goodOrBad){
+	clear();
+	set_cursor(5);
+	display_text("3");
+	wait(1000);
+	set_cursor(5);
+	display_text("2");
+	wait(1000);
+	set_cursor(5);
+	display_text("1");
+	
+	wait(500);
+	
+	set_cursor(0);
+	
+	
+	if(goodOrBad){
+		decision(1);
+		questionAsked--;
+		counter++;
+	} else if(!goodOrBad){
+		decision(0);
+		questionAsked--;
+		counter++;
+	}
+	
+}
+
+
 
 
 void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
@@ -21,54 +53,35 @@ void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
 	set_cursor(40);
 	
 	display_text(antwoord1);
+
 	set_cursor(50);
 	display_text(antwoord2);
 	
+	if (questionAsked == 0){
+		questionAsked++;
+	}
+	
 	while (questionAsked)
 	{
-		if (pressedB1 && !nummer )
+		if (PINB & 0x02 && !nummer )
 		{
-			display_text("Goed");
+			goodBad(0);
 			
 			
-		} else if (pressedB1 && nummer)
+		} else if (PINB & 0x02 && nummer)
 		{
-				display_text("Fout");
-				questionAsked--;
+				goodBad(1);
 			
-		}	else if (pressedB2 && !nummer)
+		}	else if (PINB & 0x04 && !nummer)
 		{
-				display_text("Fout");
-				questionAsked--;
+				goodBad(1);
 			
-		}	else if (pressedB2 && nummer)
+		}	else if (PINB & 0x04 && nummer)
 		{
-				display_text("Goed");
-				questionAsked--;
-		} else{
-			
-		}
+				goodBad(0);
+		} 
 	}
 	
-}
-
-void pressedButtonB1(void){
-	
-	if (PINB & 0x02){						// b2 indrukken dan komt hij hier in
-		pressedB1++;
-		wait(1000);
-
-	}
-
-}
-
-void pressedButtonB2(void){
-	
-	if (PINB & 0x04){						// b2 indrukken dan komt hij hier in
-		pressedB2++;
-		wait(1000);
-	}
-
 }
 
 
@@ -97,19 +110,25 @@ int main( void )
 		if (PINB & 0x02 && counter == 0){						// b2 indrukken dan komt hij hier in
 			clear();
 			questions("Hoe heet ik?", "Jurre", "Jan", 0);
-			counter++;
-			wait (200);
+			wait(1000);
 		} 
 		
-		if (PINB & 0x02 && counter == 1){						// b2 indrukken dan komt hij hier in
-			clear();
-			questions("wat doe ik?", "TI", "BIM", 1);
-			counter++;
+		while (counter == 1){						// b2 indrukken dan komt hij hier in
+			questions("wat doe ik?", "TI", "BIM", 0);
+			wait(1000);
 		}
 		
-		if (PINB & 0x02 && counter == 2){						// b2 indrukken dan komt hij hier in
+		while ( counter == 2){						// b2 indrukken dan komt hij hier in
+			questions("wat is gezond?", "patat", "Peer", 1);
+			wait(1000);
+		}
+		
+			while (counter == 3)
+		{
 			clear();
-			questions("wat doe ik?", "TI", "BIM", 1);
+			wait(1000);
+
+			display_text("klaar is kees");
 			counter++;
 		}
 		
