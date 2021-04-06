@@ -112,6 +112,8 @@ int main( void )
 		{
 			clear();
 			display_text("klaar is kees");
+			set_cursor(40);
+			display_text("restart op B1");
 			counter++;
 		}
 			while(counter == 4){
@@ -119,9 +121,6 @@ int main( void )
 					counter = 0;
 				}
 			}
-		
-		
-		
 	}
 
 	return 1;
