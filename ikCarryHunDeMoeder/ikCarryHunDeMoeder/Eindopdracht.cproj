@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>ikCarryHunDeMoeder</AssemblyName>
-    <Name>ikCarryHunDeMoeder</Name>
+    <Name>Eindopdracht</Name>
     <RootNamespace>ikCarryHunDeMoeder</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
@@ -123,9 +123,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="main.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="tools\lcd.c">

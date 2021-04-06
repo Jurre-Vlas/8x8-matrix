@@ -76,7 +76,7 @@ int main( void )
 	clear();
 	
 
-	display_text("welkom! druk op");
+	display_text("welkom! Druk op");
 	set_cursor(40);
 	display_text("B1 om te starten");
 	
