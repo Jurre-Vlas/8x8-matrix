@@ -9,9 +9,13 @@
 
 
 int counter = 0;
+int questionAsked = 1;
+
+int pressedB1 = 0;
+int pressedB2 = 0;
 
 
-void vraag1(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
+void questions(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
 	
 	display_text(vraag1);
 	set_cursor(40);
@@ -20,7 +24,53 @@ void vraag1(char *vraag1, char *antwoord1, char *antwoord2, int nummer ){
 	set_cursor(50);
 	display_text(antwoord2);
 	
+	while (questionAsked)
+	{
+		if (pressedB1 && !nummer )
+		{
+			display_text("Goed");
+			
+			
+		} else if (pressedB1 && nummer)
+		{
+				display_text("Fout");
+				questionAsked--;
+			
+		}	else if (pressedB2 && !nummer)
+		{
+				display_text("Fout");
+				questionAsked--;
+			
+		}	else if (pressedB2 && nummer)
+		{
+				display_text("Goed");
+				questionAsked--;
+		} else{
+			
+		}
+	}
+	
 }
+
+void pressedButtonB1(void){
+	
+	if (PINB & 0x02){						// b2 indrukken dan komt hij hier in
+		pressedB1++;
+		wait(1000);
+
+	}
+
+}
+
+void pressedButtonB2(void){
+	
+	if (PINB & 0x04){						// b2 indrukken dan komt hij hier in
+		pressedB2++;
+		wait(1000);
+	}
+
+}
+
 
 
 int main( void )
@@ -41,27 +91,29 @@ int main( void )
 	
 	PORTB = 0x00; 
 
+
 	while (1)
 	{
-		
-		
-
-		if (PINB & 0x02){						// b2 indrukken dan komt hij hier in
+		if (PINB & 0x02 && counter == 0){						// b2 indrukken dan komt hij hier in
+			clear();
+			questions("Hoe heet ik?", "Jurre", "Jan", 0);
 			counter++;
-			wait(1000);
+			wait (200);
 		} 
 		
-		if (PINB & 0x04){						// b2 indrukken dan komt hij hier in
-			display_text("B");
-		}
-		
-		
-		if (counter == 1)
-		{
+		if (PINB & 0x02 && counter == 1){						// b2 indrukken dan komt hij hier in
 			clear();
-			vraag1("Hoe heet ik?", "Jurre", "Jan", 0);
+			questions("wat doe ik?", "TI", "BIM", 1);
 			counter++;
 		}
+		
+		if (PINB & 0x02 && counter == 2){						// b2 indrukken dan komt hij hier in
+			clear();
+			questions("wat doe ik?", "TI", "BIM", 1);
+			counter++;
+		}
+		
+		
 		
 	}
 
